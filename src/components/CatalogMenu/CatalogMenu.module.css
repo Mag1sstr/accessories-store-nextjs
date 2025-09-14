@@ -60,5 +60,9 @@
     &:not(:last-child) {
       margin-bottom: 8px;
     }
+    &.active {
+      background-color: #f0e4ff;
+      color: var(--prime);
+    }
   }
 }

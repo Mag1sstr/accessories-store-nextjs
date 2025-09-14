@@ -3,13 +3,18 @@
 import { useGetCategoriesQuery } from "@/api/api";
 import styles from "./CatalogMenu.module.css";
 import { useModals } from "@/hooks/useModals";
+import { useState } from "react";
 
 function CatalogMenu() {
+  const [selectCategory, setSelectCategory] = useState<null | number>(null);
   const { openMenu, setOpenMenu } = useModals();
   const { data } = useGetCategoriesQuery(null);
 
   const handleOpen = () => {
     setOpenMenu((prev) => !prev);
+  };
+  const handleSelectCategory = (id: number) => {
+    setSelectCategory(id === selectCategory ? null : id);
   };
   return (
     <div className={`${styles.menu} ${openMenu && styles.open}`}>
@@ -38,7 +43,13 @@ function CatalogMenu() {
       </button>
       <ul className={styles.catalogDrop}>
         {data?.map((el) => (
-          <li key={el.id}>{el.name}</li>
+          <li
+            className={`${selectCategory === el.id && styles.active}`}
+            key={el.id}
+            onClick={() => handleSelectCategory(el.id)}
+          >
+            {el.name}
+          </li>
         ))}
       </ul>
     </div>
