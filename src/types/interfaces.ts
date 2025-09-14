@@ -7,7 +7,7 @@ export interface IProducts {
 }
 export interface IProductsParams {
   title?: string;
-  categoryId?: string;
+  categoryId?: string | number;
 }
 
 export interface ICategories {

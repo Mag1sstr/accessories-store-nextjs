@@ -1,21 +1,30 @@
 "use client";
 
-import { useGetCategoriesQuery } from "@/api/api";
+import { useGetCategoriesQuery, useGetProductsQuery } from "@/api/api";
 import styles from "./CatalogMenu.module.css";
 import { useModals } from "@/hooks/useModals";
 import { useState } from "react";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 function CatalogMenu() {
   const [selectCategory, setSelectCategory] = useState<null | number>(null);
   const { openMenu, setOpenMenu } = useModals();
+  const router = useRouter();
   const { data } = useGetCategoriesQuery(null);
-
+  const { data: productsData } = useGetProductsQuery(
+    {
+      categoryId: selectCategory!,
+    },
+    { skip: !selectCategory }
+  );
   const handleOpen = () => {
     setOpenMenu((prev) => !prev);
   };
   const handleSelectCategory = (id: number) => {
     setSelectCategory(id === selectCategory ? null : id);
   };
+
   return (
     <div className={`${styles.menu} ${openMenu && styles.open}`}>
       <button className={styles.catalog} onClick={handleOpen}>
@@ -52,6 +61,26 @@ function CatalogMenu() {
           </li>
         ))}
       </ul>
+      {selectCategory && (
+        <div className={styles.categoryProducts}>
+          <div className={styles.inner}>
+            {productsData?.map((product) => (
+              <div
+                onClick={() => router.push(`/products/${product.id}`)}
+                key={product.id}
+                className={styles.card}
+              >
+                <img src={product.images[0]} alt="" />
+                <div>
+                  <p>{product.title}</p>
+                  <p>{product.price}$</p>
+                </div>
+              </div>
+            ))}
+          </div>
+          <Link href={""}>Смотреть все товары</Link>
+        </div>
+      )}
     </div>
   );
 }
