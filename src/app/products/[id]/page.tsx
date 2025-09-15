@@ -1,7 +1,7 @@
 "use client";
 import { useParams } from "next/navigation";
 
-export default function Products() {
+export default function SingleProduct() {
   const { id } = useParams();
   return (
     <>
