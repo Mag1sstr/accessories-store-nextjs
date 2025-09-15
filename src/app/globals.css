@@ -1,6 +1,7 @@
 :root {
   --light-grey: #f9f9f9;
   --prime: #0071e4;
+  --text-black: #100e0e;
 }
 * {
   margin: 0;
@@ -16,6 +17,7 @@ a {
 }
 body {
   font-family: var(--font-geist-sans);
+  color: var(--text-black);
 }
 .container {
   max-width: 1230px;
