@@ -10,7 +10,7 @@
     .catalogDrop {
       visibility: visible;
       opacity: 1;
-      max-height: 390px;
+      height: 350px;
     }
     .categoryProducts {
       visibility: visible;
@@ -39,7 +39,7 @@
 .catalogDrop {
   visibility: hidden;
   opacity: 0;
-  max-height: 0;
+  height: 0;
   position: absolute;
   background-color: #fff;
   box-shadow: 0px 4px 16px 0px #0000000d;
@@ -50,7 +50,13 @@
   border-radius: 0 0 16px 16px;
   transition: 0.3s;
   padding: 24px 16px;
-  overflow: hidden;
+  overflow: auto;
+  &.select {
+    border-bottom-right-radius: 0;
+  }
+  &::-webkit-scrollbar {
+    display: none;
+  }
   li {
     padding: 8px;
     border-radius: 8px;
@@ -83,15 +89,19 @@
   border-radius: 0 16px 16px 0;
   box-shadow: 0px 4px 16px 0px #0000000d;
   transition: 0.3s;
+  height: 350px;
+  width: 658px;
+  display: flex;
+  flex-direction: column;
 }
 .inner {
-  width: 658px;
+  /* max-height: 100%; */
+  flex: 1;
   display: grid;
   grid-template-columns: repeat(3, minmax(130px, 1fr));
   gap: 8px;
-  max-height: 300px;
   padding-right: 16px;
-  overflow-y: scroll;
+  overflow-y: auto;
   overflow-x: hidden;
   margin-bottom: 1rem;
   &::-webkit-scrollbar {

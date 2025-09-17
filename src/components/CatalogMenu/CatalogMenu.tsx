@@ -67,7 +67,9 @@ function CatalogMenu() {
         </svg>
         Каталог товаров
       </button>
-      <ul className={styles.catalogDrop}>
+      <ul
+        className={`${styles.catalogDrop} ${selectCategory && styles.select}`}
+      >
         {data?.map((el) => (
           <li
             className={`${selectCategory === el.id && styles.active}`}
