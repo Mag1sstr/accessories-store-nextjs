@@ -28,23 +28,22 @@ function CatalogMenu() {
   };
 
   useEffect(() => {
-    const handleOutsideClick = (event: PointerEvent) => {
-      if (menuRef.current && !menuRef.current.contains(event.target)) {
+    function handleOutsideClick(event: PointerEvent) {
+      if (
+        menuRef.current &&
+        event.target instanceof Node &&
+        !menuRef.current.contains(event.target)
+      ) {
         setOpenMenu(false);
       }
-    };
-    document.addEventListener("click", (e) => handleOutsideClick(e));
+    }
+    document.addEventListener("click", handleOutsideClick);
 
-    return () =>
-      document.removeEventListener("click", (e) => handleOutsideClick(e));
-  }, [openMenu, menuRef]);
+    return () => document.removeEventListener("click", handleOutsideClick);
+  }, [menuRef]);
 
   return (
-    <div
-      onClick={(e) => e.stopPropagation()}
-      className={`${styles.menu} ${openMenu && styles.open}`}
-      ref={menuRef}
-    >
+    <div className={`${styles.menu} ${openMenu && styles.open}`} ref={menuRef}>
       <button className={styles.catalog} onClick={handleOpen}>
         <svg
           width="32"
