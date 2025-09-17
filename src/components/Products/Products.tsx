@@ -2,11 +2,13 @@
 import { useGetProductsQuery } from "@/api/api";
 import styles from "./Products.module.css";
 import { useRouter } from "next/navigation";
+import Blur from "../Blur/Blur";
 function Products() {
   const { data: products } = useGetProductsQuery({});
   const router = useRouter();
   return (
-    <section>
+    <section className={styles.wrapper}>
+      <Blur />
       <div className="container">
         <div className={styles.row}>
           {products?.slice(0, 12).map((product) => (

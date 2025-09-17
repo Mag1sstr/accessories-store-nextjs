@@ -1,3 +1,6 @@
+.wrapper {
+  position: relative;
+}
 .row {
   display: grid;
   grid-template-columns: repeat(auto-fill, 282px);
