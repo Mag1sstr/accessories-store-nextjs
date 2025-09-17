@@ -31,19 +31,7 @@
   position: relative;
   padding: 22px 0;
 }
-.blur {
-  opacity: 0;
-  visibility: hidden;
-  position: absolute;
-  inset: 0;
-  backdrop-filter: blur(2px);
-  z-index: 1;
-  transition: 0.3s;
-  &.blurActive {
-    visibility: visible;
-    opacity: 1;
-  }
-}
+
 .filterRow {
   display: flex;
   justify-content: space-between;

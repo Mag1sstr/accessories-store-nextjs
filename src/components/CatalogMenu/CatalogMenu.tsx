@@ -3,12 +3,13 @@
 import { useGetCategoriesQuery, useGetProductsQuery } from "@/api/api";
 import styles from "./CatalogMenu.module.css";
 import { useModals } from "@/hooks/useModals";
-import { useState } from "react";
+import { MouseEvent, useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 
 function CatalogMenu() {
   const [selectCategory, setSelectCategory] = useState<null | number>(null);
+  const menuRef = useRef<HTMLDivElement | null>(null);
   const { openMenu, setOpenMenu } = useModals();
   const router = useRouter();
   const { data } = useGetCategoriesQuery(null);
@@ -18,6 +19,7 @@ function CatalogMenu() {
     },
     { skip: !selectCategory }
   );
+
   const handleOpen = () => {
     setOpenMenu((prev) => !prev);
   };
@@ -25,8 +27,24 @@ function CatalogMenu() {
     setSelectCategory(id === selectCategory ? null : id);
   };
 
+  useEffect(() => {
+    const handleOutsideClick = (event: PointerEvent) => {
+      if (menuRef.current && !menuRef.current.contains(event.target)) {
+        setOpenMenu(false);
+      }
+    };
+    document.addEventListener("click", (e) => handleOutsideClick(e));
+
+    return () =>
+      document.removeEventListener("click", (e) => handleOutsideClick(e));
+  }, [openMenu, menuRef]);
+
   return (
-    <div className={`${styles.menu} ${openMenu && styles.open}`}>
+    <div
+      onClick={(e) => e.stopPropagation()}
+      className={`${styles.menu} ${openMenu && styles.open}`}
+      ref={menuRef}
+    >
       <button className={styles.catalog} onClick={handleOpen}>
         <svg
           width="32"

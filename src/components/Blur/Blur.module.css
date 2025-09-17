@@ -1,0 +1,13 @@
+.blur {
+  opacity: 0;
+  visibility: hidden;
+  position: absolute;
+  inset: 0;
+  backdrop-filter: blur(2px);
+  z-index: 1;
+  transition: 0.3s;
+  &.blurActive {
+    visibility: visible;
+    opacity: 1;
+  }
+}

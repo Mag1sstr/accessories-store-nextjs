@@ -4,9 +4,8 @@ import Image from "next/image";
 import styles from "./Header.module.css";
 import Search from "../Search/Search";
 import CatalogMenu from "../CatalogMenu/CatalogMenu";
-import { useModals } from "@/hooks/useModals";
+import Blur from "../Blur/Blur";
 function Header() {
-  const { openMenu } = useModals();
   return (
     <header>
       <div className={styles.headerTop}>
@@ -55,9 +54,7 @@ function Header() {
         </div>
       </div>
       <div className={styles.filters}>
-        <div
-          className={`${styles.blur} ${openMenu && styles.blurActive}`}
-        ></div>
+        <Blur />
         <div className="container">
           <div className={styles.filterRow}>
             <CatalogMenu />
