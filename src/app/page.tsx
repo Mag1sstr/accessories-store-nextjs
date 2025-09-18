@@ -8,12 +8,11 @@ export default async function Home() {
     cache: "no-store",
   });
   const products = await response.json();
-  console.log(products);
 
   return (
     <>
       <Header />
-      <Products />
+      <Products products={products} />
     </>
   );
 }
