@@ -49,6 +49,7 @@ function Header() {
               <a href="#!">
                 <Image src="/assets/vk.png" width={32} height={32} alt="vk" />
               </a>
+              <button>Login</button>
             </div>
           </div>
         </div>
