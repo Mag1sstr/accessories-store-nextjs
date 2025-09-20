@@ -5,7 +5,14 @@ import styles from "./Header.module.css";
 import Search from "../Search/Search";
 import CatalogMenu from "../CatalogMenu/CatalogMenu";
 import Blur from "../Blur/Blur";
+import { useModals } from "@/hooks/useModals";
 function Header() {
+  const { setOpenLoginModal } = useModals();
+
+  const handleOpenLogin = () => {
+    setOpenLoginModal(true);
+  };
+
   return (
     <header>
       <div className={styles.headerTop}>
@@ -49,7 +56,7 @@ function Header() {
               <a href="#!">
                 <Image src="/assets/vk.png" width={32} height={32} alt="vk" />
               </a>
-              <button>Login</button>
+              <button onClick={handleOpenLogin}>Login</button>
             </div>
           </div>
         </div>
