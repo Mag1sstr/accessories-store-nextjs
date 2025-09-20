@@ -8,7 +8,10 @@ function ModalLogin() {
         <h2>Войти в аккаунт</h2>
         <input className={styles.field} type="text" placeholder="Почта" />
         <input className={styles.field} type="password" placeholder="Пароль" />
-        <button type="submit">войти</button>
+        <button type="submit" className={styles.btn}>
+          войти
+        </button>
+        <p>Создать аккаунт</p>
       </form>
     </section>
   );
