@@ -1,4 +1,9 @@
-import { ICategories, IProducts, IProductsParams } from "@/types/interfaces";
+import {
+  ICategories,
+  Ilogin,
+  IProducts,
+  IProductsParams,
+} from "@/types/interfaces";
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
 export const api = createApi({
@@ -16,6 +21,17 @@ export const api = createApi({
         url: "/categories",
       }),
     }),
+    loginUser: builder.mutation<Ilogin, { email: string; password: string }>({
+      query: (body) => ({
+        method: "POST",
+        url: "/auth/login",
+        body,
+      }),
+    }),
   }),
 });
-export const { useGetProductsQuery, useGetCategoriesQuery } = api;
+export const {
+  useGetProductsQuery,
+  useGetCategoriesQuery,
+  useLoginUserMutation,
+} = api;

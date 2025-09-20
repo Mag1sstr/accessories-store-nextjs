@@ -15,3 +15,7 @@ export interface ICategories {
   name: string;
   image: string;
 }
+
+export interface Ilogin {
+  access_token: string;
+}
