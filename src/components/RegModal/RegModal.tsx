@@ -19,11 +19,11 @@ function RegModal() {
     handleSubmit,
     formState: { errors },
   } = useForm<IFields>();
-  const { openLoginModal, setOpenLoginModal } = useModals();
+  const { openRegModal, setOpenRegModal } = useModals();
   const [loginUser, { data, isSuccess }] = useLoginUserMutation();
 
   const handleCloseModal = () => {
-    setOpenLoginModal(false);
+    setOpenRegModal(false);
   };
   const submit: SubmitHandler<IFields> = (data) => {
     loginUser(data);
@@ -39,7 +39,7 @@ function RegModal() {
   return (
     <section
       onMouseDown={handleCloseModal}
-      className={`${styles.wrapper} ${openLoginModal && styles.open}`}
+      className={`${styles.wrapper} ${openRegModal && styles.open}`}
     >
       <form
         onMouseDown={(e) => e.stopPropagation()}
