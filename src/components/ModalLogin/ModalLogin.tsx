@@ -5,6 +5,7 @@ import { useModals } from "@/hooks/useModals";
 import { useLoginUserMutation } from "@/api/api";
 import { useEffect, useState } from "react";
 import Image from "next/image";
+import ModalSuccess from "../ModalSuccess/ModalSuccess";
 
 interface IFields {
   email: string;
@@ -50,15 +51,7 @@ function ModalLogin() {
         className={styles.modal}
         onSubmit={handleSubmit(submit)}
       >
-        <div className={`${styles.success} ${loginSuccess && styles.active}`}>
-          <Image
-            src="/assets/icons/check.png"
-            width={100}
-            height={100}
-            alt="check"
-          />
-          <p>Вы зашли в аккаунт!</p>
-        </div>
+        <ModalSuccess isActive={loginSuccess} text="Вы зашли в аккаунт!" />
         <h2>Войти в аккаунт</h2>
         <input
           className={`${styles.field} ${errors.email && styles.err}`}

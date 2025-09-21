@@ -5,12 +5,12 @@ import { useModals } from "@/hooks/useModals";
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import { useRegUserMutation } from "@/api/api";
+import ModalSuccess from "../ModalSuccess/ModalSuccess";
 
 interface IFields {
   name: string;
   email: string;
   password: string;
-  avatar: string;
 }
 
 function RegModal() {
@@ -28,7 +28,7 @@ function RegModal() {
     setOpenRegModal(false);
   };
   const submit: SubmitHandler<IFields> = (data) => {
-    regUser(data);
+    regUser({ ...data, avatar: "https://picsum.photos/800" });
   };
 
   useEffect(() => {
@@ -47,16 +47,16 @@ function RegModal() {
         className={styles.modal}
         onSubmit={handleSubmit(submit)}
       >
-        <div className={`${styles.success} ${regSuccess && styles.active}`}>
-          <Image
-            src="/assets/icons/check.png"
-            width={100}
-            height={100}
-            alt="check"
-          />
-          <p>Вы зарегистрировались!</p>
-        </div>
-        <h2>Войти в аккаунт</h2>
+        <ModalSuccess isActive={regSuccess} text="Вы зарегистрировались!" />
+        <h2>Создание аккаунта</h2>
+        <input
+          className={`${styles.field} ${errors.name && styles.err}`}
+          type="text"
+          placeholder="Ваше имя"
+          {...register("name", {
+            required: true,
+          })}
+        />
         <input
           className={`${styles.field} ${errors.email && styles.err}`}
           type="text"
