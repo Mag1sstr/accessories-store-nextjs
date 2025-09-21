@@ -7,6 +7,8 @@ interface IModalsContext {
   setOpenMenu: setModalState;
   openLoginModal: boolean;
   setOpenLoginModal: setModalState;
+  openRegModal: boolean;
+  setOpenRegModal: setModalState;
 }
 
 export const ModalsContext = createContext({} as IModalsContext);
