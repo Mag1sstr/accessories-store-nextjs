@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Providers from "@/providers/Providers";
 import ModalLogin from "@/components/ModalLogin/ModalLogin";
+import RegModal from "@/components/RegModal/RegModal";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -29,6 +30,7 @@ export default function RootLayout({
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
         <Providers>
           <ModalLogin />
+          <RegModal />
           {children}
         </Providers>
       </body>

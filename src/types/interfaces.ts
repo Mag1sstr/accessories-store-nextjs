@@ -19,3 +19,20 @@ export interface ICategories {
 export interface Ilogin {
   access_token: string;
 }
+export interface IloginBody {
+  email: string;
+  password: string;
+}
+
+export interface IReg {
+  id: number;
+  email: string;
+  name: string;
+  avatar: string;
+}
+export interface IRegBody {
+  email: string;
+  name: string;
+  avatar: string;
+  password: string;
+}

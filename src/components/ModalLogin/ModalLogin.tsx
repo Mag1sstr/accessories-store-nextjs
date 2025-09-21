@@ -19,11 +19,15 @@ function ModalLogin() {
     handleSubmit,
     formState: { errors },
   } = useForm<IFields>();
-  const { openLoginModal, setOpenLoginModal } = useModals();
+  const { openLoginModal, setOpenLoginModal, setOpenRegModal } = useModals();
   const [loginUser, { data, isSuccess }] = useLoginUserMutation();
 
   const handleCloseModal = () => {
     setOpenLoginModal(false);
+  };
+  const handleOpenRegModal = () => {
+    setOpenLoginModal(false);
+    setOpenRegModal(true);
   };
   const submit: SubmitHandler<IFields> = (data) => {
     loginUser(data);
@@ -75,7 +79,7 @@ function ModalLogin() {
         <button type="submit" className={styles.btn}>
           войти
         </button>
-        <p>Создать аккаунт</p>
+        <p onClick={handleOpenRegModal}>Создать аккаунт</p>
       </form>
     </section>
   );

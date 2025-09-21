@@ -2,17 +2,19 @@
 import { SubmitHandler, useForm } from "react-hook-form";
 import styles from "./RegModal.module.css";
 import { useModals } from "@/hooks/useModals";
-import { useLoginUserMutation } from "@/api/api";
 import { useEffect, useState } from "react";
 import Image from "next/image";
+import { useRegUserMutation } from "@/api/api";
 
 interface IFields {
+  name: string;
   email: string;
   password: string;
+  avatar: string;
 }
 
 function RegModal() {
-  const [loginSuccess, setLogginSuccess] = useState(false);
+  const [regSuccess, setRegSuccess] = useState(false);
 
   const {
     register,
@@ -20,19 +22,18 @@ function RegModal() {
     formState: { errors },
   } = useForm<IFields>();
   const { openRegModal, setOpenRegModal } = useModals();
-  const [loginUser, { data, isSuccess }] = useLoginUserMutation();
+  const [regUser, { data, isSuccess }] = useRegUserMutation();
 
   const handleCloseModal = () => {
     setOpenRegModal(false);
   };
   const submit: SubmitHandler<IFields> = (data) => {
-    loginUser(data);
+    regUser(data);
   };
 
   useEffect(() => {
-    if (isSuccess && data.access_token) {
-      setLogginSuccess(true);
-      console.log("Успех! " + data.access_token);
+    if (isSuccess && data) {
+      setRegSuccess(true);
     }
   }, [isSuccess]);
 
@@ -46,14 +47,14 @@ function RegModal() {
         className={styles.modal}
         onSubmit={handleSubmit(submit)}
       >
-        <div className={`${styles.success} ${loginSuccess && styles.active}`}>
+        <div className={`${styles.success} ${regSuccess && styles.active}`}>
           <Image
             src="/assets/icons/check.png"
             width={100}
             height={100}
             alt="check"
           />
-          <p>Вы зашли в аккаунт!</p>
+          <p>Вы зарегистрировались!</p>
         </div>
         <h2>Войти в аккаунт</h2>
         <input
