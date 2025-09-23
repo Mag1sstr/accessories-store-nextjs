@@ -1,3 +1,5 @@
+"use client";
+import Image from "next/image";
 import styles from "./Footer.module.css";
 
 function Footer() {
@@ -32,8 +34,39 @@ function Footer() {
             <p>
               Бесплатная консультация <br />С 10:00 до 21:00, без выходных
             </p>
+            <div className={styles.order}>
+              <button className={styles.btn}>Заказать звонок</button>
+              <div className={styles.icons}>
+                <a href="#!">
+                  <Image
+                    src="/assets/wp.png"
+                    width={32}
+                    height={32}
+                    alt="whatsapp"
+                  />
+                </a>
+                <a href="#!">
+                  <Image
+                    src="/assets/tg.png"
+                    width={32}
+                    height={32}
+                    alt="telegram"
+                  />
+                </a>
+                <a href="#!">
+                  <Image src="/assets/vk.png" width={32} height={32} alt="vk" />
+                </a>
+              </div>
+            </div>
             <p className={styles.adress}>Москва, ул Барклая 8</p>
           </div>
+          <button
+            onClick={() => {
+              window.scrollTo({ top: 0, behavior: "smooth" });
+            }}
+          >
+            top
+          </button>
         </div>
       </div>
     </footer>
