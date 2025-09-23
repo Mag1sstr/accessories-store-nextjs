@@ -1,5 +1,6 @@
 import Header from "@/components/Header/Header";
 import Products from "@/components/Products/Products";
+import Subscription from "@/components/Subscription/Subscription";
 
 export default async function Home() {
   const response = await fetch("https://api.escuelajs.co/api/v1/products", {
@@ -11,6 +12,7 @@ export default async function Home() {
     <>
       <Header />
       <Products products={products} />
+      <Subscription />
     </>
   );
 }
