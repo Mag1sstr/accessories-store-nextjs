@@ -1,6 +1,7 @@
 import Header from "@/components/Header/Header";
 import styles from "./page.module.css";
 import Image from "next/image";
+import Breadcrumbs from "@/components/Breadcrumbs/Breadcrumbs";
 export default function Products() {
   return (
     <>
@@ -38,6 +39,7 @@ export default function Products() {
           </div>
         </div>
       </div>
+      <Breadcrumbs />
     </>
   );
 }

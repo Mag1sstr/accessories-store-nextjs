@@ -1,0 +1,20 @@
+.wrapper {
+  padding: 1rem 0;
+}
+.row {
+  display: flex;
+  gap: 0.5rem;
+  color: #585656;
+  & > li {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+
+    &:last-child {
+      svg {
+        display: none;
+      }
+      color: #282626;
+    }
+  }
+}

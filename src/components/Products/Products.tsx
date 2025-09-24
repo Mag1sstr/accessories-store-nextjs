@@ -16,7 +16,7 @@ function Products({ products }: IProps) {
       <Blur />
       <div className="container">
         <div className={styles.row}>
-          {data?.slice(0, 12).map((product) => (
+          {data?.slice(0, 8).map((product) => (
             <div key={product.id} className={styles.card}>
               <button className={styles.like}>
                 <svg
