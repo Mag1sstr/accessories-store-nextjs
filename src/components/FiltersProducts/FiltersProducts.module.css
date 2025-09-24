@@ -1,0 +1,44 @@
+.top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.categories {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  max-width: 800px;
+  width: 100%;
+  padding: 1rem 0;
+}
+.categoryItem {
+  padding: 8px;
+  background-color: var(--light-grey);
+  border-radius: 8px;
+  color: #585656;
+  cursor: pointer;
+  transition: 0.3s;
+  &:hover {
+    filter: brightness(0.97);
+  }
+  &.active {
+    background-color: var(--prime);
+    color: #fff;
+  }
+}
+.sort {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.select {
+  display: flex;
+  align-items: center;
+  padding: 10.5px 8px;
+  background-color: var(--light-grey);
+  border-radius: 8px;
+  gap: 8px;
+  cursor: pointer;
+}

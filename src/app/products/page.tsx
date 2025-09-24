@@ -2,6 +2,7 @@ import Header from "@/components/Header/Header";
 import styles from "./page.module.css";
 import Image from "next/image";
 import Breadcrumbs from "@/components/Breadcrumbs/Breadcrumbs";
+import FiltersProducts from "@/components/FiltersProducts/FiltersProducts";
 export default function Products() {
   return (
     <>
@@ -40,6 +41,7 @@ export default function Products() {
         </div>
       </div>
       <Breadcrumbs />
+      <FiltersProducts />
     </>
   );
 }
