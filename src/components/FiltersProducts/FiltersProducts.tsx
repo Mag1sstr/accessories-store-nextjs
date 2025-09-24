@@ -1,11 +1,16 @@
 "use client";
-import { useGetCategoriesQuery } from "@/api/api";
+import { useGetCategoriesQuery, useGetProductsQuery } from "@/api/api";
 import styles from "./FiltersProducts.module.css";
 import { useState } from "react";
+import ProductCard from "../ProductCard/ProductCard";
 
 function FiltersProducts() {
-  const [selectCategory, setSelectCategory] = useState<number | null>(null);
+  const [selectCategory, setSelectCategory] = useState<number | null>(0);
   const { data: categories } = useGetCategoriesQuery(null);
+  const { data: products } = useGetProductsQuery({
+    categoryId: selectCategory!,
+  });
+  console.log(products);
 
   return (
     <section className={styles.wrapper}>
@@ -15,7 +20,7 @@ function FiltersProducts() {
             {categories?.map((el) => (
               <li
                 onClick={() =>
-                  setSelectCategory(el.id === selectCategory ? null : el.id)
+                  setSelectCategory(el.id === selectCategory ? 0 : el.id)
                 }
                 key={el.id}
                 className={`${styles.categoryItem} ${
@@ -47,7 +52,11 @@ function FiltersProducts() {
         </div>
         <div className={styles.row}>
           <div className={styles.filters}></div>
-          <div className={styles.products}></div>
+          <div className={styles.products}>
+            {products?.map((product) => (
+              <ProductCard {...product} key={product.id} />
+            ))}
+          </div>
         </div>
       </div>
     </section>
