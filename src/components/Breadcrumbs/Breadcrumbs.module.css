@@ -16,5 +16,8 @@
       }
       color: #282626;
     }
+    &:not(:last-child) {
+      cursor: pointer;
+    }
   }
 }
