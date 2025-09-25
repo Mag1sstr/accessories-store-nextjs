@@ -3,11 +3,16 @@ import { useGetCategoriesQuery, useGetProductsQuery } from "@/api/api";
 import styles from "./FiltersProducts.module.css";
 import { useState } from "react";
 import ProductCard from "../ProductCard/ProductCard";
+import { IProducts } from "@/types/interfaces";
 
-function FiltersProducts() {
+interface IProps {
+  products: IProducts[];
+}
+
+function FiltersProducts({ products }: IProps) {
   const [selectCategory, setSelectCategory] = useState<number | null>(0);
   const { data: categories } = useGetCategoriesQuery(null);
-  const { data: products } = useGetProductsQuery({
+  const { data: productsData = products } = useGetProductsQuery({
     categoryId: selectCategory!,
   });
   console.log(products);
@@ -50,13 +55,15 @@ function FiltersProducts() {
             </div>
           </div>
         </div>
-        <div className={styles.row}>
-          <div className={styles.filters}></div>
-          <div className={styles.products}>
-            {products?.map((product) => (
-              <ProductCard {...product} key={product.id} />
-            ))}
-          </div>
+      </div>
+      <div className={styles.row}>
+        <div className={styles.filters}>
+          <div className={styles.filtersContent}></div>
+        </div>
+        <div className={styles.products}>
+          {productsData?.map((product) => (
+            <ProductCard {...product} key={product.id} />
+          ))}
         </div>
       </div>
     </section>

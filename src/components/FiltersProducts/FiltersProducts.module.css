@@ -43,9 +43,29 @@
   cursor: pointer;
 }
 
+.row {
+  display: flex;
+}
 .products {
+  flex: 1 1 900px;
+  min-width: 0;
+  max-width: 900px;
+  padding-left: 1.5rem;
   display: grid;
-  grid-template-columns: repeat(auto-fill, 282px);
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
   justify-content: space-between;
   gap: 15px;
+}
+.filters {
+  flex: 1 1 655px;
+  max-width: 655px;
+  padding: 32px 24px;
+  background-color: var(--light-grey);
+  display: flex;
+  justify-content: flex-end;
+}
+.filtersContent {
+  width: 276px;
+  height: 20px;
+  background-color: aqua;
 }
