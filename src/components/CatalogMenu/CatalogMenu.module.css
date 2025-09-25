@@ -95,7 +95,6 @@
   flex-direction: column;
 }
 .inner {
-  /* max-height: 100%; */
   flex: 1;
   display: grid;
   grid-template-columns: repeat(3, minmax(130px, 1fr));

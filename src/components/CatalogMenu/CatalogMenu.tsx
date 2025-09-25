@@ -97,7 +97,7 @@ function CatalogMenu() {
               </div>
             ))}
           </div>
-          <Link href={""}>Смотреть все товары</Link>
+          <Link href="/products">Смотреть все товары</Link>
         </div>
       )}
     </div>
