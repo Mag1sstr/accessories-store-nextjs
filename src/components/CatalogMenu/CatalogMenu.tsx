@@ -97,7 +97,9 @@ function CatalogMenu() {
               </div>
             ))}
           </div>
-          <Link href="/products">Смотреть все товары</Link>
+          <Link href="/products" onClick={() => setOpenMenu(false)}>
+            Смотреть все товары
+          </Link>
         </div>
       )}
     </div>
