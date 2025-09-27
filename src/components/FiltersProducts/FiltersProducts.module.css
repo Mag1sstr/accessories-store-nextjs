@@ -33,15 +33,6 @@
   align-items: center;
   gap: 8px;
 }
-.select {
-  display: flex;
-  align-items: center;
-  padding: 10.5px 8px;
-  background-color: var(--light-grey);
-  border-radius: 8px;
-  gap: 8px;
-  cursor: pointer;
-}
 
 .row {
   display: flex;

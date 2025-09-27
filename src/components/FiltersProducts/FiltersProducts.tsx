@@ -4,6 +4,7 @@ import styles from "./FiltersProducts.module.css";
 import { useState } from "react";
 import ProductCard from "../ProductCard/ProductCard";
 import { IProducts } from "@/types/interfaces";
+import Select from "../Select/Select";
 
 interface IProps {
   products: IProducts[];
@@ -36,22 +37,7 @@ function FiltersProducts({ products }: IProps) {
             ))}
           </ol>
           <div className={styles.sort}>
-            Сортировать{" "}
-            <div className={styles.select}>
-              по умолчанию{" "}
-              <svg
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M5.99998 7.20001L12 13.2L18 7.20001L20.4 8.40001L12 16.8L3.59998 8.40001L5.99998 7.20001Z"
-                  fill="#0071E4"
-                />
-              </svg>
-            </div>
+            Сортировать <Select title="по умолчанию" />
           </div>
         </div>
       </div>

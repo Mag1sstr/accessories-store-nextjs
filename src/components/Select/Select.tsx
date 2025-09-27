@@ -1,9 +1,23 @@
+import { useState } from "react";
 import styles from "./Select.module.css";
 
-function Select() {
+interface IProps {
+  className?: string;
+  title: string;
+}
+
+function Select({ className, title }: IProps) {
+  const [open, setOpen] = useState(false);
+
+  const handleToggle = () => {
+    setOpen((prev) => !prev);
+  };
   return (
-    <div className={styles.select}>
-      по умолчанию{" "}
+    <div
+      onClick={handleToggle}
+      className={`${styles.select} ${open && styles.open} ${className} `}
+    >
+      {title}
       <svg
         width="24"
         height="24"
@@ -16,6 +30,10 @@ function Select() {
           fill="#0071E4"
         />
       </svg>
+      <div className={styles.items}>
+        <div className={styles.item}>по возрастанию</div>
+        <div className={styles.item}>по уменьшению</div>
+      </div>
     </div>
   );
 }
