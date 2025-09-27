@@ -15,7 +15,6 @@ function FiltersProducts({ products }: IProps) {
   const { data: productsData = products } = useGetProductsQuery({
     categoryId: selectCategory!,
   });
-  console.log(products);
 
   return (
     <section className={styles.wrapper}>
