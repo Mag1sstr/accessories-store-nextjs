@@ -6,17 +6,24 @@ function Breadcrumbs() {
   const pathname = usePathname();
   const router = useRouter();
 
-  const pathnames = ["Главная", ...pathname.split("/").filter(Boolean)];
-
-  console.log(pathname);
+  const pathnames = [
+    { name: "Главная", path: "/" },
+    ...pathname
+      .split("/")
+      .filter(Boolean)
+      .map((el) => ({
+        name: el[0].toUpperCase() + el.slice(1),
+        path: `/${el.toLowerCase()}`,
+      })),
+  ];
 
   return (
     <div className={styles.wrapper}>
       <div className="container">
         <ol className={styles.row}>
           {pathnames.map((el) => (
-            <li key={el}>
-              {el[0].toUpperCase() + el.slice(1)}
+            <li key={el.name} onClick={() => router.push(el.path)}>
+              {el.name}
               <svg
                 width="24"
                 height="24"

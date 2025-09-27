@@ -5,6 +5,7 @@ import { useState } from "react";
 import ProductCard from "../ProductCard/ProductCard";
 import { IProducts } from "@/types/interfaces";
 import Select from "../Select/Select";
+import Blur from "../Blur/Blur";
 
 interface IProps {
   products: IProducts[];
@@ -19,6 +20,7 @@ function FiltersProducts({ products }: IProps) {
 
   return (
     <section className={styles.wrapper}>
+      <Blur />
       <div className="container">
         <div className={styles.top}>
           <ol className={styles.categories}>
