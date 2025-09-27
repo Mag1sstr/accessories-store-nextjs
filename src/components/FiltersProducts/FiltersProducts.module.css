@@ -66,6 +66,34 @@
 }
 .filtersContent {
   width: 276px;
-  height: 20px;
-  background-color: aqua;
+}
+.advantages {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.advantagesCard {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 1rem;
+  background-color: #fff;
+  border-radius: 0.5rem;
+
+  & > svg {
+    min-width: 64px;
+    min-height: 64px;
+  }
+  & > div {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    & > h3 {
+      font-weight: 700;
+    }
+    & > p {
+      color: #585656;
+      font-size: 14px;
+    }
+  }
 }
