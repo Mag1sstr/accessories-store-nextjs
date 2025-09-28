@@ -60,13 +60,6 @@ function Footer() {
             </div>
             <p className={styles.adress}>Москва, ул Барклая 8</p>
           </div>
-          <button
-            onClick={() => {
-              window.scrollTo({ top: 0, behavior: "smooth" });
-            }}
-          >
-            top
-          </button>
         </div>
       </div>
     </footer>

@@ -12,11 +12,16 @@ interface IProps {
 }
 
 function FiltersProducts({ products }: IProps) {
+  const [currentPage, setCurrentPage] = useState(1);
   const [selectCategory, setSelectCategory] = useState<number | null>(0);
   const { data: categories } = useGetCategoriesQuery(null);
   const { data: productsData = products } = useGetProductsQuery({
     categoryId: selectCategory!,
   });
+
+  const PAGE_SIZE = 6;
+  const firstIndex = currentPage * PAGE_SIZE - PAGE_SIZE;
+  const endIndex = firstIndex + PAGE_SIZE;
 
   return (
     <section className={styles.wrapper}>
@@ -138,7 +143,7 @@ function FiltersProducts({ products }: IProps) {
           </div>
         </div>
         <div className={styles.products}>
-          {productsData?.map((product) => (
+          {productsData?.slice(firstIndex, endIndex).map((product) => (
             <ProductCard {...product} key={product.id} />
           ))}
         </div>
