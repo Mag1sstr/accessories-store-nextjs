@@ -6,22 +6,33 @@ import ProductCard from "../ProductCard/ProductCard";
 import { IProducts } from "@/types/interfaces";
 import Select from "../Select/Select";
 import Blur from "../Blur/Blur";
+import { Slider } from "@mui/material";
 
 interface IProps {
   products: IProducts[];
 }
 
 function FiltersProducts({ products }: IProps) {
-  const [currentPage, setCurrentPage] = useState(1);
   const [selectCategory, setSelectCategory] = useState<number | null>(0);
   const { data: categories } = useGetCategoriesQuery(null);
   const { data: productsData = products } = useGetProductsQuery({
     categoryId: selectCategory!,
   });
 
+  const maxPriceProduct = productsData
+    .slice(0, 6)
+    .reduce((acc, el) => (el.price > acc ? (acc = el.price) : acc), 0);
+
+  const [currentPage, setCurrentPage] = useState(1);
+  const [rangeValue, setRangeValue] = useState([0, maxPriceProduct]);
+
   const PAGE_SIZE = 6;
   const firstIndex = currentPage * PAGE_SIZE - PAGE_SIZE;
   const endIndex = firstIndex + PAGE_SIZE;
+
+  const handleChange = (_: Event, newValue: number[]) => {
+    setRangeValue(newValue);
+  };
 
   return (
     <section className={styles.wrapper}>
@@ -51,6 +62,13 @@ function FiltersProducts({ products }: IProps) {
       <div className={styles.row}>
         <div className={styles.filters}>
           <div className={styles.filtersContent}>
+            <Slider
+              value={rangeValue}
+              onChange={handleChange}
+              valueLabelDisplay="auto"
+              min={0}
+              max={maxPriceProduct}
+            />
             <ul className={styles.advantages}>
               <li className={styles.advantagesCard}>
                 <svg
