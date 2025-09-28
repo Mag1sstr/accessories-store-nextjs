@@ -69,6 +69,10 @@ function FiltersProducts({ products }: IProps) {
               min={0}
               max={maxPriceProduct}
             />
+            <div className={styles.range}>
+              <div>от {rangeValue[0]}$</div>
+              <div>до {rangeValue[1]}$</div>
+            </div>
             <ul className={styles.advantages}>
               <li className={styles.advantagesCard}>
                 <svg

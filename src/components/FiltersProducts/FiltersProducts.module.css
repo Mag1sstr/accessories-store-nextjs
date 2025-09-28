@@ -88,3 +88,15 @@
     }
   }
 }
+
+.range {
+  display: flex;
+  justify-content: space-between;
+  & > div {
+    min-width: 112px;
+    padding: 10px 16px;
+    border-radius: 8px;
+    background-color: #fff;
+    border: 1px solid #e7e7e7;
+  }
+}
