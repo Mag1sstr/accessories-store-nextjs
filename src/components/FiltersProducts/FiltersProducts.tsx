@@ -1,38 +1,52 @@
 "use client";
 import { useGetCategoriesQuery, useGetProductsQuery } from "@/api/api";
 import styles from "./FiltersProducts.module.css";
-import { useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import ProductCard from "../ProductCard/ProductCard";
 import { IProducts } from "@/types/interfaces";
 import Select from "../Select/Select";
 import Blur from "../Blur/Blur";
 import { Slider } from "@mui/material";
+import { useFilters } from "@/hooks/useFilters";
+import { useAppDispatch } from "@/store/store";
+import { setCategoryId, setRangeValue } from "@/store/slices/filterSlice";
+import { useDebounce } from "@/hooks/useDebounce";
 
 interface IProps {
   products: IProducts[];
 }
 
 function FiltersProducts({ products }: IProps) {
-  const [selectCategory, setSelectCategory] = useState<number | null>(0);
+  const dispatch = useAppDispatch();
+  const { categoryId, rangeValue } = useFilters();
   const { data: categories } = useGetCategoriesQuery(null);
   const { data: productsData = products } = useGetProductsQuery({
-    categoryId: selectCategory!,
+    categoryId: categoryId,
+    price_min: rangeValue[0],
+    price_max: rangeValue[1],
   });
 
-  const maxPriceProduct = productsData
-    .slice(0, 6)
-    .reduce((acc, el) => (el.price > acc ? (acc = el.price) : acc), 0);
-
   const [currentPage, setCurrentPage] = useState(1);
-  const [rangeValue, setRangeValue] = useState([0, maxPriceProduct]);
 
   const PAGE_SIZE = 6;
   const firstIndex = currentPage * PAGE_SIZE - PAGE_SIZE;
   const endIndex = firstIndex + PAGE_SIZE;
 
   const handleChange = (_: Event, newValue: number[]) => {
-    setRangeValue(newValue);
+    dispatch(setRangeValue(newValue));
   };
+
+  const maxPriceProduct = useMemo(
+    () =>
+      productsData.reduce(
+        (acc, el) => (el.price > acc ? (acc = el.price) : acc),
+        0
+      ),
+    []
+  );
+  useEffect(() => {
+    dispatch(setRangeValue([1, maxPriceProduct]));
+  }, []);
 
   return (
     <section className={styles.wrapper}>
@@ -43,11 +57,11 @@ function FiltersProducts({ products }: IProps) {
             {categories?.map((el) => (
               <li
                 onClick={() =>
-                  setSelectCategory(el.id === selectCategory ? 0 : el.id)
+                  dispatch(setCategoryId(el.id === categoryId ? 0 : el.id))
                 }
                 key={el.id}
                 className={`${styles.categoryItem} ${
-                  selectCategory === el.id && styles.active
+                  categoryId === el.id && styles.active
                 }`}
               >
                 {el.name}
@@ -66,7 +80,7 @@ function FiltersProducts({ products }: IProps) {
               value={rangeValue}
               onChange={handleChange}
               valueLabelDisplay="auto"
-              min={0}
+              min={1}
               max={maxPriceProduct}
             />
             <div className={styles.range}>

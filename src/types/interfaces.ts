@@ -8,6 +8,8 @@ export interface IProducts {
 export interface IProductsParams {
   title?: string;
   categoryId?: string | number;
+  price_min?: number;
+  price_max?: number;
 }
 
 export interface ICategories {
