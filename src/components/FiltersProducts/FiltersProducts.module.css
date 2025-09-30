@@ -92,6 +92,7 @@
 .range {
   display: flex;
   justify-content: space-between;
+  margin-bottom: 1.5rem;
   & > div {
     min-width: 112px;
     padding: 10px 16px;

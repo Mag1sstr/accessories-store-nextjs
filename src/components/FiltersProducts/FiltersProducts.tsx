@@ -19,11 +19,14 @@ interface IProps {
 function FiltersProducts({ products }: IProps) {
   const dispatch = useAppDispatch();
   const { categoryId, rangeValue } = useFilters();
+
+  const debouncedRange = useDebounce(rangeValue, 1000);
+
   const { data: categories } = useGetCategoriesQuery(null);
   const { data: productsData = products } = useGetProductsQuery({
     categoryId: categoryId,
-    price_min: rangeValue[0],
-    price_max: rangeValue[1],
+    price_min: debouncedRange[0],
+    price_max: debouncedRange[1],
   });
 
   const [currentPage, setCurrentPage] = useState(1);
