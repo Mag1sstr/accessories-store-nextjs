@@ -12,7 +12,7 @@ function Pagination({ totalPages, currentPage, setCurrentPage }: IProps) {
       return [...Array(totalPages)].map((_, i) => i + 1);
     }
 
-    if (currentPage > 3 && currentPage < totalPages - 2) {
+    if (currentPage >= 3 && currentPage < totalPages - 2) {
       return [
         1,
         "...",
@@ -23,15 +23,30 @@ function Pagination({ totalPages, currentPage, setCurrentPage }: IProps) {
         totalPages,
       ];
     }
+
+    if (currentPage >= totalPages - 3) {
+      return [1, "...", totalPages - 2, totalPages - 1, totalPages];
+    }
+
     return [1, 2, 3, "...", totalPages];
   };
-
   const pages = getPages();
+
+  const handleNextPage = () => {
+    if (currentPage < totalPages) {
+      setCurrentPage(currentPage + 1);
+    }
+  };
+  const handlePrevPage = () => {
+    if (currentPage > 1) {
+      setCurrentPage(currentPage - 1);
+    }
+  };
 
   return (
     <div className={styles.pagin}>
       <ul className={styles.row}>
-        <button className={styles.btn}>
+        <button className={styles.btn} onClick={handlePrevPage}>
           <svg
             width="24"
             height="24"
@@ -56,12 +71,13 @@ function Pagination({ totalPages, currentPage, setCurrentPage }: IProps) {
               className={`${styles.page} ${
                 currentPage === page && styles.active
               }`}
+              onClick={() => setCurrentPage(page as number)}
             >
               {page}
             </li>
           )
         )}
-        <button className={styles.btn}>
+        <button className={styles.btn} onClick={handleNextPage}>
           <svg
             width="24"
             height="24"
