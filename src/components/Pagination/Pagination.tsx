@@ -9,7 +9,11 @@ interface IProps {
 function Pagination({ totalPages, currentPage, setCurrentPage }: IProps) {
   return (
     <div className={styles.pagin}>
-      <div className={styles.row}></div>
+      <ul className={styles.row}>
+        {[...Array(totalPages)].map((_, index) => (
+          <li key={index}>{index + 1}</li>
+        ))}
+      </ul>
     </div>
   );
 }

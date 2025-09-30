@@ -11,6 +11,7 @@ import { useFilters } from "@/hooks/useFilters";
 import { useAppDispatch } from "@/store/store";
 import { setCategoryId, setRangeValue } from "@/store/slices/filterSlice";
 import { useDebounce } from "@/hooks/useDebounce";
+import Pagination from "../Pagination/Pagination";
 
 interface IProps {
   products: IProducts[];
@@ -34,6 +35,7 @@ function FiltersProducts({ products }: IProps) {
   const PAGE_SIZE = 6;
   const firstIndex = currentPage * PAGE_SIZE - PAGE_SIZE;
   const endIndex = firstIndex + PAGE_SIZE;
+  const totalPages = Math.ceil(productsData.length / PAGE_SIZE);
 
   const handleChange = (_: Event, newValue: number[]) => {
     dispatch(setRangeValue(newValue));
@@ -187,6 +189,11 @@ function FiltersProducts({ products }: IProps) {
           ))}
         </div>
       </div>
+      <Pagination
+        totalPages={totalPages}
+        currentPage={currentPage}
+        setCurrentPage={setCurrentPage}
+      />
     </section>
   );
 }
