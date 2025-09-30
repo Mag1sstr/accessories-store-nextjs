@@ -1,0 +1,16 @@
+.pagin {
+  display: flex;
+  justify-content: center;
+}
+.row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 24px;
+  color: #585656;
+}
+.btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
