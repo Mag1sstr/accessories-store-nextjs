@@ -7,6 +7,27 @@ interface IProps {
 }
 
 function Pagination({ totalPages, currentPage, setCurrentPage }: IProps) {
+  const getPages = () => {
+    if (totalPages <= 5) {
+      return [...Array(totalPages)].map((_, i) => i + 1);
+    }
+
+    if (currentPage > 3 && currentPage < totalPages - 2) {
+      return [
+        1,
+        "...",
+        currentPage - 1,
+        currentPage,
+        currentPage + 1,
+        "...",
+        totalPages,
+      ];
+    }
+    return [1, 2, 3, "...", totalPages];
+  };
+
+  const pages = getPages();
+
   return (
     <div className={styles.pagin}>
       <ul className={styles.row}>
@@ -26,9 +47,20 @@ function Pagination({ totalPages, currentPage, setCurrentPage }: IProps) {
             </g>
           </svg>
         </button>
-        {[...Array(totalPages)].map((_, index) => (
-          <li key={index}>{index + 1}</li>
-        ))}
+        {pages.map((page) =>
+          page === "..." ? (
+            <span>...</span>
+          ) : (
+            <li
+              key={page}
+              className={`${styles.page} ${
+                currentPage === page && styles.active
+              }`}
+            >
+              {page}
+            </li>
+          )
+        )}
         <button className={styles.btn}>
           <svg
             width="24"
