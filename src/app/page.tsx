@@ -1,6 +1,7 @@
 import Footer from "@/components/Footer/Footer";
 import Header from "@/components/Header/Header";
 import Products from "@/components/Products/Products";
+import Slider from "@/components/Slider/Slider";
 import Subscription from "@/components/Subscription/Subscription";
 
 export default async function Home() {
@@ -12,6 +13,7 @@ export default async function Home() {
   return (
     <>
       <Header />
+      <Slider />
       <Products products={products} />
       <Subscription />
       <Footer />
