@@ -4,14 +4,18 @@ import styles from "./Select.module.css";
 interface IProps {
   className?: string;
   title: string;
+  onChange: (sort: string) => void;
 }
 
-function Select({ className, title }: IProps) {
+const typeSorts = ["по возрастанию", "по уменьшению", "по алфавиту"];
+
+function Select({ className, title, onChange }: IProps) {
   const [open, setOpen] = useState(false);
 
   const handleToggle = () => {
     setOpen((prev) => !prev);
   };
+
   return (
     <div
       onClick={handleToggle}
@@ -31,8 +35,18 @@ function Select({ className, title }: IProps) {
         />
       </svg>
       <div className={styles.items}>
-        <div className={styles.item}>по возрастанию</div>
-        <div className={styles.item}>по уменьшению</div>
+        {typeSorts.map((sort) => (
+          <div
+            onClick={() => {
+              onChange(sort);
+              setOpen(false);
+            }}
+            key={sort}
+            className={styles.item}
+          >
+            {sort}
+          </div>
+        ))}
       </div>
     </div>
   );
