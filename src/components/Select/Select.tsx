@@ -1,15 +1,17 @@
 import { useState } from "react";
 import styles from "./Select.module.css";
+import { TSort } from "@/types/types";
 
 interface IProps {
   className?: string;
   title: string;
-  onChange: (sort: string) => void;
+  onChange: (sort: TSort) => void;
 }
 
-const typeSorts = ["по возрастанию", "по уменьшению", "по алфавиту"];
+const typeSorts: TSort[] = ["по возрастанию", "по уменьшению", "по алфавиту"];
 
 function Select({ className, title, onChange }: IProps) {
+  const [selectTitle, setSelectTitle] = useState(title);
   const [open, setOpen] = useState(false);
 
   const handleToggle = () => {
@@ -21,7 +23,7 @@ function Select({ className, title, onChange }: IProps) {
       onClick={handleToggle}
       className={`${styles.select} ${open && styles.open} ${className} `}
     >
-      {title}
+      {selectTitle}
       <svg
         width="24"
         height="24"
@@ -37,9 +39,11 @@ function Select({ className, title, onChange }: IProps) {
       <div className={styles.items}>
         {typeSorts.map((sort) => (
           <div
-            onClick={() => {
+            onClick={(e) => {
+              e.stopPropagation();
               onChange(sort);
               setOpen(false);
+              setSelectTitle(sort as string);
             }}
             key={sort}
             className={styles.item}

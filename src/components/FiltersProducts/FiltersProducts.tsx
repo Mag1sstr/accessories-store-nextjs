@@ -12,12 +12,14 @@ import { useAppDispatch } from "@/store/store";
 import { setCategoryId, setRangeValue } from "@/store/slices/filterSlice";
 import { useDebounce } from "@/hooks/useDebounce";
 import Pagination from "../Pagination/Pagination";
+import { TSort } from "@/types/types";
 
 interface IProps {
   products: IProducts[];
 }
 
 function FiltersProducts({ products }: IProps) {
+  const [typeSort, setTypeSort] = useState<TSort>(null);
   const dispatch = useAppDispatch();
   const { categoryId, rangeValue } = useFilters();
 
@@ -29,6 +31,22 @@ function FiltersProducts({ products }: IProps) {
     price_min: debouncedRange[0],
     price_max: debouncedRange[1],
   });
+  const sortedProducts = typeSort
+    ? [...productsData].sort((a, b) => {
+        switch (typeSort) {
+          case "по алфавиту":
+            return a.title.localeCompare(b.title);
+          case "по возрастанию":
+            return a.price - b.price;
+          case "по уменьшению":
+            return b.price - a.price;
+          default:
+            return a.price - b.price;
+        }
+      })
+    : [...productsData];
+
+  console.log(typeSort);
 
   const [currentPage, setCurrentPage] = useState(1);
 
@@ -39,6 +57,9 @@ function FiltersProducts({ products }: IProps) {
 
   const handleChange = (_: Event, newValue: number[]) => {
     dispatch(setRangeValue(newValue));
+  };
+  const handleSortChange = (sort: TSort) => {
+    setTypeSort(sort);
   };
 
   const maxPriceProduct = useMemo(
@@ -74,7 +95,8 @@ function FiltersProducts({ products }: IProps) {
             ))}
           </ol>
           <div className={styles.sort}>
-            Сортировать <Select title="по умолчанию" />
+            Сортировать{" "}
+            <Select onChange={handleSortChange} title="по умолчанию" />
           </div>
         </div>
       </div>
@@ -184,7 +206,7 @@ function FiltersProducts({ products }: IProps) {
           </div>
         </div>
         <div className={styles.products}>
-          {productsData?.slice(firstIndex, endIndex).map((product) => (
+          {sortedProducts?.slice(firstIndex, endIndex).map((product) => (
             <ProductCard {...product} key={product.id} />
           ))}
         </div>
