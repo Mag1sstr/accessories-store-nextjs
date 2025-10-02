@@ -3,8 +3,7 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import styles from "./RegModal.module.css";
 import { useModals } from "@/hooks/useModals";
 import { useEffect, useState } from "react";
-import Image from "next/image";
-import { useRegUserMutation } from "@/api/api";
+import { useLoginUserMutation, useRegUserMutation } from "@/api/api";
 import ModalSuccess from "../ModalSuccess/ModalSuccess";
 
 interface IFields {
@@ -23,6 +22,7 @@ function RegModal() {
   } = useForm<IFields>();
   const { openRegModal, setOpenRegModal } = useModals();
   const [regUser, { data, isSuccess }] = useRegUserMutation();
+  const [loginUser, { data: logData }] = useLoginUserMutation();
 
   const handleCloseModal = () => {
     setOpenRegModal(false);
@@ -32,10 +32,20 @@ function RegModal() {
   };
 
   useEffect(() => {
+    let timer: ReturnType<typeof setTimeout>;
     if (isSuccess && data) {
       setRegSuccess(true);
+      loginUser({ email: data.email, password: data.password });
+
+      timer = setTimeout(() => {
+        setOpenRegModal(false);
+      }, 1500);
     }
+
+    return () => clearTimeout(timer);
   }, [isSuccess]);
+
+  console.log(logData);
 
   return (
     <section

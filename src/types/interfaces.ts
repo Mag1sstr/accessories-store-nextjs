@@ -31,6 +31,7 @@ export interface IReg {
   email: string;
   name: string;
   avatar: string;
+  password: string;
 }
 export interface IRegBody {
   email: string;
