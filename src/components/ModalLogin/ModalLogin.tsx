@@ -35,10 +35,16 @@ function ModalLogin() {
   };
 
   useEffect(() => {
+    let timer: ReturnType<typeof setTimeout>;
     if (isSuccess && data.access_token) {
       setLogginSuccess(true);
-      console.log("Успех! " + data.access_token);
+
+      timer = setTimeout(() => {
+        setOpenLoginModal(false);
+      }, 1500);
     }
+
+    return () => clearTimeout(timer);
   }, [isSuccess]);
 
   return (

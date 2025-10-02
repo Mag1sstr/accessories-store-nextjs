@@ -4,6 +4,7 @@
   background-color: #d0eafc;
   display: flex;
   justify-content: center;
+  margin-bottom: 30px;
 }
 .btn {
   position: absolute;

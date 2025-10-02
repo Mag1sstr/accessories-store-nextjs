@@ -17,11 +17,14 @@
       opacity: 1;
     }
   }
+
+  &:hover {
+    cursor: url(/assets/icons/cursor.svg), auto !important;
+  }
 }
 .catalog {
   height: 100%;
   border: none;
-  cursor: pointer;
   white-space: nowrap;
   display: flex;
   align-items: center;
@@ -62,7 +65,7 @@
     border-radius: 8px;
     background-color: #f9f9f9;
     font-size: 20px;
-    cursor: pointer;
+    /* cursor: pointer; */
     transition: 0.3s;
     &:hover {
       filter: brightness(0.96);
@@ -121,7 +124,6 @@
   padding: 0.5rem;
   border-radius: 0.5rem;
   gap: 8px;
-  cursor: pointer;
   transition: 0.3s;
   img {
     width: 48px;

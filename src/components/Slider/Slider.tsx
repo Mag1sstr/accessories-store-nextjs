@@ -1,9 +1,11 @@
 import Image from "next/image";
 import styles from "./Slider.module.css";
+import Blur from "../Blur/Blur";
 
 function Slider() {
   return (
     <div className={styles.wrapper}>
+      <Blur />
       <button className={styles.btn}>
         <svg
           width="16"

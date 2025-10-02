@@ -1,3 +1,4 @@
+"use client";
 import { useModals } from "@/hooks/useModals";
 import styles from "./Blur.module.css";
 
