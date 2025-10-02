@@ -46,8 +46,6 @@ function FiltersProducts({ products }: IProps) {
       })
     : [...productsData];
 
-  console.log(typeSort);
-
   const [currentPage, setCurrentPage] = useState(1);
 
   const PAGE_SIZE = 6;
