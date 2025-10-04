@@ -1,9 +1,16 @@
+"use client";
 import { IProducts } from "@/types/interfaces";
 import styles from "./ProductCard.module.css";
+import { useRouter } from "next/navigation";
 
 function ProductCard(product: IProducts) {
+  const router = useRouter();
   return (
-    <div key={product.id} className={styles.card}>
+    <div
+      onClick={() => router.push(`/products/${product.id}`)}
+      key={product.id}
+      className={styles.card}
+    >
       <button className={styles.like}>
         <svg
           width="24"
