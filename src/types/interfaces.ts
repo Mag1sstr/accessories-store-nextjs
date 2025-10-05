@@ -11,7 +11,9 @@ export interface IProductsParams {
   price_min?: number;
   price_max?: number;
 }
-
+export interface ICart extends IProducts {
+  count: number;
+}
 export interface ICategories {
   id: number;
   name: string;
