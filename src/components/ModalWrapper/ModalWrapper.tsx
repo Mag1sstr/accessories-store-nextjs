@@ -3,12 +3,13 @@ import styles from "./ModalWrapper.module.css";
 interface IProps {
   isOpen: boolean;
   children: React.ReactNode;
-  onClick: (v: boolean) => void;
+  setIsOpen: (v: boolean) => void;
+  className?: string;
 }
 
-function ModalWrapper({ isOpen, children, onClick }: IProps) {
+function ModalWrapper({ isOpen, children, setIsOpen, className }: IProps) {
   const handleClick = () => {
-    onClick(false);
+    setIsOpen(false);
   };
 
   return (
@@ -16,7 +17,7 @@ function ModalWrapper({ isOpen, children, onClick }: IProps) {
       onMouseDown={handleClick}
       className={`${styles.wrapper} ${isOpen && styles.open}`}
     >
-      {children}
+      <div className={`${styles.modal} ${className}`}>{children}</div>
     </section>
   );
 }

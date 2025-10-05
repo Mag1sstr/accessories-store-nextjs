@@ -6,6 +6,7 @@ import { useLoginUserMutation } from "@/api/api";
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import ModalSuccess from "../ModalSuccess/ModalSuccess";
+import ModalWrapper from "../ModalWrapper/ModalWrapper";
 
 interface IFields {
   email: string;
@@ -48,10 +49,7 @@ function ModalLogin() {
   }, [isSuccess]);
 
   return (
-    <section
-      onMouseDown={handleCloseModal}
-      className={`${styles.wrapper} ${openLoginModal && styles.open}`}
-    >
+    <ModalWrapper isOpen={openLoginModal} setIsOpen={setOpenLoginModal}>
       <form
         onMouseDown={(e) => e.stopPropagation()}
         className={styles.modal}
@@ -80,7 +78,7 @@ function ModalLogin() {
         </button>
         <p onClick={handleOpenRegModal}>Создать аккаунт</p>
       </form>
-    </section>
+    </ModalWrapper>
   );
 }
 
