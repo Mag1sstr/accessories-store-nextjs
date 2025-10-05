@@ -5,6 +5,7 @@ import { useModals } from "@/hooks/useModals";
 import { useEffect, useState } from "react";
 import { useLoginUserMutation, useRegUserMutation } from "@/api/api";
 import ModalSuccess from "../ModalSuccess/ModalSuccess";
+import ModalWrapper from "../ModalWrapper/ModalWrapper";
 
 interface IFields {
   name: string;
@@ -20,15 +21,16 @@ function RegModal() {
     handleSubmit,
     formState: { errors },
   } = useForm<IFields>();
-  const { openRegModal, setOpenRegModal } = useModals();
+  const { openRegModal, setOpenRegModal, setOpenLoginModal } = useModals();
   const [regUser, { data, isSuccess }] = useRegUserMutation();
   const [loginUser, { data: logData }] = useLoginUserMutation();
 
-  const handleCloseModal = () => {
-    setOpenRegModal(false);
-  };
   const submit: SubmitHandler<IFields> = (data) => {
     regUser({ ...data, avatar: "https://picsum.photos/800" });
+  };
+  const handleOpenLogin = () => {
+    setOpenRegModal(false);
+    setOpenLoginModal(true);
   };
 
   useEffect(() => {
@@ -48,10 +50,7 @@ function RegModal() {
   console.log(logData);
 
   return (
-    <section
-      onMouseDown={handleCloseModal}
-      className={`${styles.wrapper} ${openRegModal && styles.open}`}
-    >
+    <ModalWrapper isOpen={openRegModal} setIsOpen={setOpenRegModal}>
       <form
         onMouseDown={(e) => e.stopPropagation()}
         className={styles.modal}
@@ -86,9 +85,9 @@ function RegModal() {
         <button type="submit" className={styles.btn}>
           войти
         </button>
-        <p>Создать аккаунт</p>
+        <p onClick={handleOpenLogin}>Создать аккаунт</p>
       </form>
-    </section>
+    </ModalWrapper>
   );
 }
 
