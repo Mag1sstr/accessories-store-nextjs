@@ -1,0 +1,10 @@
+.btn {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  all: unset;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
