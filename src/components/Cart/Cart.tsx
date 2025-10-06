@@ -6,8 +6,11 @@ import { useModals } from "@/hooks/useModals";
 import { useRouter } from "next/navigation";
 import { useCart } from "@/hooks/useCart";
 import CloseBtn from "../CloseBtn/CloseBtn";
+import { useAppDispatch } from "@/store/store";
+import { deleteCartItem } from "@/store/slices/cartSlice";
 
 function Cart() {
+  const dispatch = useAppDispatch();
   const { openCart, setOpenCart } = useModals();
   const { cart } = useCart();
   const router = useRouter();
@@ -16,6 +19,10 @@ function Cart() {
     router.push("/products");
     setOpenCart(false);
   };
+  const handleDeleteCartItem = (id: number) => {
+    dispatch(deleteCartItem(id));
+  };
+
   return (
     <ModalWrapper isOpen={openCart} setIsOpen={setOpenCart}>
       <div onMouseDown={(e) => e.stopPropagation()} className={styles.cart}>
@@ -39,7 +46,10 @@ function Cart() {
                 <ul className={styles.col}>
                   {cart.map((product) => (
                     <li key={product.id} className={styles.item}>
-                      <CloseBtn className={styles.close} />
+                      <CloseBtn
+                        onClick={() => handleDeleteCartItem(product.id)}
+                        className={styles.close}
+                      />
                       <Image
                         src={product.images[0]}
                         alt={product.title}
