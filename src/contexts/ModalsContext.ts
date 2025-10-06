@@ -9,6 +9,8 @@ interface IModalsContext {
   setOpenLoginModal: setModalState;
   openRegModal: boolean;
   setOpenRegModal: setModalState;
+  openCart: boolean;
+  setOpenCart: setModalState;
 }
 
 export const ModalsContext = createContext({} as IModalsContext);
