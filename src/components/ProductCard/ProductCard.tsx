@@ -4,12 +4,14 @@ import styles from "./ProductCard.module.css";
 import { useRouter } from "next/navigation";
 import { useAppDispatch } from "@/store/store";
 import { addToCart } from "@/store/slices/cartSlice";
+import { MouseEvent } from "react";
 
 function ProductCard(product: IProducts) {
   const dispatch = useAppDispatch();
   const router = useRouter();
 
-  const handleAddToCart = () => {
+  const handleAddToCart = (e: MouseEvent<HTMLButtonElement>) => {
+    e.stopPropagation();
     dispatch(addToCart({ ...product, count: 1 }));
   };
 
@@ -63,7 +65,7 @@ function ProductCard(product: IProducts) {
         <p>Гарантия 1 год</p>
       </div>
       <p className={styles.price}>{product.price}$</p>
-      <button onClick={handleAddToCart} className={styles.btn}>
+      <button onClick={(e) => handleAddToCart(e)} className={styles.btn}>
         <svg
           width="25"
           height="24"

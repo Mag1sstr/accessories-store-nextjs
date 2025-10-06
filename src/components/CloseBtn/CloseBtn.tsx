@@ -1,7 +1,13 @@
 import styles from "./CloseBtn.module.css";
-function CloseBtn() {
+
+interface IProps {
+  className?: string;
+  onClick?: () => void;
+}
+
+function CloseBtn({ className, onClick }: IProps) {
   return (
-    <button className={styles.btn}>
+    <button onClick={onClick} className={`${styles.btn} ${className}`}>
       <svg
         width="24"
         height="24"

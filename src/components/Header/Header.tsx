@@ -6,8 +6,10 @@ import Search from "../Search/Search";
 import CatalogMenu from "../CatalogMenu/CatalogMenu";
 import Blur from "../Blur/Blur";
 import { useModals } from "@/hooks/useModals";
+import { useCart } from "@/hooks/useCart";
 function Header() {
   const { setOpenLoginModal, setOpenCart } = useModals();
+  const { cart } = useCart();
 
   const handleOpenLogin = () => {
     setOpenLoginModal(true);
@@ -117,7 +119,7 @@ function Header() {
                 />
               </svg>
               в корзине
-              <div>0</div>
+              <div>{cart.length}</div>
             </button>
           </div>
         </div>
