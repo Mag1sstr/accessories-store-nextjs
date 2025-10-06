@@ -1,15 +1,37 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { ICart } from "@/types/interfaces";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-interface ICartState {}
+interface ICartState {
+  cart: ICart[];
+}
 
-const initialState = {};
+const getCart = () => {
+  const cart = localStorage.getItem("cart");
+  if (cart) {
+    return JSON.parse(cart);
+  }
+};
+
+const initialState: ICartState = {
+  cart: getCart() ?? [],
+};
 
 export const cartSlice = createSlice({
   name: "cartSlice",
   initialState,
-  reducers: {},
+  reducers: {
+    addToCart(state, action: PayloadAction<ICart>) {
+      for (let el of state.cart) {
+        if (el.id === action.payload.id) {
+          return;
+        }
+      }
+      state.cart.push(action.payload);
+      localStorage.setItem("cart", JSON.stringify(state.cart));
+    },
+  },
 });
 
-export const {} = cartSlice.actions;
+export const { addToCart } = cartSlice.actions;
 
 export default cartSlice.reducer;

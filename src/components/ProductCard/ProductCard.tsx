@@ -2,9 +2,17 @@
 import { IProducts } from "@/types/interfaces";
 import styles from "./ProductCard.module.css";
 import { useRouter } from "next/navigation";
+import { useAppDispatch } from "@/store/store";
+import { addToCart } from "@/store/slices/cartSlice";
 
 function ProductCard(product: IProducts) {
+  const dispatch = useAppDispatch();
   const router = useRouter();
+
+  const handleAddToCart = () => {
+    dispatch(addToCart({ ...product, count: 1 }));
+  };
+
   return (
     <div
       onClick={() => router.push(`/products/${product.id}`)}
@@ -55,7 +63,7 @@ function ProductCard(product: IProducts) {
         <p>Гарантия 1 год</p>
       </div>
       <p className={styles.price}>{product.price}$</p>
-      <button className={styles.btn}>
+      <button onClick={handleAddToCart} className={styles.btn}>
         <svg
           width="25"
           height="24"
