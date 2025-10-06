@@ -47,8 +47,6 @@ function RegModal() {
     return () => clearTimeout(timer);
   }, [isSuccess]);
 
-  console.log(logData);
-
   return (
     <ModalWrapper isOpen={openRegModal} setIsOpen={setOpenRegModal}>
       <form
