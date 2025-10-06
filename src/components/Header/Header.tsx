@@ -7,10 +7,13 @@ import CatalogMenu from "../CatalogMenu/CatalogMenu";
 import Blur from "../Blur/Blur";
 import { useModals } from "@/hooks/useModals";
 function Header() {
-  const { setOpenLoginModal } = useModals();
+  const { setOpenLoginModal, setOpenCart } = useModals();
 
   const handleOpenLogin = () => {
     setOpenLoginModal(true);
+  };
+  const handleOpenCart = () => {
+    setOpenCart(true);
   };
 
   return (
@@ -100,7 +103,7 @@ function Header() {
                 />
               </svg>
             </button>
-            <button className={styles.cartBtn}>
+            <button onClick={handleOpenCart} className={styles.cartBtn}>
               <svg
                 width="24"
                 height="24"
@@ -114,7 +117,7 @@ function Header() {
                 />
               </svg>
               в корзине
-              <div>1</div>
+              <div>0</div>
             </button>
           </div>
         </div>

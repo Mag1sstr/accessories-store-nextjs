@@ -1,10 +1,13 @@
+"use client";
 import Image from "next/image";
 import ModalWrapper from "../ModalWrapper/ModalWrapper";
 import styles from "./Cart.module.css";
+import { useModals } from "@/hooks/useModals";
 
 function Cart() {
+  const { openCart, setOpenCart } = useModals();
   return (
-    <ModalWrapper>
+    <ModalWrapper isOpen={openCart} setIsOpen={setOpenCart}>
       <div className={styles.cart}>
         <div className={styles.not}>
           <Image
