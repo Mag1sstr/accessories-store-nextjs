@@ -71,13 +71,13 @@ function Cart() {
               <div className={styles.right}>
                 <div className={styles.sum}>
                   <p>
-                    Доставка: <span>0</span>$
+                    Доставка: <span>0$</span>
                   </p>
                   <p>
-                    Сумма заказа: <span>0</span>$
+                    Сумма заказа: <span>0$</span>
                   </p>
                   <p>
-                    Итого: <span>0</span>$
+                    Итого: <span>0$</span>
                   </p>
                 </div>
               </div>
