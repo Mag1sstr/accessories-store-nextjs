@@ -7,13 +7,15 @@ import { useRouter } from "next/navigation";
 import { useCart } from "@/hooks/useCart";
 import CloseBtn from "../CloseBtn/CloseBtn";
 import { useAppDispatch } from "@/store/store";
-import { deleteCartItem } from "@/store/slices/cartSlice";
+import { deleteCartItem, increaseCartItem } from "@/store/slices/cartSlice";
 
 function Cart() {
   const dispatch = useAppDispatch();
   const { openCart, setOpenCart } = useModals();
   const { cart } = useCart();
   const router = useRouter();
+
+  const totalPrice = cart.reduce((acc, el) => acc + el.price * el.count, 0);
 
   const handleOpenProducts = () => {
     router.push("/products");
@@ -22,10 +24,14 @@ function Cart() {
   const handleDeleteCartItem = (id: number) => {
     dispatch(deleteCartItem(id));
   };
+  const handleCloseCart = () => {
+    setOpenCart(false);
+  };
 
   return (
     <ModalWrapper isOpen={openCart} setIsOpen={setOpenCart}>
       <div onMouseDown={(e) => e.stopPropagation()} className={styles.cart}>
+        <CloseBtn onClick={handleCloseCart} />
         {!cart.length ? (
           <div className={styles.not}>
             <Image
@@ -57,10 +63,23 @@ function Cart() {
                         height={64}
                         className={styles.image}
                       />
-                      <div>
+                      <div className={styles.details}>
                         <h3 className={styles.name}>{product.title}</h3>
                         <div className={styles.itemRow}>
-                          <p className={styles.price}>{product.price}$</p>
+                          <p className={styles.price}>
+                            {product.price * product.count}$
+                          </p>
+                          <div className={styles.counter}>
+                            <button>-</button>
+                            <span>{product.count}</span>
+                            <button
+                              onClick={() =>
+                                dispatch(increaseCartItem(product.id))
+                              }
+                            >
+                              +
+                            </button>
+                          </div>
                         </div>
                       </div>
                     </li>
@@ -74,10 +93,10 @@ function Cart() {
                     Доставка: <span>0$</span>
                   </p>
                   <p>
-                    Сумма заказа: <span>0$</span>
+                    Сумма заказа: <span>{totalPrice}$</span>
                   </p>
                   <p>
-                    Итого: <span>0$</span>
+                    Итого: <span>{totalPrice}$</span>
                   </p>
                 </div>
               </div>
