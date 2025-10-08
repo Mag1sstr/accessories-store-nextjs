@@ -7,7 +7,11 @@ import { useRouter } from "next/navigation";
 import { useCart } from "@/hooks/useCart";
 import CloseBtn from "../CloseBtn/CloseBtn";
 import { useAppDispatch } from "@/store/store";
-import { deleteCartItem, increaseCartItem } from "@/store/slices/cartSlice";
+import {
+  decreaseCartItem,
+  deleteCartItem,
+  increaseCartItem,
+} from "@/store/slices/cartSlice";
 
 function Cart() {
   const dispatch = useAppDispatch();
@@ -70,7 +74,13 @@ function Cart() {
                             {product.price * product.count}$
                           </p>
                           <div className={styles.counter}>
-                            <button>-</button>
+                            <button
+                              onClick={() =>
+                                dispatch(decreaseCartItem(product.id))
+                              }
+                            >
+                              -
+                            </button>
                             <span>{product.count}</span>
                             <button
                               onClick={() =>
