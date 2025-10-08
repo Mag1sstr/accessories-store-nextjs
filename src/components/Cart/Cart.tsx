@@ -68,7 +68,19 @@ function Cart() {
                 </ul>
               </div>
               <div className={styles.line}></div>
-              <div className={styles.right}></div>
+              <div className={styles.right}>
+                <div className={styles.sum}>
+                  <p>
+                    Доставка: <span>0</span>$
+                  </p>
+                  <p>
+                    Сумма заказа: <span>0</span>$
+                  </p>
+                  <p>
+                    Итого: <span>0</span>$
+                  </p>
+                </div>
+              </div>
               <div className={styles.line}></div>
             </div>
           </>
