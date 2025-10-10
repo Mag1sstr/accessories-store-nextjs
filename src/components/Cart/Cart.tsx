@@ -109,6 +109,10 @@ function Cart() {
                     Итого: <span>{totalPrice}$</span>
                   </p>
                 </div>
+                <div className={styles.option}>
+                  <p>Выберите способ доставки</p>
+                  <input type="radio" />
+                </div>
               </div>
               <div className={styles.line}></div>
             </div>
