@@ -118,7 +118,7 @@ function Cart() {
                     </div>
                     <div className={styles.radio}>
                       <input type="radio" id="pickup" name="del" />
-                      <label htmlFor="delivery">Доставка</label>
+                      <label htmlFor="delivery">Самовывоз</label>
                     </div>
                   </div>
                 </div>
