@@ -112,8 +112,14 @@ function Cart() {
                 <div className={styles.option}>
                   <p>Выберите способ доставки</p>
                   <div className={styles.optionRow}>
-                    <input type="radio" id="delivery" />
-                    <label htmlFor="delivery">Доставка</label>
+                    <div className={styles.radio}>
+                      <input type="radio" id="delivery" name="del" />
+                      <label htmlFor="delivery">Доставка</label>
+                    </div>
+                    <div className={styles.radio}>
+                      <input type="radio" id="pickup" name="del" />
+                      <label htmlFor="delivery">Доставка</label>
+                    </div>
                   </div>
                 </div>
               </div>
