@@ -38,15 +38,15 @@ function Advantages() {
   return (
     <section className={styles.advantages}>
       <div className="container">
+        <h2 className={styles.title}>Наши преимущества</h2>
         <div className={styles.row}>
-          <div className={styles.advantagesCard}>
-            <Image src={icon1} width={160} height={160} alt="icon" />
-            <h3>Акции и подарки</h3>
-            <p>
-              Постоянные акции, бонусы и скидки. Покупайте технику Apple по
-              самым выгодным ценам
-            </p>
-          </div>
+          {ADVANTAGES_DATA.map((card) => (
+            <div key={card.title} className={styles.advantagesCard}>
+              <Image src={card.img} width={160} height={160} alt="icon" />
+              <h3>{card.title}</h3>
+              <p>{card.text}</p>
+            </div>
+          ))}
         </div>
       </div>
     </section>
