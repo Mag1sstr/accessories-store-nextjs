@@ -109,4 +109,7 @@
   &:hover {
     filter: brightness(0.9);
   }
+  &.btnActive {
+    background-color: #6fd91c;
+  }
 }

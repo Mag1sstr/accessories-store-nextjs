@@ -5,10 +5,10 @@ interface ICartState {
   cart: ICart[];
 }
 
-const getCart = () => {
+export const getCart = () => {
   const cart = localStorage.getItem("cart");
   if (cart) {
-    return JSON.parse(cart);
+    return JSON.parse(cart) as ICart[];
   }
 };
 
