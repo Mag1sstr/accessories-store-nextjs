@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import { useAppDispatch } from "@/store/store";
 import { addToCart } from "@/store/slices/cartSlice";
 import { MouseEvent } from "react";
+import { Carousel } from "antd";
 
 function ProductCard(product: IProducts) {
   const dispatch = useAppDispatch();
@@ -18,11 +19,7 @@ function ProductCard(product: IProducts) {
   const randomRating = Math.floor(Math.random() * 6);
 
   return (
-    <div
-      onClick={() => router.push(`/products/${product.id}`)}
-      key={product.id}
-      className={styles.card}
-    >
+    <div key={product.id} className={styles.card}>
       <div className={styles.cardTop}>
         <div className={styles.rating}>
           {[...Array(5)].map((_, i) => (
@@ -63,17 +60,22 @@ function ProductCard(product: IProducts) {
           </svg>
         </button>
       </div>
-      <h3 className={styles.title}>{product.title}</h3>
-      <div className={styles.image}>
-        <img
-          src={
-            !!product.images.length
-              ? product.images[0]
-              : "https://placeimg.dev/400"
-          }
-          alt="product-image"
-        />
-      </div>
+      <h3
+        className={styles.title}
+        title={product.title}
+        onClick={() => router.push(`/products/${product.id}`)}
+      >
+        {product.title}
+      </h3>
+
+      <Carousel arrows infinite={false}>
+        {product.images.map((img) => (
+          <div key={img} className={styles.img}>
+            <img src={img} alt="product-image" />
+          </div>
+        ))}
+      </Carousel>
+
       <div className={styles.details}>
         <p>
           <svg
