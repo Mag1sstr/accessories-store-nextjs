@@ -12,6 +12,16 @@
   grid-template-columns: repeat(auto-fill, 228px);
   justify-content: space-between;
   gap: 15px;
+  &:hover .advantagesCard {
+    opacity: 0.4;
+    &:hover {
+      opacity: 1;
+      transform: scale(1.1);
+      img {
+        animation: shake 1s ease-in-out;
+      }
+    }
+  }
 }
 .advantagesCard {
   min-height: 500px;
@@ -23,6 +33,7 @@
   padding: 8px;
   padding-bottom: 32px;
   padding-top: 24px;
+  transition: 0.3s;
   & > h3 {
     text-align: center;
     margin-bottom: 1rem;
@@ -46,6 +57,26 @@
   &:nth-child(5) {
     background: linear-gradient(180.04deg, #adffc1 0.04%, #f2f2f2 65.84%);
   }
+}
+@keyframes shake {
+  0% {
+    transform: translateX(0);
+  } /* Начальное положение */
+  20% {
+    transform: translateX(-5px);
+  } /* Смещение влево */
+  40% {
+    transform: translateX(5px);
+  } /* Смещение вправо */
+  60% {
+    transform: translateX(-5px);
+  } /* Снова влево */
+  80% {
+    transform: translateX(5px);
+  } /* Снова вправо */
+  100% {
+    transform: translateX(0);
+  } /* Возвращение в центр */
 }
 @media (max-width: 746px) {
   .row {
