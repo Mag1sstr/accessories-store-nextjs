@@ -15,6 +15,8 @@ function ProductCard(product: IProducts) {
     dispatch(addToCart({ ...product, count: 1 }));
   };
 
+  const randomRating = Math.floor(Math.random() * 6);
+
   return (
     <div
       onClick={() => router.push(`/products/${product.id}`)}
@@ -24,7 +26,10 @@ function ProductCard(product: IProducts) {
       <div className={styles.cardTop}>
         <div className={styles.rating}>
           {[...Array(5)].map((_, i) => (
-            <div key={i}>
+            <div
+              key={i}
+              className={`${randomRating >= i + 1 && styles.active}`}
+            >
               <svg
                 width="24"
                 height="24"
