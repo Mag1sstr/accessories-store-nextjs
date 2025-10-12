@@ -71,3 +71,8 @@
   border-radius: 0.5rem;
   outline: none;
 }
+@media (max-width: 746px) {
+  .row {
+    flex-direction: column;
+  }
+}
