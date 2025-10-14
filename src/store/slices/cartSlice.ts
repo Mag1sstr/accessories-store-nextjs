@@ -7,9 +7,13 @@ interface ICartState {
 }
 
 export const getCart = () => {
-  const cart = localStorage.getItem("cart");
-  if (cart) {
-    return JSON.parse(cart) as ICart[];
+  if (typeof window === "undefined") return [];
+
+  try {
+    const cart = localStorage.getItem("cart");
+    return cart ? (JSON.parse(cart) as ICart[]) : [];
+  } catch (err) {
+    return [];
   }
 };
 

@@ -1,3 +1,4 @@
+"use client";
 import { useCart } from "@/hooks/useCart";
 import ModalWrapper from "../ModalWrapper/ModalWrapper";
 import styles from "./ModalAddedProduct.module.css";
