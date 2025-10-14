@@ -3,20 +3,25 @@ import { IProducts } from "@/types/interfaces";
 import styles from "./ProductCard.module.css";
 import { useRouter } from "next/navigation";
 import { useAppDispatch } from "@/store/store";
-import { addToCart } from "@/store/slices/cartSlice";
+import { addToCart, setAddedProduct } from "@/store/slices/cartSlice";
 import { MouseEvent } from "react";
 import { Carousel } from "antd";
 import { useCart } from "@/hooks/useCart";
+import { useModals } from "@/hooks/useModals";
 
 function ProductCard(product: IProducts) {
   const dispatch = useAppDispatch();
   const router = useRouter();
 
   const { cart } = useCart();
+  const { setOpenAddedModal } = useModals();
 
   const handleAddToCart = (e: MouseEvent<HTMLButtonElement>) => {
     e.stopPropagation();
     dispatch(addToCart({ ...product, count: 1 }));
+
+    setOpenAddedModal(true);
+    dispatch(setAddedProduct(product));
   };
 
   const randomRating = Math.floor(Math.random() * 6);

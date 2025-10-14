@@ -6,12 +6,13 @@ import Image from "next/image";
 import icon1 from "../../../public/assets/wp.png";
 import icon2 from "../../../public/assets/tg.png";
 import icon3 from "../../../public/assets/vk.png";
+import { useModals } from "@/hooks/useModals";
 
 function ModalAddedProduct() {
   const { addedProduct } = useCart();
-
+  const { openAddedModal, setOpenAddedModal } = useModals();
   return (
-    <ModalWrapper>
+    <ModalWrapper isOpen={openAddedModal} setIsOpen={setOpenAddedModal}>
       <div className={styles.inner}>
         <div className={styles.row}>
           <Image

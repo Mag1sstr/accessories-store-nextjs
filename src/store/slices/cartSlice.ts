@@ -1,9 +1,9 @@
-import { ICart } from "@/types/interfaces";
+import { ICart, IProducts } from "@/types/interfaces";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 interface ICartState {
   cart: ICart[];
-  addedProduct: null | ICart;
+  addedProduct: null | IProducts;
 }
 
 export const getCart = () => {
@@ -60,7 +60,7 @@ export const cartSlice = createSlice({
       localStorage.setItem("cart", JSON.stringify(state.cart));
     },
 
-    setAddedProduct(state, action: PayloadAction<ICart>) {
+    setAddedProduct(state, action: PayloadAction<IProducts>) {
       state.addedProduct = action.payload;
     },
   },

@@ -7,6 +7,7 @@ function ModalsContextProvider({ children }: { children: React.ReactNode }) {
   const [openLoginModal, setOpenLoginModal] = useState(false);
   const [openRegModal, setOpenRegModal] = useState(false);
   const [openCart, setOpenCart] = useState(false);
+  const [openAddedModal, setOpenAddedModal] = useState(false);
 
   return (
     <ModalsContext.Provider
@@ -19,6 +20,8 @@ function ModalsContextProvider({ children }: { children: React.ReactNode }) {
         setOpenRegModal,
         openCart,
         setOpenCart,
+        openAddedModal,
+        setOpenAddedModal,
       }}
     >
       {children}
