@@ -3,6 +3,7 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 interface ICartState {
   cart: ICart[];
+  addedProduct: null | ICart;
 }
 
 export const getCart = () => {
@@ -14,6 +15,7 @@ export const getCart = () => {
 
 const initialState: ICartState = {
   cart: getCart() ?? [],
+  addedProduct: null,
 };
 
 export const cartSlice = createSlice({
@@ -57,10 +59,19 @@ export const cartSlice = createSlice({
       });
       localStorage.setItem("cart", JSON.stringify(state.cart));
     },
+
+    setAddedProduct(state, action: PayloadAction<ICart>) {
+      state.addedProduct = action.payload;
+    },
   },
 });
 
-export const { addToCart, deleteCartItem, increaseCartItem, decreaseCartItem } =
-  cartSlice.actions;
+export const {
+  addToCart,
+  deleteCartItem,
+  increaseCartItem,
+  decreaseCartItem,
+  setAddedProduct,
+} = cartSlice.actions;
 
 export default cartSlice.reducer;
