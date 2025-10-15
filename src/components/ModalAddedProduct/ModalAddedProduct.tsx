@@ -8,13 +8,15 @@ import icon1 from "../../../public/assets/wp.png";
 import icon2 from "../../../public/assets/tg.png";
 import icon3 from "../../../public/assets/vk.png";
 import { useModals } from "@/hooks/useModals";
+import CloseBtn from "../CloseBtn/CloseBtn";
 
 function ModalAddedProduct() {
   const { addedProduct } = useCart();
   const { openAddedModal, setOpenAddedModal } = useModals();
   return (
     <ModalWrapper isOpen={openAddedModal} setIsOpen={setOpenAddedModal}>
-      <div className={styles.inner}>
+      <div onMouseDown={(e) => e.stopPropagation()} className={styles.inner}>
+        <CloseBtn onClick={() => setOpenAddedModal(false)} />
         <div className={styles.row}>
           <Image
             src={addedProduct?.images[0] ?? ""}

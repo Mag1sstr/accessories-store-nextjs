@@ -1,0 +1,24 @@
+.inner {
+  width: 720px;
+  padding: 48px 32px;
+  padding-right: 180px;
+}
+.row {
+  display: flex;
+  gap: 1.5rem;
+  img {
+    border-radius: 1rem;
+  }
+}
+.info {
+  & > p {
+    font-weight: 500;
+    color: #585656;
+    margin-bottom: 0.5rem;
+  }
+  & > h3 {
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+  }
+}
