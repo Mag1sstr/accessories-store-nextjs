@@ -1,11 +1,12 @@
 .inner {
   width: 720px;
   padding: 48px 32px;
-  padding-right: 180px;
+  padding-right: 80px;
 }
 .row {
   display: flex;
   gap: 1.5rem;
+  margin-bottom: 1.5rem;
   img {
     border-radius: 1rem;
   }
@@ -21,4 +22,49 @@
     font-weight: 700;
     margin-bottom: 1.5rem;
   }
+}
+.help {
+  position: relative;
+  gap: 0.5rem;
+  padding-left: 40px;
+  svg {
+    position: absolute;
+    left: 0;
+  }
+}
+.helpTitle {
+  font-size: 20px;
+  font-weight: 500;
+  margin-bottom: 4px;
+}
+.subtitle {
+  color: #585656;
+  margin-bottom: 8px;
+}
+.contacts {
+  display: flex;
+  align-items: center;
+  font-size: 24px;
+  font-weight: 700;
+  p {
+    margin-right: 1rem;
+  }
+  img {
+    margin-right: 8px;
+    cursor: pointer;
+  }
+}
+.btnRow {
+  display: flex;
+  gap: 1rem;
+}
+.btn {
+  all: unset;
+  padding: 0 31px;
+  height: 56px;
+  background-color: var(--prime);
+  color: #fff;
+  border-radius: 8px;
+  font-weight: 500;
+  cursor: pointer;
 }

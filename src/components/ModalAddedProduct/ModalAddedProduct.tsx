@@ -28,8 +28,8 @@ function ModalAddedProduct() {
             <p>Добавлен в корзину</p>
             <h3>{addedProduct?.title}</h3>
             <div className={styles.btnRow}>
-              <button>оформить заказ</button>
-              <button>продолжить покупки</button>
+              <button className={styles.btn}>оформить заказ</button>
+              <button className={styles.btn}>продолжить покупки</button>
             </div>
           </div>
         </div>
@@ -47,8 +47,8 @@ function ModalAddedProduct() {
               fill="#0071E4"
             />
           </svg>
-          <p>Нужна помощь с заказом?</p>
-          <p>Звоните, пишите мы на связи</p>
+          <p className={styles.helpTitle}>Нужна помощь с заказом?</p>
+          <p className={styles.subtitle}>Звоните, пишите мы на связи</p>
           <div className={styles.contacts}>
             <p>+7 812 561 96 62</p>
             <Image src={icon1} alt="icon" width={32} height={32} />
