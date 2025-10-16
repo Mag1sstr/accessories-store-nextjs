@@ -1,0 +1,14 @@
+.btn {
+  all: unset;
+  padding: 0 31px;
+  height: 56px;
+  background-color: var(--prime);
+  color: #fff;
+  border-radius: 8px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: 0.3s;
+  &:hover {
+    opacity: 0.9;
+  }
+}

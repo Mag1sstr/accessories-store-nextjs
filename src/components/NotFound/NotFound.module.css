@@ -22,8 +22,11 @@
   }
 }
 .image {
-  margin-top: -100px;
+  position: relative;
+  margin-top: -70px;
   max-width: 456px;
+  z-index: -1;
+  user-select: none;
   img {
     width: 100%;
     height: 100%;
