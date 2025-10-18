@@ -20,12 +20,15 @@ function ModalAddedProduct() {
       <div onMouseDown={(e) => e.stopPropagation()} className={styles.inner}>
         <CloseBtn onClick={() => setOpenAddedModal(false)} />
         <div className={styles.row}>
-          <Image
-            src={addedProduct?.images[0] ?? ""}
-            alt={addedProduct?.title ?? "product"}
-            width={150}
-            height={162}
-          />
+          {addedProduct && (
+            <Image
+              src={addedProduct.images[0]}
+              alt={addedProduct.title}
+              width={150}
+              height={162}
+            />
+          )}
+
           <div className={styles.info}>
             <p>Добавлен в корзину</p>
             <h3>{addedProduct?.title}</h3>
