@@ -9,10 +9,14 @@ import icon2 from "../../../public/assets/tg.png";
 import icon3 from "../../../public/assets/vk.png";
 import { useModals } from "@/hooks/useModals";
 import CloseBtn from "../CloseBtn/CloseBtn";
+import Button from "../Button/Button";
+import { useRouter } from "next/navigation";
 
 function ModalAddedProduct() {
   const { addedProduct } = useCart();
   const { openAddedModal, setOpenAddedModal } = useModals();
+
+  const router = useRouter();
   return (
     <ModalWrapper isOpen={openAddedModal} setIsOpen={setOpenAddedModal}>
       <div onMouseDown={(e) => e.stopPropagation()} className={styles.inner}>
@@ -28,8 +32,13 @@ function ModalAddedProduct() {
             <p>Добавлен в корзину</p>
             <h3>{addedProduct?.title}</h3>
             <div className={styles.btnRow}>
-              <button className={styles.btn}>оформить заказ</button>
-              <button className={styles.btn}>продолжить покупки</button>
+              <Button title="оформить заказ" />
+              <Button
+                background="white"
+                className={styles.btn}
+                title="продолжить покупки"
+                onClick={() => setOpenAddedModal(false)}
+              />
             </div>
           </div>
         </div>

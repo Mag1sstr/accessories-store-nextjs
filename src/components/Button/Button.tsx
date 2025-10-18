@@ -8,6 +8,8 @@ interface IProps {
   fontSize?: string | number;
   background?: string;
   padding?: string | number;
+  onClick?: () => void;
+  color?: string;
 }
 function Button({
   title,
@@ -16,13 +18,16 @@ function Button({
   fontSize,
   background,
   padding,
+  color,
+  onClick,
   type = "button",
 }: IProps) {
   return (
     <button
       type={type}
-      style={{ fontWeight, fontSize, background, padding }}
+      style={{ fontWeight, fontSize, background, padding, color }}
       className={`${styles.btn} ${className}`}
+      onClick={onClick}
     >
       {title}
     </button>
