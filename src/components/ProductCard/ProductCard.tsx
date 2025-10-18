@@ -4,7 +4,7 @@ import styles from "./ProductCard.module.css";
 import { useRouter } from "next/navigation";
 import { useAppDispatch } from "@/store/store";
 import { addToCart, setAddedProduct } from "@/store/slices/cartSlice";
-import { MouseEvent } from "react";
+import { MouseEvent, useMemo } from "react";
 import { Carousel } from "antd";
 import { useCart } from "@/hooks/useCart";
 import { useModals } from "@/hooks/useModals";
@@ -25,7 +25,7 @@ function ProductCard(product: IProducts) {
     dispatch(setAddedProduct(product));
   };
 
-  const randomRating = Math.floor(Math.random() * 6);
+  const randomRating = useMemo(() => Math.floor(Math.random() * 6), []);
 
   return (
     <div key={product.id} className={styles.card}>
