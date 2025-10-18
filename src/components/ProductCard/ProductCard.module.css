@@ -112,4 +112,10 @@
   &.btnActive {
     background-color: #6fd91c;
   }
+  &:disabled {
+    cursor: default;
+    &:hover {
+      filter: brightness(1);
+    }
+  }
 }

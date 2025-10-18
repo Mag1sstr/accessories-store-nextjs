@@ -15,18 +15,17 @@ function ProductCard(product: IProducts) {
 
   const { cart } = useCart();
   const { setOpenAddedModal } = useModals();
+  const isInCart = cart.some((el) => el.id === product.id);
 
   const handleAddToCart = (e: MouseEvent<HTMLButtonElement>) => {
     e.stopPropagation();
-    dispatch(addToCart({ ...product, count: 1 }));
 
+    dispatch(addToCart({ ...product, count: 1 }));
     setOpenAddedModal(true);
     dispatch(setAddedProduct(product));
   };
 
   const randomRating = Math.floor(Math.random() * 6);
-
-  const isInCart = cart.some((el) => el.id === product.id);
 
   return (
     <div key={product.id} className={styles.card}>
@@ -103,8 +102,9 @@ function ProductCard(product: IProducts) {
       </div>
       <p className={styles.price}>{product.price}$</p>
       <button
-        onClick={(e) => handleAddToCart(e)}
+        onClick={(e) => !isInCart && handleAddToCart(e)}
         className={`${styles.btn} ${isInCart && styles.btnActive}`}
+        disabled={isInCart}
       >
         {isInCart ? (
           <>

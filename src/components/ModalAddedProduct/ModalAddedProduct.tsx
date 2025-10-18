@@ -10,13 +10,11 @@ import icon3 from "../../../public/assets/vk.png";
 import { useModals } from "@/hooks/useModals";
 import CloseBtn from "../CloseBtn/CloseBtn";
 import Button from "../Button/Button";
-import { useRouter } from "next/navigation";
 
 function ModalAddedProduct() {
   const { addedProduct } = useCart();
   const { openAddedModal, setOpenAddedModal } = useModals();
 
-  const router = useRouter();
   return (
     <ModalWrapper isOpen={openAddedModal} setIsOpen={setOpenAddedModal}>
       <div onMouseDown={(e) => e.stopPropagation()} className={styles.inner}>
