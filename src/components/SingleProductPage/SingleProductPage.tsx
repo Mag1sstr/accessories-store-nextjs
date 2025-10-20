@@ -3,6 +3,7 @@ import { IProducts } from "@/types/interfaces";
 import styles from "./SingleProductPage.module.css";
 import Image from "next/image";
 import { useState } from "react";
+import Button from "../Button/Button";
 
 interface IProps {
   product: IProducts;
@@ -35,6 +36,33 @@ function SingleProductPage(product: IProducts) {
                 </li>
               ))}
             </ul>
+          </div>
+          <div className={styles.details}>
+            <h1 className={styles.productTitle}>{product.title}</h1>
+            <div className={styles.productDetails}>
+              <div className={styles.left}>
+                <p>Было продано: 242 шт</p>
+                <p>Характеристики</p>
+              </div>
+              <div className={styles.right}>
+                <div className={styles.rightTop}>
+                  <p className={styles.price}>{product.price} $</p>
+                  <p className={styles.available}>
+                    <svg
+                      width="16"
+                      height="16"
+                      viewBox="0 0 16 16"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <rect width="16" height="16" rx="8" fill="#33BE02" />
+                    </svg>
+                    в наличии
+                  </p>
+                </div>
+                <Button className={styles.add} title="Добавить в корзину" />
+              </div>
+            </div>
           </div>
         </div>
       </div>
