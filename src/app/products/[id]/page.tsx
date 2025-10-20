@@ -10,7 +10,7 @@ interface PageProps {
 }
 
 export default async function SingleProduct({ params }: PageProps) {
-  const { id } = params;
+  const { id } = await params;
   const response = await fetch(
     `https://api.escuelajs.co/api/v1/products/${id}`,
     {
