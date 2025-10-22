@@ -1,7 +1,9 @@
+"use client";
 import Link from "next/link";
 import styles from "./HeaderNav.module.css";
 import fireImg from "../../../public/assets/icons/fire.png";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 
 const NAV_ITEMS = [
   { title: "Весь каталог", href: "/products" },
@@ -12,6 +14,7 @@ const NAV_ITEMS = [
 ];
 
 function HeaderNav() {
+  const router = useRouter();
   return (
     <nav>
       <div className="container">
@@ -32,7 +35,11 @@ function HeaderNav() {
           </Link>
           <ul className={styles.links}>
             {NAV_ITEMS.map((item, i) => (
-              <li className={styles.link} key={item.title}>
+              <li
+                className={styles.link}
+                key={item.title}
+                onClick={() => router.push(item.href)}
+              >
                 {i === 0 && (
                   <Image src={fireImg} alt="fire" width={20} height={20} />
                 )}
