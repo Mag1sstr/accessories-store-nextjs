@@ -7,6 +7,8 @@ import CatalogMenu from "../CatalogMenu/CatalogMenu";
 import Blur from "../Blur/Blur";
 import { useModals } from "@/hooks/useModals";
 import { useCart } from "@/hooks/useCart";
+import HeaderNav from "../HeaderNav/HeaderNav";
+
 function Header() {
   const { setOpenLoginModal, setOpenCart } = useModals();
   const { cart } = useCart();
@@ -66,6 +68,7 @@ function Header() {
           </div>
         </div>
       </div>
+      <HeaderNav />
       <div className={styles.filters}>
         <Blur />
         <div className="container">

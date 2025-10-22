@@ -1,0 +1,27 @@
+.headerNav {
+  min-height: 94px;
+  display: flex;
+  align-items: center;
+  gap: 36px;
+}
+.links {
+  flex: 1;
+  display: flex;
+  justify-content: space-between;
+  font-size: 18px;
+}
+.contact {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-top: 18px;
+}
+.tel {
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+}
+.call {
+  text-align: end;
+  color: var(--prime);
+}
