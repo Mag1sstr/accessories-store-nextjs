@@ -1,5 +1,7 @@
 import Link from "next/link";
 import styles from "./HeaderNav.module.css";
+import fireImg from "../../../public/assets/icons/fire.png";
+import Image from "next/image";
 
 const NAV_ITEMS = [
   { title: "Весь каталог", href: "/products" },
@@ -29,8 +31,11 @@ function HeaderNav() {
             </svg>
           </Link>
           <ul className={styles.links}>
-            {NAV_ITEMS.map((item) => (
+            {NAV_ITEMS.map((item, i) => (
               <li className={styles.link} key={item.title}>
+                {i === 0 && (
+                  <Image src={fireImg} alt="fire" width={20} height={20} />
+                )}
                 {item.title}
               </li>
             ))}

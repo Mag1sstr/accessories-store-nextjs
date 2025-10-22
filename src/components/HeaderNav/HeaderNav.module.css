@@ -10,6 +10,16 @@
   justify-content: space-between;
   font-size: 18px;
 }
+.link {
+  &:first-child {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    padding: 3px 7px;
+    border-radius: 8px;
+    background-color: #fdefbf;
+  }
+}
 .contact {
   display: flex;
   flex-direction: column;
