@@ -85,4 +85,11 @@
   border-radius: 12px;
   font-weight: 700;
   font-size: 18px;
+  &.added {
+    background-color: #6fd91c;
+    &:hover {
+      opacity: 1;
+      cursor: default;
+    }
+  }
 }

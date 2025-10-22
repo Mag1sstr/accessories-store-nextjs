@@ -4,13 +4,24 @@ import styles from "./SingleProductPage.module.css";
 import Image from "next/image";
 import { useState } from "react";
 import Button from "../Button/Button";
+import { useAppDispatch } from "@/store/store";
+import { addToCart, setAddedProduct } from "@/store/slices/cartSlice";
+import { useModals } from "@/hooks/useModals";
+import { useCart } from "@/hooks/useCart";
 
 interface IProps {
   product: IProducts;
 }
 
 function SingleProductPage(product: IProducts) {
+  const dispatch = useAppDispatch();
   const [mainImage, setMainImage] = useState(0);
+
+  const { setOpenAddedModal } = useModals();
+  const { cart } = useCart();
+
+  const isInCart = cart.some((el) => el.id === product.id);
+
   return (
     <section className={styles.wrapper}>
       <div className="container">
@@ -60,7 +71,17 @@ function SingleProductPage(product: IProducts) {
                     в наличии
                   </p>
                 </div>
-                <Button className={styles.add} title="Добавить в корзину" />
+                <Button
+                  className={`${styles.add} ${isInCart && styles.added}`}
+                  title={isInCart ? "Добавлено" : "Добавить в корзину"}
+                  onClick={() => {
+                    if (!isInCart) {
+                      dispatch(addToCart({ ...product, count: 1 }));
+                      dispatch(setAddedProduct(product));
+                      setOpenAddedModal(true);
+                    }
+                  }}
+                />
               </div>
             </div>
           </div>
