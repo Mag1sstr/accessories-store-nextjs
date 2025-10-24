@@ -1,9 +1,12 @@
+"use client";
+import { useScroll } from "@/hooks/useScroll";
 import Button from "../Button/Button";
 import styles from "./Guarantee.module.css";
 
 function Guarantee() {
+  const ref = useScroll();
   return (
-    <section className={styles.wrapper}>
+    <section ref={ref} className={styles.wrapper}>
       <div className={styles.garant}>
         <div className="container">
           <h1 className={styles.garantTitle}>Гарантия 1 год</h1>
