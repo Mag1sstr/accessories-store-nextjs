@@ -40,9 +40,7 @@ function HeaderNav() {
                 key={item.title}
                 onClick={() => router.push(item.href)}
               >
-                {i === 0 && (
-                  <Image src={fireImg} alt="fire" width={20} height={20} />
-                )}
+                {i === 0 && <Image src={fireImg} alt="fire" />}
                 {item.title}
               </li>
             ))}
