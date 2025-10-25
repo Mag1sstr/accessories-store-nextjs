@@ -6,7 +6,7 @@ import { useModals } from "@/hooks/useModals";
 import { useRouter } from "next/navigation";
 import { useCart } from "@/hooks/useCart";
 import CloseBtn from "../CloseBtn/CloseBtn";
-import { useAppDispatch } from "@/store/store";
+import { useAppDispatch, useAppSelector } from "@/store/store";
 import {
   decreaseCartItem,
   deleteCartItem,
@@ -17,6 +17,7 @@ function Cart() {
   const dispatch = useAppDispatch();
   const { openCart, setOpenCart } = useModals();
   const { cart } = useCart();
+  const { viewedProducts } = useAppSelector((state) => state.viewed);
   const router = useRouter();
 
   const totalPrice = cart.reduce((acc, el) => acc + el.price * el.count, 0);
@@ -47,6 +48,17 @@ function Cart() {
             <h2>В корзине пока ничего нет</h2>
             <p>Но вы можете легко это исправить</p>
             <button onClick={handleOpenProducts}>Начать покупки</button>
+            <div className={styles.viewed}>
+              <h3 className={styles.viewedTitle}>Кстати, вы это смотрели</h3>
+              <ul className={styles.viewedRow}>
+                {viewedProducts.map((product) => (
+                  <li key={product.id}>
+                    <img src={product.images[0]} alt={product.title} />
+                    <p>{product.title}</p>
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
         ) : (
           <>

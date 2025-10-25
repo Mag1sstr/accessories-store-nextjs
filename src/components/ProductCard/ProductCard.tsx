@@ -8,6 +8,7 @@ import { MouseEvent, useMemo } from "react";
 import { Carousel } from "antd";
 import { useCart } from "@/hooks/useCart";
 import { useModals } from "@/hooks/useModals";
+import { addViewedProduct } from "@/store/slices/viewedSlice";
 
 function ProductCard(product: IProducts) {
   const dispatch = useAppDispatch();
@@ -72,7 +73,10 @@ function ProductCard(product: IProducts) {
       <h3
         className={styles.title}
         title={product.title}
-        onClick={() => router.push(`/products/${product.id}`)}
+        onClick={() => {
+          dispatch(addViewedProduct(product));
+          router.push(`/products/${product.id}`);
+        }}
       >
         {product.title}
       </h3>

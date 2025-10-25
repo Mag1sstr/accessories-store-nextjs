@@ -3,11 +3,13 @@ import { configureStore } from "@reduxjs/toolkit";
 import { useDispatch, useSelector } from "react-redux";
 import filterSlice from "./slices/filterSlice";
 import cartSlice from "./slices/cartSlice";
+import viewedSlice from "./slices/viewedSlice";
 
 export const store = configureStore({
   reducer: {
     filter: filterSlice,
     cart: cartSlice,
+    viewed: viewedSlice,
     [api.reducerPath]: api.reducer,
   },
   middleware(getDefaultMiddleware) {
