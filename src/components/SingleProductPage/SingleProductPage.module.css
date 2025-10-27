@@ -128,3 +128,18 @@
     line-height: 1.2;
   }
 }
+
+.viewed {
+  padding-top: 24px;
+  padding-bottom: 40px;
+  & > h2 {
+    font-size: 40px;
+    font-weight: 700;
+    margin-bottom: 24px;
+  }
+}
+.viewedRow {
+  display: grid;
+  grid-template-columns: repeat(5, 282px);
+  gap: 24px;
+}

@@ -4,7 +4,7 @@ import styles from "./SingleProductPage.module.css";
 import Image from "next/image";
 import { useState } from "react";
 import Button from "../Button/Button";
-import { useAppDispatch } from "@/store/store";
+import { useAppDispatch, useAppSelector } from "@/store/store";
 import { addToCart, setAddedProduct } from "@/store/slices/cartSlice";
 import { useModals } from "@/hooks/useModals";
 import { useCart } from "@/hooks/useCart";
@@ -13,6 +13,7 @@ import a_icon2 from "../../../public/assets/singleProduct/02.png";
 import a_icon3 from "../../../public/assets/singleProduct/03.png";
 import a_icon4 from "../../../public/assets/singleProduct/04.png";
 import a_icon5 from "../../../public/assets/singleProduct/05.png";
+import ProductCard from "../ProductCard/ProductCard";
 
 const PRODUCT_ADVANTAGES = [
   { title: "Только оригинальная продукция", subTitle: "", img: a_icon1 },
@@ -48,6 +49,7 @@ function SingleProductPage(product: IProducts) {
 
   const { setOpenAddedModal } = useModals();
   const { cart } = useCart();
+  const { viewedProducts } = useAppSelector((state) => state.viewed);
 
   const isInCart = cart.some((el) => el.id === product.id);
 
@@ -124,6 +126,14 @@ function SingleProductPage(product: IProducts) {
             </li>
           ))}
         </ul>
+        <div className={styles.viewed}>
+          <h2>Вы смотрели</h2>
+          <div className={styles.viewedRow}>
+            {viewedProducts.map((product) => (
+              <ProductCard key={product.id} {...product} />
+            ))}
+          </div>
+        </div>
       </div>
     </section>
   );
