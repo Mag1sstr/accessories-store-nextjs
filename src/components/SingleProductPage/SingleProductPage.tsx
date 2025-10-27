@@ -8,6 +8,35 @@ import { useAppDispatch } from "@/store/store";
 import { addToCart, setAddedProduct } from "@/store/slices/cartSlice";
 import { useModals } from "@/hooks/useModals";
 import { useCart } from "@/hooks/useCart";
+import a_icon1 from "../../../public/assets/singleProduct/01.png";
+import a_icon2 from "../../../public/assets/singleProduct/02.png";
+import a_icon3 from "../../../public/assets/singleProduct/03.png";
+import a_icon4 from "../../../public/assets/singleProduct/04.png";
+import a_icon5 from "../../../public/assets/singleProduct/05.png";
+
+const PRODUCT_ADVANTAGES = [
+  { title: "Только оригинальная продукция", subTitle: "", img: a_icon1 },
+  {
+    title: "Доставка за 2 часа",
+    subTitle: "Быстро и бесплатно доставляем все заказы по Москве",
+    img: a_icon2,
+  },
+  {
+    title: "Удобная оплата",
+    subTitle: "Все виды наличного и безналичного расчета",
+    img: a_icon3,
+  },
+  {
+    title: "Кредит",
+    subTitle: "Выгодные кредитные предложения от самых популярных банков",
+    img: a_icon4,
+  },
+  {
+    title: "Гарантия",
+    subTitle: "Предоставляем целый год сервисного обслуживания",
+    img: a_icon5,
+  },
+];
 
 interface IProps {
   product: IProducts;
@@ -86,6 +115,9 @@ function SingleProductPage(product: IProducts) {
             </div>
           </div>
         </div>
+        <ul className={styles.advan}>
+          <li></li>
+        </ul>
       </div>
     </section>
   );
