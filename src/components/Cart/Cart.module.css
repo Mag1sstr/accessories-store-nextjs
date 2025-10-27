@@ -14,7 +14,7 @@
     font-weight: 700;
     margin-bottom: 0.5rem;
   }
-  p {
+  & > p {
     font-weight: 500;
     color: #585656;
     margin-bottom: 1rem;
@@ -221,8 +221,10 @@
     border-radius: 8px;
     text-align: center;
     line-height: 1.2;
+    font-size: 14px;
+    font-weight: 500;
     img {
-      width: 56px;
+      width: 64px;
       border-radius: 8px;
     }
   }

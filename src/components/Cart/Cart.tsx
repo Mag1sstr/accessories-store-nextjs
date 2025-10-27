@@ -48,17 +48,19 @@ function Cart() {
             <h2>В корзине пока ничего нет</h2>
             <p>Но вы можете легко это исправить</p>
             <button onClick={handleOpenProducts}>Начать покупки</button>
-            <div className={styles.viewed}>
-              <h3 className={styles.viewedTitle}>Кстати, вы это смотрели</h3>
-              <ul className={styles.viewedRow}>
-                {viewedProducts.map((product) => (
-                  <li key={product.id}>
-                    <img src={product.images[0]} alt={product.title} />
-                    <p>{product.title}</p>
-                  </li>
-                ))}
-              </ul>
-            </div>
+            {viewedProducts.length > 0 && (
+              <div className={styles.viewed}>
+                <h3 className={styles.viewedTitle}>Кстати, вы это смотрели</h3>
+                <ul className={styles.viewedRow}>
+                  {viewedProducts.map((product) => (
+                    <li key={product.id}>
+                      <img src={product.images[0]} alt={product.title} />
+                      <p>{product.title}</p>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
           </div>
         ) : (
           <>
