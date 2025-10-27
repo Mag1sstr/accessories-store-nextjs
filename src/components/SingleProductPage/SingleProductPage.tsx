@@ -116,7 +116,13 @@ function SingleProductPage(product: IProducts) {
           </div>
         </div>
         <ul className={styles.advan}>
-          <li></li>
+          {PRODUCT_ADVANTAGES.map((el) => (
+            <li key={el.title} className={styles.advanItem}>
+              <Image src={el.img} alt="icon" />
+              <h3>{el.title}</h3>
+              <p>{el.subTitle}</p>
+            </li>
+          ))}
         </ul>
       </div>
     </section>
