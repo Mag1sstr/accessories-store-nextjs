@@ -1,3 +1,4 @@
+import { RootState } from "@/store/store";
 import {
   ICategories,
   Ilogin,
@@ -11,7 +12,16 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
 export const api = createApi({
   reducerPath: "api",
-  baseQuery: fetchBaseQuery({ baseUrl: "https://api.escuelajs.co/api/v1" }),
+  baseQuery: fetchBaseQuery({
+    baseUrl: "https://api.escuelajs.co/api/v1",
+    prepareHeaders(headers, { getState }) {
+      const token = (getState() as RootState).auth.token;
+      if (token) {
+        headers.set("Authorization", `Bearer ${token}`);
+      }
+      return headers;
+    },
+  }),
   endpoints: (builder) => ({
     getProducts: builder.query<IProducts[], IProductsParams>({
       query: (params) => ({
@@ -38,6 +48,12 @@ export const api = createApi({
         body,
       }),
     }),
+    getUser: builder.mutation({
+      query: () => ({
+        method: "GET",
+        url: "/auth/profile",
+      }),
+    }),
   }),
 });
 export const {
@@ -45,4 +61,5 @@ export const {
   useGetCategoriesQuery,
   useLoginUserMutation,
   useRegUserMutation,
+  useGetUserMutation,
 } = api;
