@@ -7,6 +7,8 @@ import { useEffect, useState } from "react";
 import Image from "next/image";
 import ModalSuccess from "../ModalSuccess/ModalSuccess";
 import ModalWrapper from "../ModalWrapper/ModalWrapper";
+import { useAppDispatch } from "@/store/store";
+import { setToken } from "@/store/slices/authSlice";
 
 interface IFields {
   email: string;
@@ -14,6 +16,7 @@ interface IFields {
 }
 
 function ModalLogin() {
+  const dispatch = useAppDispatch();
   const [loginSuccess, setLogginSuccess] = useState(false);
 
   const {
@@ -39,6 +42,7 @@ function ModalLogin() {
     let timer: ReturnType<typeof setTimeout>;
     if (isSuccess && data.access_token) {
       setLogginSuccess(true);
+      dispatch(setToken(data.access_token));
 
       timer = setTimeout(() => {
         setOpenLoginModal(false);

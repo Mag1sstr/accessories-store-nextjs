@@ -4,12 +4,14 @@ import { useDispatch, useSelector } from "react-redux";
 import filterSlice from "./slices/filterSlice";
 import cartSlice from "./slices/cartSlice";
 import viewedSlice from "./slices/viewedSlice";
+import authSlice from "./slices/authSlice";
 
 export const store = configureStore({
   reducer: {
     filter: filterSlice,
     cart: cartSlice,
     viewed: viewedSlice,
+    auth: authSlice,
     [api.reducerPath]: api.reducer,
   },
   middleware(getDefaultMiddleware) {
