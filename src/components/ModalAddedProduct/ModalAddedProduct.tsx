@@ -13,7 +13,12 @@ import Button from "../Button/Button";
 
 function ModalAddedProduct() {
   const { addedProduct } = useCart();
-  const { openAddedModal, setOpenAddedModal } = useModals();
+  const { openAddedModal, setOpenAddedModal, setOpenCart } = useModals();
+
+  const handleOrder = () => {
+    setOpenAddedModal(false);
+    setOpenCart(true);
+  };
 
   return (
     <ModalWrapper isOpen={openAddedModal} setIsOpen={setOpenAddedModal}>
@@ -33,7 +38,7 @@ function ModalAddedProduct() {
             <p>Добавлен в корзину</p>
             <h3>{addedProduct?.title}</h3>
             <div className={styles.btnRow}>
-              <Button title="оформить заказ" />
+              <Button title="оформить заказ" onClick={handleOrder} />
               <Button
                 background="white"
                 className={styles.btn}
