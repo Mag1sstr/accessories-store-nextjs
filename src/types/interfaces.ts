@@ -41,3 +41,10 @@ export interface IRegBody {
   avatar: string;
   password: string;
 }
+
+export interface IUser {
+  id: number;
+  email: string;
+  name: string;
+  avatar: string;
+}
