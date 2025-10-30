@@ -104,7 +104,7 @@ function ProductCard(product: IProducts) {
         </p>
         <p>Гарантия 1 год</p>
       </div>
-      <p className={styles.price}>{product.price}$</p>
+      <p className={styles.price}>{product.price} $</p>
       <button
         onClick={(e) => !isInCart && handleAddToCart(e)}
         className={`${styles.btn} ${isInCart && styles.btnActive}`}
