@@ -117,6 +117,45 @@ function SingleProductPage(product: IProducts) {
             </div>
           </div>
         </div>
+      </div>
+      <div className={styles.popask}>
+        <div className="container">
+          <ul className={styles.popaskRow}>
+            <li className={styles.popaskItem}>
+              <h3>Телефоны новые или восстановленные?</h3>
+              <p>
+                Все телефоны в istoreapple.ru полностью оригинальные, с полной
+                стандартной комплектацией.
+              </p>
+            </li>
+            <li className={styles.popaskItem}>
+              <h3>Почему у вас такие низкие цены?</h3>
+              <p>
+                Мы продаем американские и европейские смартфоны. На них цена на
+                15-20% дешевле, чем на смартфоны, выпущенные для Российского
+                рынка. Для пользователя никакой разницы между Американскими и
+                Российскими моделями нет. При желании, у нас есть и ростест
+                модели, но цена на них будет выше.
+              </p>
+            </li>
+            <li className={styles.popaskItem}>
+              <h3>Могу ли я проверить устройство до оплаты?</h3>
+              <p>
+                Конечно! Мы гарантируем вам качество. Вы можете выполнить любые
+                проверки техники перед оплатой
+              </p>
+            </li>
+            <li className={styles.popaskItem}>
+              <h3>Какой срок гарантии?</h3>
+              <p>
+                На всю технику, представленную у нас на сайте, мы предоставляем
+                гарантию 365 дней. Обмен и возврат возможен в течение 14 дней.
+              </p>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div className="container">
         <ul className={styles.advan}>
           {PRODUCT_ADVANTAGES.map((el) => (
             <li key={el.title} className={styles.advanItem}>
@@ -126,6 +165,9 @@ function SingleProductPage(product: IProducts) {
             </li>
           ))}
         </ul>
+      </div>
+
+      <div className="container">
         <div className={styles.viewed}>
           <h2>Вы смотрели</h2>
           <div className={styles.viewedRow}>

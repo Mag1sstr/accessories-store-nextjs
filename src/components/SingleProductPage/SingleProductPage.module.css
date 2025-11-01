@@ -143,3 +143,12 @@
   grid-template-columns: repeat(5, 282px);
   gap: 24px;
 }
+
+.popask {
+  background: #f9f9f9;
+  padding: 24px 0;
+}
+.popaskRow {
+  display: flex;
+  gap: 16px;
+}
