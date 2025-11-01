@@ -1,0 +1,44 @@
+.wrapper {
+  opacity: 0;
+  visibility: hidden;
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(112.87deg, #0e1114 35.17%, #102944 98.59%);
+  color: #badaff;
+  z-index: 20;
+  padding: 40px 56px 47px 67px;
+  font-weight: 500;
+
+  &.active {
+    opacity: 1;
+    visibility: visible;
+    .info {
+      opacity: 1;
+      margin-top: 0;
+    }
+    .icon {
+      transform: scale(1);
+    }
+  }
+}
+.row {
+  display: flex;
+  gap: 57px;
+}
+.info {
+  margin-top: 20px;
+  transition: 0.5s;
+  opacity: 0;
+}
+.icon {
+  transition: 0.5s;
+  transform: scale(0.3);
+}
+.title {
+  font-size: 40px;
+  font-weight: 700;
+}
+.subTitle {
+  margin-bottom: 30px;
+  line-height: 1.2;
+}

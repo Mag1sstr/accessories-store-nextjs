@@ -12,11 +12,19 @@ import {
   deleteCartItem,
   increaseCartItem,
 } from "@/store/slices/cartSlice";
+import { useState } from "react";
+import { isValidPhone } from "@/utils/isValidPhone";
+import Button from "../Button/Button";
+import OrderIsCreate from "../OrderIsCreate/OrderIsCreate";
 
 function Cart() {
   const dispatch = useAppDispatch();
+  const [tel, setTel] = useState("");
+  const [isOrder, setIsOrder] = useState(false);
+
   const { openCart, setOpenCart } = useModals();
   const { cart } = useCart();
+
   const { viewedProducts } = useAppSelector((state) => state.viewed);
   const router = useRouter();
 
@@ -37,6 +45,7 @@ function Cart() {
     <ModalWrapper isOpen={openCart} setIsOpen={setOpenCart}>
       <div onMouseDown={(e) => e.stopPropagation()} className={styles.cart}>
         <CloseBtn onClick={handleCloseCart} />
+        <OrderIsCreate isActive={isOrder} />
         {!cart.length ? (
           <div className={styles.not}>
             <Image
@@ -138,8 +147,19 @@ function Cart() {
                 </div>
                 <div className={styles.option}>
                   <p>Введите телефон</p>
-                  <input className={styles.tel} type="tel" placeholder="+7" />
+                  <input
+                    value={tel}
+                    onChange={(e) => setTel(e.target.value)}
+                    className={`${styles.tel} ${
+                      !isValidPhone(tel) && styles.telErr
+                    }`}
+                    type="tel"
+                    placeholder="+7"
+                  />
                 </div>
+                <button className={styles.btn} onClick={() => setIsOrder(true)}>
+                  оформить заказ
+                </button>
               </div>
               <div className={styles.line}></div>
             </div>
