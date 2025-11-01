@@ -1,10 +1,8 @@
-.wrapper {
-  padding: 120px 0;
-}
 .productImages {
   width: 400px;
 }
 .productInfo {
+  padding: 120px 0 40px 0;
   display: flex;
   gap: 96px;
 }
@@ -150,5 +148,20 @@
 }
 .popaskRow {
   display: flex;
-  gap: 16px;
+  gap: 1rem;
+}
+.popaskItem {
+  flex: 1;
+  padding: 1rem;
+  background: #fff;
+  border-radius: 1rem;
+  h3 {
+    font-size: 24px;
+    font-weight: 500;
+    margin-bottom: 8px;
+  }
+  p {
+    color: #585656;
+    line-height: 1.2;
+  }
 }

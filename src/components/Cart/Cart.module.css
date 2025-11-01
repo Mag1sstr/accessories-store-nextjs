@@ -56,7 +56,6 @@
 }
 .right {
   flex: 1;
-  background-color: aqua;
 }
 .col {
   display: flex;
@@ -158,6 +157,7 @@
   gap: 1rem;
 }
 .option {
+  margin-bottom: 24px;
   & > p {
     font-size: 20px;
     font-weight: 700;
@@ -227,5 +227,19 @@
       width: 64px;
       border-radius: 8px;
     }
+  }
+}
+.tel {
+  width: 100%;
+  height: 49px;
+  border: 1px solid #dbdbdb;
+  border-radius: 1rem;
+  padding: 0 1rem;
+  outline: none;
+  box-shadow: 0px 4px 20px 0px transparent inset;
+  transition: 0.3s;
+
+  &:focus {
+    box-shadow: 0px 4px 20px 0px rgba(0, 0, 0, 0.05) inset;
   }
 }

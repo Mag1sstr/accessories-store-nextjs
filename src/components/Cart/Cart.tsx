@@ -136,6 +136,10 @@ function Cart() {
                     </div>
                   </div>
                 </div>
+                <div className={styles.option}>
+                  <p>Введите телефон</p>
+                  <input className={styles.tel} type="tel" placeholder="+7" />
+                </div>
               </div>
               <div className={styles.line}></div>
             </div>
