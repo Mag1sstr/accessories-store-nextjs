@@ -10,8 +10,13 @@ function User() {
   };
   return user ? (
     <div className={styles.user}>
-      <img src={user.avatar} alt="avatar" />
-      {user.name}
+      <img
+        src="https://img.icons8.com/?size=100&id=ABBSjQJK83zf&format=png&color=000000"
+        alt="avatar"
+      />
+      <p title={user.name}> {user.name}</p>
+
+      <div className={styles.actions}></div>
     </div>
   ) : (
     <button className={styles.login} onClick={handleOpenLogin}>

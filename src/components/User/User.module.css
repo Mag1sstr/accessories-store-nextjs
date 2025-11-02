@@ -10,3 +10,22 @@
     opacity: 0.9;
   }
 }
+.user {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  border-radius: 8px;
+  height: 32px;
+  background-color: #fff;
+  padding: 0 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+  img {
+    width: 20px;
+  }
+  p {
+    max-width: 7ch;
+    text-overflow: ellipsis;
+    overflow: hidden;
+  }
+}
