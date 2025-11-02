@@ -20,6 +20,8 @@
   background-color: #fff;
   padding: 0 20px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+  cursor: pointer;
+
   img {
     width: 20px;
   }
@@ -27,5 +29,31 @@
     max-width: 7ch;
     text-overflow: ellipsis;
     overflow: hidden;
+  }
+}
+.drop {
+  margin-top: 8px;
+  padding: 1rem;
+  border-radius: 8px;
+  position: absolute;
+  top: 100%;
+  right: 0;
+  width: 210px;
+  background-color: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+}
+.actions {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-size: 20px;
+  li {
+    background-color: #f9f9f9;
+    padding: 8px;
+    border-radius: 8px;
+    transition: 0.3s;
+    &:hover {
+      filter: brightness(0.96);
+    }
   }
 }

@@ -16,7 +16,12 @@ function User() {
       />
       <p title={user.name}> {user.name}</p>
 
-      <div className={styles.actions}></div>
+      <div className={styles.drop}>
+        <ul className={styles.actions}>
+          <li>Заказы</li>
+          <li>Выйти</li>
+        </ul>
+      </div>
     </div>
   ) : (
     <button className={styles.login} onClick={handleOpenLogin}>
