@@ -8,14 +8,12 @@ import Blur from "../Blur/Blur";
 import { useModals } from "@/hooks/useModals";
 import { useCart } from "@/hooks/useCart";
 import HeaderNav from "../HeaderNav/HeaderNav";
+import User from "../User/User";
 
 function Header() {
-  const { setOpenLoginModal, setOpenCart } = useModals();
+  const { setOpenCart } = useModals();
   const { cart } = useCart();
 
-  const handleOpenLogin = () => {
-    setOpenLoginModal(true);
-  };
   const handleOpenCart = () => {
     setOpenCart(true);
   };
@@ -63,7 +61,7 @@ function Header() {
               <a href="#!">
                 <Image src="/assets/vk.png" width={32} height={32} alt="vk" />
               </a>
-              <button onClick={handleOpenLogin}>Login</button>
+              <User />
             </div>
           </div>
         </div>

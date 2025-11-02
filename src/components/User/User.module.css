@@ -1,0 +1,12 @@
+.login {
+  height: 32px;
+  padding: 7px 40px;
+  background-color: var(--prime);
+  color: #fff;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: opacity 0.3s;
+  &:hover {
+    opacity: 0.9;
+  }
+}

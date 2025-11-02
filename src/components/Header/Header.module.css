@@ -24,6 +24,9 @@
   display: flex;
   align-items: center;
   gap: 8px;
+  a {
+    height: 32px;
+  }
 }
 
 /* filters */
