@@ -1,25 +1,34 @@
 import { useAuth } from "@/hooks/useAuth";
 import styles from "./User.module.css";
 import { useModals } from "@/hooks/useModals";
+import { useAppDispatch } from "@/store/store";
+import { logoutUser } from "@/store/slices/authSlice";
+import { useState } from "react";
 function User() {
+  const [open, setOpen] = useState(false);
   const { user } = useAuth();
   const { setOpenLoginModal } = useModals();
+  const dispatch = useAppDispatch();
 
   const handleOpenLogin = () => {
     setOpenLoginModal(true);
   };
+  const handleLogout = () => {
+    dispatch(logoutUser());
+  };
+
   return user ? (
-    <div className={styles.user}>
+    <div onClick={() => setOpen((prev) => !prev)} className={styles.user}>
       <img
         src="https://img.icons8.com/?size=100&id=ABBSjQJK83zf&format=png&color=000000"
         alt="avatar"
       />
       <p title={user.name}> {user.name}</p>
 
-      <div className={styles.drop}>
+      <div className={`${styles.drop} ${open && styles.open}`}>
         <ul className={styles.actions}>
           <li>Заказы</li>
-          <li>Выйти</li>
+          <li onClick={handleLogout}>Выйти</li>
         </ul>
       </div>
     </div>

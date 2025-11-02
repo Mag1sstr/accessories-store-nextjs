@@ -46,6 +46,7 @@ function ModalLogin() {
 
       timer = setTimeout(() => {
         setOpenLoginModal(false);
+        setLogginSuccess(false);
       }, 1500);
     }
 
