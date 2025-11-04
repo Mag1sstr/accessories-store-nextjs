@@ -28,20 +28,6 @@ function CatalogMenu() {
     setSelectCategory(id === selectCategory ? null : id);
   };
 
-  // useEffect(() => {
-  //   function handleOutsideClick(event: PointerEvent) {
-  //     if (
-  //       menuRef.current &&
-  //       event.target instanceof Node &&
-  //       !menuRef.current.contains(event.target)
-  //     ) {
-  //       setOpenMenu(false);
-  //     }
-  //   }
-  //   document.addEventListener("click", handleOutsideClick);
-
-  //   return () => document.removeEventListener("click", handleOutsideClick);
-  // }, [menuRef]);
   useClickOutside(setOpenMenu, menuRef);
 
   return (
