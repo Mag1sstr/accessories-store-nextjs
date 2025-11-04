@@ -11,10 +11,10 @@ import {
   decreaseCartItem,
   deleteCartItem,
   increaseCartItem,
+  setCart,
 } from "@/store/slices/cartSlice";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { isValidPhone } from "@/utils/isValidPhone";
-import Button from "../Button/Button";
 import OrderIsCreate from "../OrderIsCreate/OrderIsCreate";
 
 function Cart() {
@@ -40,6 +40,18 @@ function Cart() {
   const handleCloseCart = () => {
     setOpenCart(false);
   };
+
+  useEffect(() => {
+    let timer: NodeJS.Timeout;
+    if (isOrder) {
+      timer = setTimeout(() => {
+        setOpenCart(false);
+        setIsOrder(false);
+        dispatch(setCart([]));
+      }, 2000);
+    }
+    return () => clearTimeout(timer);
+  }, [isOrder]);
 
   return (
     <ModalWrapper isOpen={openCart} setIsOpen={setOpenCart}>

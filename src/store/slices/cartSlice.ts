@@ -64,6 +64,10 @@ export const cartSlice = createSlice({
       localStorage.setItem("cart", JSON.stringify(state.cart));
     },
 
+    setCart(state, action) {
+      state.cart = action.payload;
+    },
+
     setAddedProduct(state, action: PayloadAction<IProducts>) {
       state.addedProduct = action.payload;
     },
@@ -76,6 +80,7 @@ export const {
   increaseCartItem,
   decreaseCartItem,
   setAddedProduct,
+  setCart,
 } = cartSlice.actions;
 
 export default cartSlice.reducer;
