@@ -6,6 +6,7 @@ import { useModals } from "@/hooks/useModals";
 import { MouseEvent, useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import { useClickOutside } from "@/hooks/useClickOutside";
 
 function CatalogMenu() {
   const [selectCategory, setSelectCategory] = useState<null | number>(null);
@@ -27,20 +28,21 @@ function CatalogMenu() {
     setSelectCategory(id === selectCategory ? null : id);
   };
 
-  useEffect(() => {
-    function handleOutsideClick(event: PointerEvent) {
-      if (
-        menuRef.current &&
-        event.target instanceof Node &&
-        !menuRef.current.contains(event.target)
-      ) {
-        setOpenMenu(false);
-      }
-    }
-    document.addEventListener("click", handleOutsideClick);
+  // useEffect(() => {
+  //   function handleOutsideClick(event: PointerEvent) {
+  //     if (
+  //       menuRef.current &&
+  //       event.target instanceof Node &&
+  //       !menuRef.current.contains(event.target)
+  //     ) {
+  //       setOpenMenu(false);
+  //     }
+  //   }
+  //   document.addEventListener("click", handleOutsideClick);
 
-    return () => document.removeEventListener("click", handleOutsideClick);
-  }, [menuRef]);
+  //   return () => document.removeEventListener("click", handleOutsideClick);
+  // }, [menuRef]);
+  useClickOutside(setOpenMenu, menuRef);
 
   return (
     <div className={`${styles.menu} ${openMenu && styles.open}`} ref={menuRef}>

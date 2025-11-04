@@ -3,12 +3,15 @@ import styles from "./User.module.css";
 import { useModals } from "@/hooks/useModals";
 import { useAppDispatch } from "@/store/store";
 import { logoutUser } from "@/store/slices/authSlice";
-import { useState } from "react";
+import { useRef, useState } from "react";
+import { useClickOutside } from "@/hooks/useClickOutside";
 function User() {
   const [open, setOpen] = useState(false);
   const { user } = useAuth();
   const { setOpenLoginModal } = useModals();
   const dispatch = useAppDispatch();
+
+  const ref = useRef<HTMLDivElement>(null);
 
   const handleOpenLogin = () => {
     setOpenLoginModal(true);
@@ -17,8 +20,14 @@ function User() {
     dispatch(logoutUser());
   };
 
+  useClickOutside(setOpen, ref!);
+
   return user ? (
-    <div onClick={() => setOpen((prev) => !prev)} className={styles.user}>
+    <div
+      ref={ref}
+      onClick={() => setOpen((prev) => !prev)}
+      className={styles.user}
+    >
       <img
         src="https://img.icons8.com/?size=100&id=ABBSjQJK83zf&format=png&color=000000"
         alt="avatar"
