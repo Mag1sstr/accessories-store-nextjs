@@ -6,6 +6,7 @@
   padding: 0 87px;
   border-radius: 1rem;
   min-height: 189px;
+  margin-bottom: 56px;
   & > div {
     color: #f9f9f9;
     h2 {
@@ -27,4 +28,55 @@
     height: 100%;
     object-fit: contain;
   }
+}
+.steps {
+  h3 {
+    text-align: center;
+    font-size: 32px;
+    font-weight: 700;
+    margin-bottom: 32px;
+    color: var(--prime);
+  }
+}
+.stepsRow {
+  position: relative;
+
+  display: flex;
+  gap: 1rem;
+  &::before {
+    position: absolute;
+    content: "";
+    max-width: 961px;
+    width: 100%;
+    height: 4px;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 31px;
+    z-index: -1;
+    background-color: #f3f8ff;
+  }
+}
+.step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: 24px;
+  font-size: 20px;
+  font-weight: 500;
+  P {
+    text-align: center;
+  }
+}
+.stepNum {
+  font-size: 40px;
+  font-weight: 700;
+  color: var(--prime);
+  background-color: #f3f8ff;
+  border-radius: 8px;
+  width: 64px;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem;
 }
