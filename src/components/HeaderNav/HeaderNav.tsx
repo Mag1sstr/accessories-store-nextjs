@@ -9,6 +9,7 @@ const NAV_ITEMS = [
   { title: "Весь каталог", href: "/products" },
   { title: "Гарантия", href: "/guarantee" },
   { title: "Политика возврата", href: "/policy" },
+  { title: "Кредит", href: "/credit" },
   { title: "Доставка и оплата", href: "/delivery" },
   { title: "Контакты ", href: "/contacts" },
 ];

@@ -1,0 +1,30 @@
+.banner {
+  background: linear-gradient(269.84deg, #0071e4 0.08%, #7ebeff 99.92%);
+  display: flex;
+  align-items: center;
+  gap: 80px;
+  padding: 0 87px;
+  border-radius: 1rem;
+  min-height: 189px;
+  & > div {
+    color: #f9f9f9;
+    h2 {
+      font-size: 40px;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+    p {
+      font-size: 24px;
+      font-weight: 500;
+    }
+  }
+}
+.banImg {
+  max-width: 302px;
+  margin-bottom: -19px;
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+}
