@@ -13,6 +13,8 @@ interface IModalsContext {
   setOpenCart: setModalState;
   openAddedModal: boolean;
   setOpenAddedModal: setModalState;
+  openCallModal: boolean;
+  setOpenCallModal: setModalState;
 }
 
 export const ModalsContext = createContext({} as IModalsContext);
