@@ -4,6 +4,7 @@ import styles from "./HeaderNav.module.css";
 import fireImg from "../../../public/assets/icons/fire.png";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
+import { useModals } from "@/hooks/useModals";
 
 const NAV_ITEMS = [
   { title: "Весь каталог", href: "/products" },
@@ -16,6 +17,12 @@ const NAV_ITEMS = [
 
 function HeaderNav() {
   const router = useRouter();
+  const { setOpenCallModal } = useModals();
+
+  const handleOpenCallModal = () => {
+    setOpenCallModal(true);
+  };
+
   return (
     <nav>
       <div className="container">
@@ -62,7 +69,9 @@ function HeaderNav() {
               </svg>
               +7 812 561 96 62
             </p>
-            <p className={styles.call}>Вам перезвонить?</p>
+            <p className={styles.call} onClick={handleOpenCallModal}>
+              Вам перезвонить?
+            </p>
           </div>
         </div>
       </div>
