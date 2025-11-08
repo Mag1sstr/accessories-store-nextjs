@@ -9,6 +9,7 @@ import { useModals } from "@/hooks/useModals";
 import { useCart } from "@/hooks/useCart";
 import HeaderNav from "../HeaderNav/HeaderNav";
 import User from "../User/User";
+import Link from "next/link";
 
 function Header() {
   const { setOpenCart } = useModals();
@@ -73,7 +74,7 @@ function Header() {
           <div className={styles.filterRow}>
             <CatalogMenu />
             <Search />
-            <button className={styles.fav}>
+            <Link href="/favorites" className={styles.fav}>
               <svg
                 width="40"
                 height="40"
@@ -89,7 +90,7 @@ function Header() {
                   strokeLinejoin="round"
                 />
               </svg>
-            </button>
+            </Link>
             <button>
               <svg
                 width="40"
