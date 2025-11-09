@@ -9,7 +9,10 @@ import { Carousel } from "antd";
 import { useCart } from "@/hooks/useCart";
 import { useModals } from "@/hooks/useModals";
 import { addViewedProduct } from "@/store/slices/viewedSlice";
-import { addToFavorites } from "@/store/slices/favoritesSlice";
+import {
+  addToFavorites,
+  deleteFavoritesItem,
+} from "@/store/slices/favoritesSlice";
 
 function ProductCard(product: IProducts) {
   const dispatch = useAppDispatch();
@@ -31,7 +34,11 @@ function ProductCard(product: IProducts) {
   };
 
   const handleAddToFavorites = () => {
-    dispatch(addToFavorites(product));
+    if (isInFavorites) {
+      dispatch(deleteFavoritesItem(product.id));
+    } else {
+      dispatch(addToFavorites(product));
+    }
   };
 
   const randomRating = useMemo(() => Math.floor(Math.random() * 6), []);
