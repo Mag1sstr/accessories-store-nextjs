@@ -2,21 +2,25 @@
 import { IProducts } from "@/types/interfaces";
 import styles from "./ProductCard.module.css";
 import { useRouter } from "next/navigation";
-import { useAppDispatch } from "@/store/store";
+import { useAppDispatch, useAppSelector } from "@/store/store";
 import { addToCart, setAddedProduct } from "@/store/slices/cartSlice";
 import { MouseEvent, useMemo } from "react";
 import { Carousel } from "antd";
 import { useCart } from "@/hooks/useCart";
 import { useModals } from "@/hooks/useModals";
 import { addViewedProduct } from "@/store/slices/viewedSlice";
+import { addToFavorites } from "@/store/slices/favoritesSlice";
 
 function ProductCard(product: IProducts) {
   const dispatch = useAppDispatch();
   const router = useRouter();
 
   const { cart } = useCart();
+  const { favorites } = useAppSelector((state) => state.favorites);
   const { setOpenAddedModal } = useModals();
+
   const isInCart = cart.some((el) => el.id === product.id);
+  const isInFavorites = favorites.some((el) => el.id === product.id);
 
   const handleAddToCart = (e: MouseEvent<HTMLButtonElement>) => {
     e.stopPropagation();
@@ -24,6 +28,10 @@ function ProductCard(product: IProducts) {
     dispatch(addToCart({ ...product, count: 1 }));
     setOpenAddedModal(true);
     dispatch(setAddedProduct(product));
+  };
+
+  const handleAddToFavorites = () => {
+    dispatch(addToFavorites(product));
   };
 
   const randomRating = useMemo(() => Math.floor(Math.random() * 6), []);
@@ -52,7 +60,10 @@ function ProductCard(product: IProducts) {
             </div>
           ))}
         </div>
-        <button className={styles.like}>
+        <button
+          onClick={handleAddToFavorites}
+          className={`${styles.like} ${isInFavorites && styles.inFavorites}`}
+        >
           <svg
             width="24"
             height="24"

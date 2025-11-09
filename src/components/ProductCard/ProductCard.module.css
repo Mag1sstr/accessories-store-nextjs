@@ -46,6 +46,12 @@
       transform: scale(1.2);
     }
   }
+  &.inFavorites {
+    svg * {
+      stroke: #ee204d;
+      fill: #ee204d;
+    }
+  }
 }
 .img {
   width: 100%;

@@ -9,7 +9,7 @@ function FavoritesPage() {
   return (
     <section>
       <div className="container">
-        {favorites.length > 0 ? (
+        {!favorites.length ? (
           <>
             <h1>В избранном пока ничего нет</h1>
             <p>
