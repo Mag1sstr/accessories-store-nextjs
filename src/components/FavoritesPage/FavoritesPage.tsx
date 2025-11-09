@@ -1,30 +1,48 @@
+"use client";
+import { useAppSelector } from "@/store/store";
 import Button from "../Button/Button";
 import styles from "./FavoritesPage.module.css";
+import ProductCard from "../ProductCard/ProductCard";
 function FavoritesPage() {
+  const { favorites } = useAppSelector((state) => state.favorites);
+
   return (
     <section>
       <div className="container">
-        <h1>В избранном пока ничего нет</h1>
-        <p>
-          Нажимайте
-          <svg
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M7.5 3.99997C4.4625 3.99997 2 6.46247 2 9.49997C2 15 8.5 20 12 21.163C15.5 20 22 15 22 9.49997C22 6.46247 19.5375 3.99997 16.5 3.99997C14.64 3.99997 12.995 4.92347 12 6.33697C11.4928 5.61457 10.8191 5.02502 10.0358 4.61821C9.25245 4.21141 8.38265 3.99935 7.5 3.99997Z"
-              stroke="#878787"
-              strokeWidth="2.4"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-          </svg>
-          на понравившемся товаре, чтобы вернуться к нему позже
-        </p>
-        <Button title="пойти выбирать" />
+        {favorites.length > 0 ? (
+          <>
+            <h1>В избранном пока ничего нет</h1>
+            <p>
+              Нажимайте
+              <svg
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M7.5 3.99997C4.4625 3.99997 2 6.46247 2 9.49997C2 15 8.5 20 12 21.163C15.5 20 22 15 22 9.49997C22 6.46247 19.5375 3.99997 16.5 3.99997C14.64 3.99997 12.995 4.92347 12 6.33697C11.4928 5.61457 10.8191 5.02502 10.0358 4.61821C9.25245 4.21141 8.38265 3.99935 7.5 3.99997Z"
+                  stroke="#878787"
+                  strokeWidth="2.4"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
+              на понравившемся товаре, чтобы вернуться к нему позже
+            </p>
+            <Button title="пойти выбирать" />
+          </>
+        ) : (
+          <>
+            <h1 className={styles.title}>Избранное</h1>
+            <div className={styles.row}>
+              {favorites.map((item) => (
+                <ProductCard key={item.id} {...item} />
+              ))}
+            </div>
+          </>
+        )}
       </div>
     </section>
   );
