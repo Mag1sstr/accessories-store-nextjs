@@ -3,6 +3,7 @@ import styles from "./CreditPage.module.css";
 import bannerImg from "../../../public/assets/credit/ban.png";
 import personImg from "../../../public/assets/credit/person.png";
 import Button from "../Button/Button";
+import telImg from "../../../public/assets/credit/tel.png";
 
 function CreditPage() {
   return (
@@ -159,6 +160,103 @@ function CreditPage() {
                 ответит на все ваши вопросы связанными с покупкой в кредит
               </p>
             </div>
+          </div>
+        </div>
+
+        <div className={styles.conditions}>
+          <div className={styles.conditionsLeft}>
+            <h3>Условия для получения кредита</h3>
+            <ul className={styles.conditionsList}>
+              <li>
+                <svg
+                  width="32"
+                  height="32"
+                  viewBox="0 0 32 32"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <circle
+                    cx="16"
+                    cy="16"
+                    r="15"
+                    transform="matrix(1 0 0 -1 0 32)"
+                    stroke="#0071E4"
+                    strokeWidth="2"
+                  />
+                  <circle
+                    cx="10"
+                    cy="10"
+                    r="9"
+                    transform="matrix(1 0 0 -1 6 26)"
+                    stroke="#0071E4"
+                    strokeWidth="2"
+                  />
+                </svg>
+                Возраст - от 18 до 69 лет
+              </li>
+              <li>
+                <svg
+                  width="32"
+                  height="32"
+                  viewBox="0 0 32 32"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <circle
+                    cx="16"
+                    cy="16"
+                    r="15"
+                    transform="matrix(1 0 0 -1 0 32)"
+                    stroke="#0071E4"
+                    strokeWidth="2"
+                  />
+                  <circle
+                    cx="10"
+                    cy="10"
+                    r="9"
+                    transform="matrix(1 0 0 -1 6 26)"
+                    stroke="#0071E4"
+                    strokeWidth="2"
+                  />
+                </svg>
+                Наличие постоянного источника дохода {"(работа, пенсия)"}
+              </li>
+              <li>
+                <svg
+                  width="32"
+                  height="32"
+                  viewBox="0 0 32 32"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <circle
+                    cx="16"
+                    cy="16"
+                    r="15"
+                    transform="matrix(1 0 0 -1 0 32)"
+                    stroke="#0071E4"
+                    strokeWidth="2"
+                  />
+                  <circle
+                    cx="10"
+                    cy="10"
+                    r="9"
+                    transform="matrix(1 0 0 -1 6 26)"
+                    stroke="#0071E4"
+                    strokeWidth="2"
+                  />
+                </svg>
+                Наличие паспорта гражданина РФ
+              </li>
+            </ul>
+          </div>
+          <div className={styles.conditionsRight}>
+            <div>
+              <h3>Не откладывайте покупки на потом</h3>
+              <p>Купить желаемую технику в кредит на самых выгодных условиях</p>
+              <Button title="заполнить анкету" />
+            </div>
+            <Image src={telImg} alt="phone" />
           </div>
         </div>
       </div>
