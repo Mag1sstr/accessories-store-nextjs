@@ -99,9 +99,9 @@ function RegModal() {
           getValues={!!getValues("password")}
         />
         <button type="submit" className={styles.btn}>
-          войти
+          Создать аккаунт
         </button>
-        <p onClick={handleOpenLogin}>Создать аккаунт</p>
+        <p onClick={handleOpenLogin}>Войти в аккаунт</p>
       </form>
     </ModalWrapper>
   );
