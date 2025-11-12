@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import { useLoginUserMutation, useRegUserMutation } from "@/api/api";
 import ModalSuccess from "../ModalSuccess/ModalSuccess";
 import ModalWrapper from "../ModalWrapper/ModalWrapper";
+import checkImg from "../../../public/assets/icons/check.png";
 
 interface IFields {
   name: string;
@@ -20,10 +21,10 @@ function RegModal() {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<IFields>();
+  } = useForm<IFields>({ mode: "onChange" });
   const { openRegModal, setOpenRegModal, setOpenLoginModal } = useModals();
   const [regUser, { data, isSuccess }] = useRegUserMutation();
-  const [loginUser, { data: logData }] = useLoginUserMutation();
+  const [loginUser] = useLoginUserMutation();
 
   const submit: SubmitHandler<IFields> = (data) => {
     regUser({ ...data, avatar: "https://picsum.photos/800" });
@@ -56,20 +57,27 @@ function RegModal() {
       >
         <ModalSuccess isActive={regSuccess} text="Вы зарегистрировались!" />
         <h2>Создание аккаунта</h2>
-        <input
-          className={`${styles.field} ${errors.name && styles.err}`}
-          type="text"
-          placeholder="Ваше имя"
-          {...register("name", {
-            required: true,
-          })}
-        />
+        <div className={styles.inputBlock}>
+          <input
+            className={`${styles.field} ${errors.name && styles.err}`}
+            type="text"
+            placeholder="Ваше имя"
+            {...register("name", {
+              required: true,
+            })}
+          />
+          <img className={styles.checkIcon} src={checkImg.src} alt="check" />
+        </div>
         <input
           className={`${styles.field} ${errors.email && styles.err}`}
           type="text"
           placeholder="Почта"
           {...register("email", {
             required: true,
+            pattern: {
+              value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
+              message: "Неверный email",
+            },
           })}
         />
         <input
@@ -78,6 +86,7 @@ function RegModal() {
           placeholder="Пароль"
           {...register("password", {
             required: true,
+            minLength: 5,
           })}
         />
         <button type="submit" className={styles.btn}>
