@@ -28,7 +28,9 @@ function InputField({
         {...register}
       />
       <img
-        className={`${styles.checkIcon} ${!errors && getValues && styles.not}`}
+        className={`${styles.checkIcon} ${
+          !errors && getValues && styles.success
+        }`}
         src={checkImg.src}
         alt="check"
       />
