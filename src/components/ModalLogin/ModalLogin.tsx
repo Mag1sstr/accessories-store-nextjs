@@ -9,6 +9,7 @@ import ModalSuccess from "../ModalSuccess/ModalSuccess";
 import ModalWrapper from "../ModalWrapper/ModalWrapper";
 import { useAppDispatch } from "@/store/store";
 import { setToken } from "@/store/slices/authSlice";
+import InputField from "../InputField/InputField";
 
 interface IFields {
   email: string;
@@ -23,13 +24,11 @@ function ModalLogin() {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<IFields>();
+    getValues,
+  } = useForm<IFields>({ mode: "onChange" });
   const { openLoginModal, setOpenLoginModal, setOpenRegModal } = useModals();
   const [loginUser, { data, isSuccess }] = useLoginUserMutation();
 
-  const handleCloseModal = () => {
-    setOpenLoginModal(false);
-  };
   const handleOpenRegModal = () => {
     setOpenLoginModal(false);
     setOpenRegModal(true);
@@ -62,22 +61,31 @@ function ModalLogin() {
       >
         <ModalSuccess isActive={loginSuccess} text="Вы зашли в аккаунт!" />
         <h2>Войти в аккаунт</h2>
-        <input
-          className={`${styles.field} ${errors.email && styles.err}`}
-          type="text"
+
+        <InputField
           placeholder="Почта"
-          {...register("email", {
+          type="email"
+          register={register("email", {
             required: true,
+            pattern: {
+              value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
+              message: "",
+            },
           })}
+          errors={!!errors.email}
+          getValues={!!getValues("email")}
         />
-        <input
-          className={`${styles.field} ${errors.password && styles.err}`}
-          type="password"
+        <InputField
           placeholder="Пароль"
-          {...register("password", {
+          type="password"
+          register={register("password", {
             required: true,
+            minLength: 5,
           })}
+          errors={!!errors.password}
+          getValues={!!getValues("password")}
         />
+
         <button type="submit" className={styles.btn}>
           войти
         </button>
