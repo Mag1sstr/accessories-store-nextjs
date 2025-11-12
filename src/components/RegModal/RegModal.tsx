@@ -67,24 +67,8 @@ function RegModal() {
         onSubmit={handleSubmit(submit)}
       >
         <ModalSuccess isActive={regSuccess} text="Вы зарегистрировались!" />
+
         <h2>Создание аккаунта</h2>
-        {/* <div className={styles.inputBlock}>
-          <input
-            className={`${styles.field} ${errors.name && styles.err}`}
-            type="text"
-            placeholder="Ваше имя"
-            {...register("name", {
-              required: true,
-            })}
-          />
-          <img
-            className={`${styles.checkIcon} ${
-              !errors.name && !!getValues("name") && styles.not
-            }`}
-            src={checkImg.src}
-            alt="check"
-          />
-        </div> */}
         <InputField
           placeholder="Ваше имя"
           register={register("name", {
@@ -114,36 +98,6 @@ function RegModal() {
           errors={!!errors.password}
           getValues={!!getValues("password")}
         />
-        {/* <div className={styles.inputBlock}>
-          <input
-            className={`${styles.field} ${errors.email && styles.err}`}
-            type="text"
-            placeholder="Почта"
-            {...register("email", {
-              required: true,
-              pattern: {
-                value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
-                message: "Неверный email",
-              },
-            })}
-          />
-          <img
-            className={`${styles.checkIcon} ${
-              !errors.email && !!getValues("email") && styles.not
-            }`}
-            src={checkImg.src}
-            alt="check"
-          />
-        </div> */}
-        {/* <input
-          className={`${styles.field} ${errors.password && styles.err}`}
-          type="password"
-          placeholder="Пароль"
-          {...register("password", {
-            required: true,
-            minLength: 5,
-          })}
-        /> */}
         <button type="submit" className={styles.btn}>
           войти
         </button>
