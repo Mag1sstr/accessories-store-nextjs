@@ -21,6 +21,7 @@ function RegModal() {
     register,
     handleSubmit,
     formState: { errors },
+    getValues,
   } = useForm<IFields>({ mode: "onChange" });
   const { openRegModal, setOpenRegModal, setOpenLoginModal } = useModals();
   const [regUser, { data, isSuccess }] = useRegUserMutation();
@@ -66,20 +67,35 @@ function RegModal() {
               required: true,
             })}
           />
-          <img className={styles.checkIcon} src={checkImg.src} alt="check" />
+          <img
+            className={`${styles.checkIcon} ${
+              !errors.name && !!getValues("name") && styles.not
+            }`}
+            src={checkImg.src}
+            alt="check"
+          />
         </div>
-        <input
-          className={`${styles.field} ${errors.email && styles.err}`}
-          type="text"
-          placeholder="Почта"
-          {...register("email", {
-            required: true,
-            pattern: {
-              value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
-              message: "Неверный email",
-            },
-          })}
-        />
+        <div className={styles.inputBlock}>
+          <input
+            className={`${styles.field} ${errors.email && styles.err}`}
+            type="text"
+            placeholder="Почта"
+            {...register("email", {
+              required: true,
+              pattern: {
+                value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
+                message: "Неверный email",
+              },
+            })}
+          />
+          <img
+            className={`${styles.checkIcon} ${
+              !errors.email && !!getValues("email") && styles.not
+            }`}
+            src={checkImg.src}
+            alt="check"
+          />
+        </div>
         <input
           className={`${styles.field} ${errors.password && styles.err}`}
           type="password"
