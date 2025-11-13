@@ -20,7 +20,7 @@ function Header() {
   };
 
   return (
-    <header>
+    <header className={styles.header}>
       <div className={styles.headerTop}>
         <div className="container">
           <div className={styles.row}>

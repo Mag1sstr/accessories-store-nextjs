@@ -28,6 +28,7 @@
   --prime: #0071e4;
   --text-black: #100e0e;
   --card-size: 282px;
+  --tab-width: 768px;
 }
 * {
   margin: 0;

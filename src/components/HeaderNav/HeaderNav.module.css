@@ -59,3 +59,47 @@
   text-align: end;
   color: var(--prime);
 }
+
+.mobInput {
+  display: none;
+}
+@media (max-width: 768px) {
+  .headerNav {
+    min-height: unset;
+    padding: 4px 0;
+  }
+  .links {
+    display: none;
+    /* position: absolute;
+    left: 0;
+    top: 144px;
+    z-index: 100;
+    background-color: #fff;
+    width: 100%;
+    padding: 1rem 0;
+    flex-wrap: wrap;
+    gap: 24px;
+    justify-content: unset; */
+  }
+  .mobInput {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    max-width: 244px;
+    width: 100%;
+    input {
+      width: 100%;
+      border: none;
+      outline: none;
+      &::placeholder {
+        color: #b7b7b7;
+      }
+    }
+  }
+  .contact {
+    margin-left: auto;
+  }
+  .call {
+    display: none;
+  }
+}
