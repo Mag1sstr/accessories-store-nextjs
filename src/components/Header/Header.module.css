@@ -86,4 +86,7 @@
   .filters {
     display: none;
   }
+  .headerTop {
+    display: none;
+  }
 }

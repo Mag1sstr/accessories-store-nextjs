@@ -63,6 +63,15 @@
 .mobInput {
   display: none;
 }
+.burger {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  &:hover {
+    opacity: 0.5;
+  }
+}
 @media (max-width: 768px) {
   .headerNav {
     min-height: unset;
