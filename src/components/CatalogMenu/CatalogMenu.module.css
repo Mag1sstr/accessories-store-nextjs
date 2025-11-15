@@ -15,7 +15,6 @@
   }
 
   &:hover {
-    cursor: url(/assets/icons/cursor.svg), auto !important;
   }
 }
 .catalog {
@@ -50,6 +49,8 @@
   transition: 0.3s;
   padding: 24px 16px;
   overflow: auto;
+  cursor: url(/assets/icons/cursor.svg), auto;
+
   &.select {
     border-bottom-right-radius: 0;
   }
@@ -77,13 +78,14 @@
 }
 
 .categoryProductsWrapper {
+  visibility: hidden;
   overflow-x: hidden;
   position: absolute;
   left: 100%;
   top: 100%;
   z-index: 10;
-  width: 658px;
   height: 350px;
+  width: 658px;
   &.openCategoryProducts {
     .categoryProducts {
       transform: translateX(0);
@@ -93,8 +95,10 @@
   }
 }
 .categoryProducts {
-  visibility: hidden;
+  cursor: url(/assets/icons/cursor.svg), auto;
+
   pointer-events: none;
+  visibility: hidden;
   transform: translateX(-100%);
   width: 100%;
   height: 100%;

@@ -1,23 +1,13 @@
 import { IProducts } from "@/types/interfaces";
+import { getLocalStorageValue } from "@/utils/getLocalStorageValue";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 interface IFavoritesState {
   favorites: IProducts[];
 }
 
-export const getFavorites = () => {
-  if (typeof window === "undefined") return [];
-
-  try {
-    const cart = localStorage.getItem("favorites");
-    return cart ? (JSON.parse(cart) as IProducts[]) : [];
-  } catch (err) {
-    return [];
-  }
-};
-
 const initialState: IFavoritesState = {
-  favorites: getFavorites(),
+  favorites: getLocalStorageValue<IProducts[]>("favorites") ?? [],
 };
 
 export const favoritesSlice = createSlice({

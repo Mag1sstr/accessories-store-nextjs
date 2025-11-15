@@ -1,4 +1,5 @@
 import { IUser } from "@/types/interfaces";
+import { getLocalStorageValue } from "@/utils/getLocalStorageValue";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 interface IAuthState {
@@ -8,7 +9,7 @@ interface IAuthState {
 
 const initialState: IAuthState = {
   user: null,
-  token: localStorage.getItem("token"),
+  token: getLocalStorageValue<string>("token"),
 };
 
 export const authSlice = createSlice({

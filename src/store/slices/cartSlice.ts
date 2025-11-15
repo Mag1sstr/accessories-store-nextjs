@@ -1,4 +1,5 @@
 import { ICart, IProducts } from "@/types/interfaces";
+import { getLocalStorageValue } from "@/utils/getLocalStorageValue";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 interface ICartState {
@@ -6,19 +7,8 @@ interface ICartState {
   addedProduct: null | IProducts;
 }
 
-export const getCart = () => {
-  if (typeof window === "undefined") return [];
-
-  try {
-    const cart = localStorage.getItem("cart");
-    return cart ? (JSON.parse(cart) as ICart[]) : [];
-  } catch (err) {
-    return [];
-  }
-};
-
 const initialState: ICartState = {
-  cart: getCart() ?? [],
+  cart: getLocalStorageValue<ICart[]>("cart") ?? [],
   addedProduct: null,
 };
 

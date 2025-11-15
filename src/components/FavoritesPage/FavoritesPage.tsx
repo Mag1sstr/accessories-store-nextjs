@@ -3,6 +3,7 @@ import { useAppSelector } from "@/store/store";
 import Button from "../Button/Button";
 import styles from "./FavoritesPage.module.css";
 import ProductCard from "../ProductCard/ProductCard";
+import Link from "next/link";
 function FavoritesPage() {
   const { favorites } = useAppSelector((state) => state.favorites);
 
@@ -10,7 +11,7 @@ function FavoritesPage() {
     <section>
       <div className="container">
         {!favorites.length ? (
-          <>
+          <div className={styles.noFav}>
             <h1>В избранном пока ничего нет</h1>
             <p>
               Нажимайте
@@ -31,8 +32,10 @@ function FavoritesPage() {
               </svg>
               на понравившемся товаре, чтобы вернуться к нему позже
             </p>
-            <Button title="пойти выбирать" />
-          </>
+            <Link href="/products">
+              <Button title="пойти выбирать" />
+            </Link>
+          </div>
         ) : (
           <>
             <h1 className={styles.favTitle}>Избранное</h1>

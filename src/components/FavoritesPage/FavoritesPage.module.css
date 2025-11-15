@@ -9,3 +9,17 @@
   font-weight: 700;
   margin-bottom: 1rem;
 }
+
+.noFav {
+  h1 {
+    font-size: 40px;
+    font-weight: 700;
+    margin-bottom: 21px;
+  }
+  p {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 24px;
+  }
+}
