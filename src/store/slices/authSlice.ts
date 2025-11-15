@@ -7,9 +7,15 @@ interface IAuthState {
   token: string | null;
 }
 
+const getToken = () => {
+  if (typeof window == "undefined") return null;
+  const token = localStorage.getItem("token");
+  return token;
+};
+
 const initialState: IAuthState = {
   user: null,
-  token: getLocalStorageValue<string>("token"),
+  token: getToken(),
 };
 
 export const authSlice = createSlice({

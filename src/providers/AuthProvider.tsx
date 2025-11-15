@@ -1,19 +1,30 @@
 "use client";
-import { useGetUserMutation } from "@/api/api";
+import { useGetUserQuery } from "@/api/api";
 import { useAuth } from "@/hooks/useAuth";
-import { setUser } from "@/store/slices/authSlice";
+import { logoutUser, setUser } from "@/store/slices/authSlice";
 import { useAppDispatch } from "@/store/store";
 import { useEffect } from "react";
 
 function AuthProvider({ children }: { children: React.ReactNode }) {
   const dispatch = useAppDispatch();
-  const [getUser] = useGetUserMutation();
   const { token } = useAuth();
+
+  const { data, isSuccess, isError } = useGetUserQuery(null, {
+    skip: !token,
+  });
+
   useEffect(() => {
-    if (token) {
-      getUser(null).then((res) => dispatch(setUser(res.data)));
+    if (isSuccess && data) {
+      dispatch(setUser(data));
     }
-  }, [token]);
+  }, [isSuccess, data]);
+
+  useEffect(() => {
+    if (isError) {
+      dispatch(logoutUser());
+    }
+  }, [isError]);
+
   return <> {children}</>;
 }
 

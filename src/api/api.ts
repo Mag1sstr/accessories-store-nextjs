@@ -48,9 +48,8 @@ export const api = createApi({
         body,
       }),
     }),
-    getUser: builder.mutation({
+    getUser: builder.query({
       query: () => ({
-        method: "GET",
         url: "/auth/profile",
       }),
     }),
@@ -61,5 +60,5 @@ export const {
   useGetCategoriesQuery,
   useLoginUserMutation,
   useRegUserMutation,
-  useGetUserMutation,
+  useGetUserQuery,
 } = api;
