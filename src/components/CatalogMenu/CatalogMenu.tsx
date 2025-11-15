@@ -27,6 +27,11 @@ function CatalogMenu() {
   const handleSelectCategory = (id: number) => {
     setSelectCategory(id === selectCategory ? null : id);
   };
+  useEffect(() => {
+    if (!openMenu) {
+      setSelectCategory(null);
+    }
+  }, [openMenu]);
 
   useClickOutside(setOpenMenu, menuRef);
 
@@ -68,7 +73,12 @@ function CatalogMenu() {
           </li>
         ))}
       </ul>
-      {selectCategory && (
+
+      <div
+        className={`${styles.categoryProductsWrapper} ${
+          selectCategory && styles.openCategoryProducts
+        }`}
+      >
         <div className={styles.categoryProducts}>
           <div className={styles.inner}>
             {productsData?.map((product) => (
@@ -89,7 +99,7 @@ function CatalogMenu() {
             Смотреть все товары
           </Link>
         </div>
-      )}
+      </div>
     </div>
   );
 }

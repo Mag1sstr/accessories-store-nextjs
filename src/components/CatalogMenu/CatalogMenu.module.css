@@ -12,10 +12,6 @@
       opacity: 1;
       height: 350px;
     }
-    .categoryProducts {
-      visibility: visible;
-      opacity: 1;
-    }
   }
 
   &:hover {
@@ -80,20 +76,33 @@
   }
 }
 
-.categoryProducts {
-  visibility: hidden;
-  opacity: 0;
+.categoryProductsWrapper {
+  overflow-x: hidden;
   position: absolute;
   left: 100%;
   top: 100%;
   z-index: 10;
+  width: 658px;
+  height: 350px;
+  &.openCategoryProducts {
+    .categoryProducts {
+      transform: translateX(0);
+      visibility: visible;
+      pointer-events: auto;
+    }
+  }
+}
+.categoryProducts {
+  visibility: hidden;
+  pointer-events: none;
+  transform: translateX(-100%);
+  width: 100%;
+  height: 100%;
   padding: 24px;
   background-color: #fff;
   border-radius: 0 16px 16px 0;
   box-shadow: 0px 4px 16px 0px #0000000d;
-  transition: 0.3s;
-  height: 350px;
-  width: 658px;
+  transition: 0.5s;
   display: flex;
   flex-direction: column;
 }
