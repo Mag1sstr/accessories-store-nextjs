@@ -3,7 +3,7 @@ import Link from "next/link";
 import styles from "./HeaderNav.module.css";
 import fireImg from "../../../public/assets/icons/fire.png";
 import Image from "next/image";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { useModals } from "@/hooks/useModals";
 
 const NAV_ITEMS = [
@@ -17,6 +17,7 @@ const NAV_ITEMS = [
 
 function HeaderNav() {
   const router = useRouter();
+  const pathname = usePathname().replace("/", "");
   const { setOpenCallModal } = useModals();
 
   const handleOpenCallModal = () => {
@@ -61,7 +62,9 @@ function HeaderNav() {
           <ul className={styles.links}>
             {NAV_ITEMS.map((item, i) => (
               <li
-                className={styles.link}
+                className={`${styles.link} ${
+                  pathname === item.href.replace("/", "") && styles.linkActive
+                }`}
                 key={item.title}
                 onClick={() => router.push(item.href)}
               >
