@@ -2,6 +2,7 @@ import styles from "./DeliveryPage.module.css";
 
 import scooterImg from "../../../public/assets/delivery/scooter.png";
 import droneImg from "../../../public/assets/delivery/drone.png";
+import bicycleImg from "../../../public/assets/delivery/cycle.png";
 import Image from "next/image";
 
 function DeliveryPage() {
@@ -130,6 +131,19 @@ function DeliveryPage() {
               style={{ position: "relative" }}
             ></iframe>
           </div>
+        </div>
+
+        <div className={styles.ourAc}>
+          <div className={styles.ourAcInfo}>
+            <Image src={bicycleImg} alt="person" />
+            <div>
+              <h3>Доставка, которая радует</h3>
+              <p>согласуем с вами удобное время</p>
+              <p>курьер позвонит за час до доставки</p>
+              <p>любые ваши проверки техники перед оплатой</p>
+            </div>
+          </div>
+          <div className={styles.ourAcImportant}>актуально в Москве</div>
         </div>
       </div>
     </section>
