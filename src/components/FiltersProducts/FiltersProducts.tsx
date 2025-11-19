@@ -13,6 +13,7 @@ import { setCategoryId, setRangeValue } from "@/store/slices/filterSlice";
 import { useDebounce } from "@/hooks/useDebounce";
 import Pagination from "../Pagination/Pagination";
 import { TSort } from "@/types/types";
+import { createPagination } from "@/utils/createPagination";
 
 interface IProps {
   products: IProducts[];
@@ -48,10 +49,10 @@ function FiltersProducts({ products }: IProps) {
 
   const [currentPage, setCurrentPage] = useState(1);
 
-  const PAGE_SIZE = 6;
-  const firstIndex = currentPage * PAGE_SIZE - PAGE_SIZE;
-  const endIndex = firstIndex + PAGE_SIZE;
-  const totalPages = Math.ceil(productsData.length / PAGE_SIZE);
+  const { totalPages, firstIndex, lastIndex } = createPagination(
+    currentPage,
+    productsData.length
+  );
 
   const handleChange = (_: Event, newValue: number[]) => {
     dispatch(setRangeValue(newValue));
@@ -204,7 +205,7 @@ function FiltersProducts({ products }: IProps) {
           </div>
         </div>
         <div className={styles.products}>
-          {sortedProducts?.slice(firstIndex, endIndex).map((product) => (
+          {sortedProducts?.slice(firstIndex, lastIndex).map((product) => (
             <ProductCard {...product} key={product.id} />
           ))}
         </div>
