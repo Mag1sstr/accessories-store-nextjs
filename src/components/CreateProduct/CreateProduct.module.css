@@ -1,3 +1,29 @@
 .wrapper {
   margin-bottom: 80px;
 }
+.title {
+  margin-bottom: 1rem;
+}
+.labelFile {
+  padding: 1rem;
+  /* background-color: var(--prime); */
+  border: 1px solid var(--prime);
+  color: var(--prime);
+  display: inline-block;
+  border-radius: 1rem;
+  cursor: pointer;
+  transition: 0.3s;
+  &:hover {
+    opacity: 0.8;
+  }
+}
+.inputFile {
+  display: none;
+}
+.btn {
+  display: block;
+  background-color: var(--prime);
+  color: #fff;
+  padding: 1rem;
+  border-radius: 1rem;
+}
