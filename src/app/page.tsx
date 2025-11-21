@@ -1,4 +1,5 @@
 import Advantages from "@/components/Advantages/Advantages";
+import CreateProduct from "@/components/CreateProduct/CreateProduct";
 import Footer from "@/components/Footer/Footer";
 import Header from "@/components/Header/Header";
 import Products from "@/components/Products/Products";
@@ -15,6 +16,7 @@ export default async function Home() {
     <>
       <Header />
       <Slider />
+      <CreateProduct />
       <Products products={products} />
       <Advantages />
       <Subscription />
