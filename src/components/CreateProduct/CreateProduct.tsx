@@ -3,6 +3,8 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import InputField from "../InputField/InputField";
 import styles from "./CreateProduct.module.css";
 import { useState } from "react";
+import { useCreateProductMutation } from "@/api/api";
+import SelectCategory from "../SelectCategory/SelectCategory";
 
 interface IInputs {
   title: string;
@@ -14,9 +16,27 @@ interface IInputs {
 function CreateProduct() {
   const { register, handleSubmit } = useForm<IInputs>();
   const [file, setFile] = useState<FileList | null>(null);
-  const submit: SubmitHandler<IInputs> = (data) => {};
 
-  console.log(file);
+  const [createProduct] = useCreateProductMutation();
+
+  const submit: SubmitHandler<IInputs> = () => {
+    fetch("https://api.escuelajs.co/api/v1/products/", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        title: "New Product",
+        price: 10,
+        description: "A description",
+        categoryId: 34,
+        images: ["https://placeimg.com/640/480/any"],
+      }),
+    })
+      .then((res) => res.json())
+      .then((data) => console.log("RESPONSE:", data))
+      .catch((err) => console.error("ERROR:", err));
+  };
 
   return (
     <section className={styles.wrapper}>
@@ -36,11 +56,7 @@ function CreateProduct() {
             placeholder="Описание"
             register={register("description", { required: true })}
           />
-          <InputField
-            placeholder="ID"
-            type="number"
-            register={register("categoryId", { required: true })}
-          />
+          <SelectCategory />
           <label htmlFor="input__file" className={styles.labelFile}>
             Выберите изображение
           </label>

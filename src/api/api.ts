@@ -13,6 +13,7 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
 export const api = createApi({
   reducerPath: "api",
+  tagTypes: ["Products"],
   baseQuery: fetchBaseQuery({
     baseUrl: "https://api.escuelajs.co/api/v1",
     prepareHeaders(headers, { getState }) {
@@ -29,6 +30,7 @@ export const api = createApi({
         url: "/products",
         params,
       }),
+      providesTags: () => [{ type: "Products" }],
     }),
     getCategories: builder.query<ICategories[], null>({
       query: () => ({
@@ -57,9 +59,10 @@ export const api = createApi({
     createProduct: builder.mutation<null, ICreateProductBody>({
       query: (body) => ({
         method: "POST",
-        url: "/products",
+        url: "/products/",
         body,
       }),
+      invalidatesTags: () => [{ type: "Products" }],
     }),
   }),
 });
@@ -69,4 +72,5 @@ export const {
   useLoginUserMutation,
   useRegUserMutation,
   useGetUserQuery,
+  useCreateProductMutation,
 } = api;
