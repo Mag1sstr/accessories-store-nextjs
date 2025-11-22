@@ -1,6 +1,8 @@
+"use client";
 import { SubmitHandler, useForm } from "react-hook-form";
 import InputField from "../InputField/InputField";
 import styles from "./CreateProduct.module.css";
+import { useState } from "react";
 
 interface IInputs {
   title: string;
@@ -11,8 +13,10 @@ interface IInputs {
 }
 function CreateProduct() {
   const { register, handleSubmit } = useForm<IInputs>();
-
+  const [file, setFile] = useState<FileList | null>(null);
   const submit: SubmitHandler<IInputs> = (data) => {};
+
+  console.log(file);
 
   return (
     <section className={styles.wrapper}>
@@ -40,7 +44,12 @@ function CreateProduct() {
           <label htmlFor="input__file" className={styles.labelFile}>
             Выберите изображение
           </label>
-          <input type="file" id="input__file" className={styles.inputFile} />
+          <input
+            type="file"
+            id="input__file"
+            onChange={(e) => setFile(e.target.files)}
+            className={styles.inputFile}
+          />
           <button className={styles.btn}>Добавить</button>
         </form>
       </div>

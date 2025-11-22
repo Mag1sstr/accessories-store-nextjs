@@ -48,3 +48,11 @@ export interface IUser {
   name: string;
   avatar: string;
 }
+
+export interface ICreateProductBody {
+  title: string;
+  price: number;
+  description: string;
+  categoryId: number;
+  images: string[];
+}

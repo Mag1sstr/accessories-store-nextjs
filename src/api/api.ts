@@ -1,6 +1,7 @@
 import { RootState } from "@/store/store";
 import {
   ICategories,
+  ICreateProductBody,
   Ilogin,
   IloginBody,
   IProducts,
@@ -51,6 +52,13 @@ export const api = createApi({
     getUser: builder.query({
       query: () => ({
         url: "/auth/profile",
+      }),
+    }),
+    createProduct: builder.mutation<null, ICreateProductBody>({
+      query: (body) => ({
+        method: "POST",
+        url: "/products",
+        body,
       }),
     }),
   }),
