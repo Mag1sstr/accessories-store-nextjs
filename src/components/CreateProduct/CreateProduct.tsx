@@ -16,6 +16,7 @@ interface IInputs {
 function CreateProduct() {
   const { register, handleSubmit } = useForm<IInputs>();
   const [file, setFile] = useState<FileList | null>(null);
+  const [categoryId, setCategoryId] = useState<number | null>(null);
 
   const [createProduct] = useCreateProductMutation();
 
@@ -26,10 +27,10 @@ function CreateProduct() {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        title: "New Product",
+        title: "New Productddd",
         price: 10,
         description: "A description",
-        categoryId: 34,
+        categoryId: 36,
         images: ["https://placeimg.com/640/480/any"],
       }),
     })
@@ -56,7 +57,7 @@ function CreateProduct() {
             placeholder="Описание"
             register={register("description", { required: true })}
           />
-          <SelectCategory />
+          <SelectCategory setCategoryId={setCategoryId} />
           <label htmlFor="input__file" className={styles.labelFile}>
             Выберите изображение
           </label>

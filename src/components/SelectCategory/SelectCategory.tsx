@@ -4,7 +4,11 @@ import { useGetCategoriesQuery } from "@/api/api";
 import { ICategories } from "@/types/interfaces";
 import { useClickOutside } from "@/hooks/useClickOutside";
 
-function SelectCategory() {
+interface IProps {
+  setCategoryId: (id: number | null) => void;
+}
+
+function SelectCategory({ setCategoryId }: IProps) {
   const [open, setOpen] = useState(false);
   const { data: categories } = useGetCategoriesQuery(null);
   const [catName, setCatName] = useState("Выберите категорию");
@@ -12,9 +16,11 @@ function SelectCategory() {
 
   const handleSelectCategory = (item: ICategories) => {
     setCatName(item.name);
+    setCategoryId(item.id);
   };
 
   useClickOutside(setOpen, ref);
+
   return (
     <div
       onClick={() => setOpen((prev) => !prev)}
