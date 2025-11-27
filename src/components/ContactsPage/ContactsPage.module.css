@@ -56,7 +56,9 @@
 }
 .locationRight {
   flex: 1;
-  height: 326px;
+  height: 262px;
+  border-radius: 1rem;
+  overflow: hidden;
 }
 .locationLeft {
   h2 {
