@@ -1,6 +1,7 @@
 "use client";
 import { useModals } from "@/hooks/useModals";
 import styles from "./ContactsPage.module.css";
+import SocialLinks from "../SocialLinks/SocialLinks";
 
 function ContactsPage() {
   const { setOpenCallModal } = useModals();
@@ -25,7 +26,10 @@ function ContactsPage() {
             </div>
             <div className={styles.social}>
               <h2>Можно написать</h2>
-              <div className={styles.socialRow}>info@AppleShops.ru</div>
+              <div className={styles.socialRow}>
+                <SocialLinks />
+                info@AppleShops.ru
+              </div>
             </div>
           </div>
           <div className={styles.location}>
