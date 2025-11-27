@@ -55,6 +55,7 @@
   gap: 32px;
 }
 .locationRight {
+  position: relative;
   flex: 1;
   height: 262px;
   border-radius: 1rem;

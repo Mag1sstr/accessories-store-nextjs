@@ -1,3 +1,4 @@
+"use client";
 import { useAuth } from "@/hooks/useAuth";
 import styles from "./User.module.css";
 import { useModals } from "@/hooks/useModals";

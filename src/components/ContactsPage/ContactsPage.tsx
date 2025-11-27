@@ -66,7 +66,7 @@ function ContactsPage() {
                 width="100%"
                 height="100%"
                 frameBorder="transparent"
-                style={{ position: "relative" }}
+                style={{ position: "absolute" }}
               ></iframe>
             </div>
           </div>

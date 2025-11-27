@@ -10,6 +10,7 @@ import { useCart } from "@/hooks/useCart";
 import HeaderNav from "../HeaderNav/HeaderNav";
 import User from "../User/User";
 import Link from "next/link";
+import SocialLinks from "../SocialLinks/SocialLinks";
 
 function Header() {
   const { setOpenCart } = useModals();
@@ -43,25 +44,7 @@ function Header() {
               </span>
             </div>
             <div className={styles.social}>
-              <a href="#!">
-                <Image
-                  src="/assets/wp.png"
-                  width={32}
-                  height={32}
-                  alt="whatsapp"
-                />
-              </a>
-              <a href="#!">
-                <Image
-                  src="/assets/tg.png"
-                  width={32}
-                  height={32}
-                  alt="telegram"
-                />
-              </a>
-              <a href="#!">
-                <Image src="/assets/vk.png" width={32} height={32} alt="vk" />
-              </a>
+              <SocialLinks />
               <User />
             </div>
           </div>
