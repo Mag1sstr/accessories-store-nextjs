@@ -13,6 +13,7 @@ import {
   addToFavorites,
   deleteFavoritesItem,
 } from "@/store/slices/favoritesSlice";
+import { isAdmin } from "@/utils/isAdmin";
 
 function ProductCard(product: IProducts) {
   const dispatch = useAppDispatch();
@@ -186,6 +187,12 @@ function ProductCard(product: IProducts) {
           </>
         )}
       </button>
+      {isAdmin() && (
+        <div className={styles.adminActions}>
+          <button className={styles.del}>Удалить</button>
+          <button className={styles.edit}>Изменить</button>
+        </div>
+      )}
     </div>
   );
 }

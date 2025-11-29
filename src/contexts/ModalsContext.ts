@@ -15,6 +15,8 @@ interface IModalsContext {
   setOpenAddedModal: setModalState;
   openCallModal: boolean;
   setOpenCallModal: setModalState;
+  openDeleteModal: boolean;
+  setOpenDeleteModal: setModalState;
 }
 
 export const ModalsContext = createContext({} as IModalsContext);

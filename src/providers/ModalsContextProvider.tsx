@@ -9,6 +9,7 @@ function ModalsContextProvider({ children }: { children: React.ReactNode }) {
   const [openCart, setOpenCart] = useState(false);
   const [openAddedModal, setOpenAddedModal] = useState(false);
   const [openCallModal, setOpenCallModal] = useState(false);
+  const [openDeleteModal, setOpenDeleteModal] = useState(false);
 
   return (
     <ModalsContext.Provider
@@ -25,6 +26,8 @@ function ModalsContextProvider({ children }: { children: React.ReactNode }) {
         setOpenAddedModal,
         openCallModal,
         setOpenCallModal,
+        openDeleteModal,
+        setOpenDeleteModal,
       }}
     >
       {children}

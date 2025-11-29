@@ -125,3 +125,30 @@
     }
   }
 }
+
+.adminActions {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+.del,
+.edit {
+  flex: 1;
+  border-radius: 8px;
+  color: #fff;
+  padding: 8px 4px;
+}
+.del {
+  background-color: #d53032;
+  transition: 0.3s;
+  &:hover {
+    opacity: 0.8;
+  }
+  &:active {
+    opacity: 0.9;
+  }
+}
+.edit {
+  border: 1px solid var(--prime);
+  color: var(--prime);
+}
