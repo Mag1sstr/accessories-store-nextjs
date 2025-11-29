@@ -21,7 +21,7 @@ function ProductCard(product: IProducts) {
 
   const { cart } = useCart();
   const { favorites } = useAppSelector((state) => state.favorites);
-  const { setOpenAddedModal } = useModals();
+  const { setOpenAddedModal, setOpenDeleteModal } = useModals();
 
   const isInCart = cart.some((el) => el.id === product.id);
   const isInFavorites = favorites.some((el) => el.id === product.id);
@@ -189,7 +189,15 @@ function ProductCard(product: IProducts) {
       </button>
       {isAdmin() && (
         <div className={styles.adminActions}>
-          <button className={styles.del}>Удалить</button>
+          <button
+            onClick={() => {
+              dispatch(setAddedProduct(product));
+              setOpenDeleteModal(true);
+            }}
+            className={styles.del}
+          >
+            Удалить
+          </button>
           <button className={styles.edit}>Изменить</button>
         </div>
       )}

@@ -7,6 +7,7 @@ import RegModal from "@/components/RegModal/RegModal";
 import Cart from "@/components/Cart/Cart";
 import ModalAddedProduct from "@/components/ModalAddedProduct/ModalAddedProduct";
 import CallModal from "@/components/CallModal/CallModal";
+import DeleteProductModal from "@/components/DeleteProductModal/DeleteProductModal";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -37,6 +38,7 @@ export default function RootLayout({
           <Cart />
           <ModalAddedProduct />
           <CallModal />
+          <DeleteProductModal />
           {children}
         </Providers>
       </body>
