@@ -14,6 +14,7 @@ import a_icon3 from "../../../public/assets/singleProduct/03.png";
 import a_icon4 from "../../../public/assets/singleProduct/04.png";
 import a_icon5 from "../../../public/assets/singleProduct/05.png";
 import ProductCard from "../ProductCard/ProductCard";
+import Earphones from "../Earphones/Earphones";
 
 const PRODUCT_ADVANTAGES = [
   { title: "Только оригинальная продукция", subTitle: "", img: a_icon1 },
@@ -166,6 +167,8 @@ function SingleProductPage(product: IProducts) {
           ))}
         </ul>
       </div>
+
+      <Earphones />
 
       <div className="container">
         <div className={styles.viewed}>

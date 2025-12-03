@@ -1,3 +1,4 @@
+import { useState } from "react";
 import styles from "./Accordion.module.css";
 
 const accordionData = [
@@ -16,9 +17,43 @@ const accordionData = [
 ];
 
 function Accordion() {
+  const [active, setActive] = useState<number | null>(null);
+
+  const handleOpen = (id: number) => {
+    setActive(id === active ? null : id);
+  };
   return (
     <section className={styles.wrapper}>
-      <div className="container"></div>
+      <div className="container">
+        <ul className={styles.col}>
+          {accordionData.map((item, i) => (
+            <li
+              key={i}
+              className={`${styles.item} ${active === i && styles.active}`}
+              onClick={() => handleOpen(i)}
+            >
+              <div className={styles.title}>
+                {item.title}
+                <svg
+                  width="32"
+                  height="32"
+                  viewBox="0 0 32 32"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M7.99999 9.59998L16 17.6L24 9.59998L27.2 11.2L16 22.4L4.79999 11.2L7.99999 9.59998Z"
+                    fill="#0071E4"
+                  />
+                </svg>
+              </div>
+              <div className={styles.drop}>
+                <div className={styles.text}>{item.text}</div>
+              </div>
+            </li>
+          ))}
+        </ul>
+      </div>
     </section>
   );
 }
