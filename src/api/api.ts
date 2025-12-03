@@ -71,6 +71,13 @@ export const api = createApi({
       }),
       invalidatesTags: () => [{ type: "Products" }],
     }),
+    updateProduct: builder.mutation<null, number | string>({
+      query: (id) => ({
+        method: "put",
+        url: `/products/${id}`,
+      }),
+      invalidatesTags: () => [{ type: "Products" }],
+    }),
   }),
 });
 export const {
@@ -81,4 +88,5 @@ export const {
   useGetUserQuery,
   useCreateProductMutation,
   useDeleteProductMutation,
+  useUpdateProductMutation,
 } = api;

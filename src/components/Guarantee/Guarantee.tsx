@@ -2,6 +2,7 @@
 import { useScroll } from "@/hooks/useScroll";
 import Button from "../Button/Button";
 import styles from "./Guarantee.module.css";
+import Accordion from "../Accordion/Accordion";
 
 function Guarantee() {
   const ref = useScroll();
@@ -48,7 +49,7 @@ function Guarantee() {
           <Button title="перейти к покупкам" />
         </div>
       </div>
-      <div className={styles.bottom}>
+      {/* <div className={styles.bottom}>
         <div className="container">
           <div className={styles.acc}>
             <div className={styles.accName}>
@@ -96,7 +97,8 @@ function Guarantee() {
             </div>
           </div>
         </div>
-      </div>
+      </div> */}
+      <Accordion />
     </section>
   );
 }
