@@ -1,0 +1,27 @@
+.col {
+  display: flex;
+  flex-direction: column;
+}
+.item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 56px;
+
+  &:nth-child(even) {
+    flex-direction: row-reverse;
+  }
+}
+
+.imageWrapper {
+}
+.content {
+  flex: 1;
+  h3 {
+    font-size: 32px;
+    margin-bottom: 8px;
+  }
+  p {
+    max-width: 420px;
+  }
+}
