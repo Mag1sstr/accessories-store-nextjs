@@ -1,0 +1,14 @@
+.form {
+  padding: 24px;
+  width: 500px;
+}
+.title {
+  margin-bottom: 1.5rem;
+}
+.select {
+  display: block;
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 1rem;
+  font-size: 1rem;
+}

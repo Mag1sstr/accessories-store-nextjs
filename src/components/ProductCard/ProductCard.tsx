@@ -21,7 +21,8 @@ function ProductCard(product: IProducts) {
 
   const { cart } = useCart();
   const { favorites } = useAppSelector((state) => state.favorites);
-  const { setOpenAddedModal, setOpenDeleteModal } = useModals();
+  const { setOpenAddedModal, setOpenDeleteModal, setOpenUpdateModal } =
+    useModals();
 
   const isInCart = cart.some((el) => el.id === product.id);
   const isInFavorites = favorites.some((el) => el.id === product.id);
@@ -198,7 +199,15 @@ function ProductCard(product: IProducts) {
           >
             Удалить
           </button>
-          <button className={styles.edit}>Изменить</button>
+          <button
+            onClick={() => {
+              setOpenUpdateModal(true);
+              dispatch(setAddedProduct(product));
+            }}
+            className={styles.edit}
+          >
+            Изменить
+          </button>
         </div>
       )}
     </div>

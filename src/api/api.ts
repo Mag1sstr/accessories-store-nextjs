@@ -71,10 +71,11 @@ export const api = createApi({
       }),
       invalidatesTags: () => [{ type: "Products" }],
     }),
-    updateProduct: builder.mutation<null, number | string>({
-      query: (id) => ({
+    updateProduct: builder.mutation<null, Partial<IProducts>>({
+      query: (body) => ({
         method: "put",
-        url: `/products/${id}`,
+        url: `/products/${body.id}`,
+        body,
       }),
       invalidatesTags: () => [{ type: "Products" }],
     }),

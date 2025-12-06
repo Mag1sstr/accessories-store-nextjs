@@ -4,6 +4,12 @@ export interface IProducts {
   price: number;
   description: string;
   images: string[];
+  category: {
+    id: number;
+    name: string;
+    image: string;
+    slug: string;
+  };
 }
 export interface IProductsParams {
   title?: string;
