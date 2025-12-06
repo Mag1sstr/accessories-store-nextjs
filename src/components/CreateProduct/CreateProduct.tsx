@@ -17,28 +17,21 @@ interface IInputs {
 function CreateProduct() {
   const { register, handleSubmit } = useForm<IInputs>();
   const [file, setFile] = useState<FileList | null>(null);
-  const [categoryId, setCategoryId] = useState<number | null>(null);
+  const [categoryId, setCategoryId] = useState<null | number>(0);
 
-  const [createProduct] = useCreateProductMutation();
+  const [createProduct, { data }] = useCreateProductMutation();
 
-  const submit: SubmitHandler<IInputs> = () => {
-    fetch("https://api.escuelajs.co/api/v1/products/", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        title: "New Productddd",
-        price: 10,
-        description: "A description",
-        categoryId: 36,
-        images: ["https://placeimg.com/640/480/any"],
-      }),
-    })
-      .then((res) => res.json())
-      .then((data) => console.log("RESPONSE:", data))
-      .catch((err) => console.error("ERROR:", err));
+  const submit: SubmitHandler<IInputs> = ({ title, description, price }) => {
+    createProduct({
+      title,
+      price,
+      categoryId: categoryId!,
+      description,
+      images: ["https://placeimg.com/640/480/any"],
+    });
   };
+
+  console.log(data);
 
   return (
     isAdmin() && (
