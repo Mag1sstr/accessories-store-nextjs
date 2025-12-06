@@ -4,11 +4,16 @@ import styles from "./ModalSuccess.module.css";
 interface IProps {
   isActive: boolean;
   text: string;
+  className?: string;
 }
 
-function ModalSuccess({ isActive, text }: IProps) {
+function ModalSuccess({ isActive, text, className }: IProps) {
   return (
-    <div className={`${styles.success} ${isActive && styles.active}`}>
+    <div
+      className={`${styles.success} ${className}  ${
+        isActive && styles.active
+      } `}
+    >
       <Image
         className={styles.image}
         src="/assets/icons/check.png"
