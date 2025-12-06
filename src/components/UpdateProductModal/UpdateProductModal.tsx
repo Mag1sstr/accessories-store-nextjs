@@ -8,6 +8,7 @@ import Button from "../Button/Button";
 import SelectCategory from "../SelectCategory/SelectCategory";
 import { useGetCategoriesQuery, useUpdateProductMutation } from "@/api/api";
 import { useCart } from "@/hooks/useCart";
+import { useEffect } from "react";
 
 interface IInputs {
   title: string;
@@ -22,11 +23,22 @@ function UpdateProductModal() {
   const { data: categories } = useGetCategoriesQuery(null);
   const [updateProduct] = useUpdateProductMutation();
 
-  const { register, handleSubmit } = useForm<IInputs>();
+  const { register, handleSubmit, reset } = useForm<IInputs>({
+    mode: "onChange",
+  });
 
   const submit: SubmitHandler<IInputs> = (data) => {
     updateProduct({ id: addedProduct?.id, ...data });
   };
+
+  useEffect(() => {
+    if (addedProduct) {
+      reset({
+        title: addedProduct.title,
+        price: addedProduct.price,
+      });
+    }
+  }, [addedProduct, reset]);
 
   return (
     <ModalWrapper isOpen={openUpdateModal} setIsOpen={setOpenUpdateModal}>
@@ -36,8 +48,8 @@ function UpdateProductModal() {
         onSubmit={handleSubmit(submit)}
       >
         <h1 className={styles.title}>Редактирование</h1>
-        <InputField />
-        <InputField />
+        <InputField register={register("title")} />
+        <InputField register={register("price")} />
 
         <select
           onChange={(e) => console.log(e.target.value)}
