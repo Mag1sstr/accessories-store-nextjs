@@ -35,6 +35,9 @@
   padding: 0;
   box-sizing: border-box;
 }
+html {
+  font-size: clamp(14px, 1.2vw, 18px);
+}
 ul,
 ol {
   list-style: none;

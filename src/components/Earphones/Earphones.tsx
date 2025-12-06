@@ -39,6 +39,15 @@ function Earphones() {
   return (
     <section>
       <div className="container">
+        <div className={styles.center}>
+          <div className={styles.buy}>
+            <Image src={img1} alt="ear" />
+            <div>
+              <h2>{"Купить Nothing Ear(1)"}</h2>
+              <p>в наличии в Санкт-Петербурге</p>
+            </div>
+          </div>
+        </div>
         <ul className={styles.col}>
           {data.map((item, i) => (
             <li key={i} className={styles.item}>

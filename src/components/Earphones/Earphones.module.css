@@ -1,3 +1,14 @@
+.center {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 54px;
+}
+.buy {
+  display: flex;
+  align-items: center;
+  gap: 34px;
+  font-size: 48px;
+}
 .col {
   display: flex;
   flex-direction: column;
