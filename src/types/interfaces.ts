@@ -5,10 +5,10 @@ export interface IProducts {
   description: string;
   images: string[];
   category: {
-    id: number;
-    name: string;
-    image: string;
-    slug: string;
+    id?: number;
+    name?: string;
+    image?: string;
+    slug?: string;
   };
 }
 export interface IProductsParams {

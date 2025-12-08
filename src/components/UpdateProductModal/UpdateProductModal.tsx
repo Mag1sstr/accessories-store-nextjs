@@ -8,7 +8,8 @@ import Button from "../Button/Button";
 import SelectCategory from "../SelectCategory/SelectCategory";
 import { useGetCategoriesQuery, useUpdateProductMutation } from "@/api/api";
 import { useCart } from "@/hooks/useCart";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import { title } from "node:process";
 
 interface IInputs {
   title: string;
@@ -17,6 +18,8 @@ interface IInputs {
 }
 
 function UpdateProductModal() {
+  const [selectCategory, setSelectCategory] = useState<number | null>(null);
+
   const { openUpdateModal, setOpenUpdateModal } = useModals();
   const { addedProduct } = useCart();
 
@@ -28,7 +31,11 @@ function UpdateProductModal() {
   });
 
   const submit: SubmitHandler<IInputs> = (data) => {
-    updateProduct({ id: addedProduct?.id, ...data });
+    updateProduct({
+      id: addedProduct?.id,
+      category: { id: selectCategory ?? addedProduct?.id },
+      ...data,
+    });
   };
 
   useEffect(() => {
@@ -52,18 +59,37 @@ function UpdateProductModal() {
         <InputField register={register("price")} />
 
         <select
-          onChange={(e) => console.log(e.target.value)}
+          onChange={(e) => setSelectCategory(+e.target.value)}
           className={styles.select}
         >
           <option>Выберите категорию</option>
           {categories?.map((cat) => (
-            <option key={cat.id} value={cat.name}>
+            <option key={cat.id} value={cat.id}>
               {cat.name}
             </option>
           ))}
         </select>
 
-        <Button type="submit" title="Изменить" />
+        <Button
+          type="button"
+          onClick={() => {
+            fetch(
+              `https://api.escuelajs.co/api/v1/products/${addedProduct?.id}`,
+              {
+                method: "put",
+                headers: {
+                  "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                  price: 228,
+                }),
+              }
+            )
+              .then((res) => console.log(res))
+              .catch((err) => console.log(err));
+          }}
+          title="Изменить"
+        />
       </form>
     </ModalWrapper>
   );
