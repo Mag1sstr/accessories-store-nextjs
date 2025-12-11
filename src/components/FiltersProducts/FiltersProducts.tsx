@@ -81,9 +81,10 @@ function FiltersProducts({ products }: IProps) {
           <ol className={styles.categories}>
             {categories?.map((el) => (
               <li
-                onClick={() =>
-                  dispatch(setCategoryId(el.id === categoryId ? 0 : el.id))
-                }
+                onClick={() => {
+                  dispatch(setCategoryId(el.id === categoryId ? 0 : el.id));
+                  setCurrentPage(1);
+                }}
                 key={el.id}
                 className={`${styles.categoryItem} ${
                   categoryId === el.id && styles.active
