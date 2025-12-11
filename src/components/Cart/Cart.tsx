@@ -16,6 +16,12 @@ import {
 import { useEffect, useState } from "react";
 import { isValidPhone } from "@/utils/isValidPhone";
 import OrderIsCreate from "../OrderIsCreate/OrderIsCreate";
+import { SubmitHandler, useForm } from "react-hook-form";
+
+interface IForm {
+  condition: boolean;
+  tel: number;
+}
 
 function Cart() {
   const dispatch = useAppDispatch();
@@ -29,7 +35,13 @@ function Cart() {
   const router = useRouter();
 
   const totalPrice = cart.reduce((acc, el) => acc + el.price * el.count, 0);
+  const deliveryPrice = totalPrice * 0.03;
 
+  const { register, handleSubmit, formState } = useForm<IForm>();
+
+  const submit: SubmitHandler<IForm> = (data) => {
+    setIsOrder(true);
+  };
   const handleOpenProducts = () => {
     router.push("/products");
     setOpenCart(false);
@@ -132,16 +144,16 @@ function Cart() {
                 </ul>
               </div>
               <div className={styles.line}></div>
-              <div className={styles.right}>
+              <form onSubmit={handleSubmit(submit)} className={styles.right}>
                 <div className={styles.sum}>
                   <p>
-                    Доставка: <span>0$</span>
+                    Доставка: <span>{deliveryPrice.toFixed(1)}$</span>
                   </p>
                   <p>
                     Сумма заказа: <span>{totalPrice}$</span>
                   </p>
                   <p>
-                    Итого: <span>{totalPrice}$</span>
+                    Итого: <span>{totalPrice + deliveryPrice}$</span>
                   </p>
                 </div>
                 <div className={styles.option}>
@@ -172,7 +184,7 @@ function Cart() {
                 <button className={styles.btn} onClick={() => setIsOrder(true)}>
                   оформить заказ
                 </button>
-              </div>
+              </form>
               <div className={styles.line}></div>
             </div>
           </>
