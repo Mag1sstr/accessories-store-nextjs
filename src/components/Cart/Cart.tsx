@@ -37,7 +37,11 @@ function Cart() {
   const totalPrice = cart.reduce((acc, el) => acc + el.price * el.count, 0);
   const deliveryPrice = totalPrice * 0.03;
 
-  const { register, handleSubmit, formState } = useForm<IForm>({
+  const {
+    register,
+    handleSubmit,
+    formState: { errors, isValid },
+  } = useForm<IForm>({
     mode: "onChange",
   });
 
@@ -191,16 +195,14 @@ function Cart() {
                       },
                     })}
                     className={`${styles.tel} ${
-                      formState.errors.tel?.message && styles.telErr
+                      errors.tel?.message && styles.telErr
                     }`}
                     type="tel"
                     placeholder="+7"
                   />
                 </div>
                 <button
-                  className={`${styles.btn} ${
-                    formState.errors && styles.disabledBtn
-                  }`}
+                  className={`${styles.btn} ${!isValid && styles.disabledBtn}`}
                 >
                   оформить заказ
                 </button>
