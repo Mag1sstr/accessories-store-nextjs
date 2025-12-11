@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import styles from "./Header.module.css";
 import Search from "../Search/Search";
 import CatalogMenu from "../CatalogMenu/CatalogMenu";
@@ -11,10 +10,12 @@ import HeaderNav from "../HeaderNav/HeaderNav";
 import User from "../User/User";
 import Link from "next/link";
 import SocialLinks from "../SocialLinks/SocialLinks";
+import { useAppSelector } from "@/store/store";
 
 function Header() {
   const { setOpenCart } = useModals();
   const { cart } = useCart();
+  const { favorites } = useAppSelector((state) => state.favorites);
 
   const handleOpenCart = () => {
     setOpenCart(true);
@@ -73,6 +74,7 @@ function Header() {
                   strokeLinejoin="round"
                 />
               </svg>
+              <div>{favorites.length}</div>
             </Link>
             <button>
               <svg

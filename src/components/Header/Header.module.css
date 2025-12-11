@@ -59,7 +59,23 @@
     filter: brightness(0.9);
   }
 }
-
+.fav {
+  position: relative;
+  color: #fff;
+  font-size: 14px;
+  div {
+    position: absolute;
+    right: -4px;
+    top: 5px;
+    min-width: 18px;
+    min-height: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50px;
+    background-color: crimson;
+  }
+}
 .cartBtn {
   white-space: nowrap;
   padding: 12px 31px;
