@@ -67,8 +67,9 @@
     position: absolute;
     right: -4px;
     top: 5px;
-    min-width: 18px;
-    min-height: 18px;
+    min-width: 22px;
+    min-height: 22px;
+    font-weight: 600;
     display: flex;
     align-items: center;
     justify-content: center;
