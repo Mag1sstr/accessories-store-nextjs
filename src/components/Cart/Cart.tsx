@@ -37,7 +37,9 @@ function Cart() {
   const totalPrice = cart.reduce((acc, el) => acc + el.price * el.count, 0);
   const deliveryPrice = totalPrice * 0.03;
 
-  const { register, handleSubmit, formState } = useForm<IForm>();
+  const { register, handleSubmit, formState } = useForm<IForm>({
+    mode: "onChange",
+  });
 
   const submit: SubmitHandler<IForm> = (data) => {
     setIsOrder(true);
@@ -160,11 +162,21 @@ function Cart() {
                   <p>Выберите способ доставки</p>
                   <div className={styles.optionRow}>
                     <div className={styles.radio}>
-                      <input type="radio" id="delivery" name="del" />
+                      <input
+                        {...register("condition", { required: true })}
+                        type="radio"
+                        id="delivery"
+                        name="del"
+                      />
                       <label htmlFor="delivery">Доставка</label>
                     </div>
                     <div className={styles.radio}>
-                      <input type="radio" id="pickup" name="del" />
+                      <input
+                        {...register("condition")}
+                        type="radio"
+                        id="pickup"
+                        name="del"
+                      />
                       <label htmlFor="delivery">Самовывоз</label>
                     </div>
                   </div>
@@ -172,16 +184,24 @@ function Cart() {
                 <div className={styles.option}>
                   <p>Введите телефон</p>
                   <input
-                    value={tel}
-                    onChange={(e) => setTel(e.target.value)}
+                    {...register("tel", {
+                      pattern: {
+                        value: /^(?:\+7|7|8)\d{10}$/,
+                        message: "Неккоректный номер",
+                      },
+                    })}
                     className={`${styles.tel} ${
-                      !isValidPhone(tel) && styles.telErr
+                      formState.errors.tel?.message && styles.telErr
                     }`}
                     type="tel"
                     placeholder="+7"
                   />
                 </div>
-                <button className={styles.btn} onClick={() => setIsOrder(true)}>
+                <button
+                  className={`${styles.btn} ${
+                    formState.errors && styles.disabledBtn
+                  }`}
+                >
                   оформить заказ
                 </button>
               </form>
