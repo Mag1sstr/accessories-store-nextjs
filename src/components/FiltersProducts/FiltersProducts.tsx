@@ -21,6 +21,7 @@ interface IProps {
 
 function FiltersProducts({ products }: IProps) {
   const [typeSort, setTypeSort] = useState<TSort>(null);
+  const [showMore, setShowMore] = useState(false);
   const dispatch = useAppDispatch();
   const { categoryId, rangeValue } = useFilters();
 
@@ -60,6 +61,9 @@ function FiltersProducts({ products }: IProps) {
   const handleSortChange = (sort: TSort) => {
     setTypeSort(sort);
   };
+  const handleShowMore = () => {
+    setShowMore(true);
+  };
 
   const maxPriceProduct = useMemo(
     () =>
@@ -79,20 +83,38 @@ function FiltersProducts({ products }: IProps) {
       <div className="container">
         <div className={styles.top}>
           <ol className={styles.categories}>
-            {categories?.map((el) => (
-              <li
-                onClick={() => {
-                  dispatch(setCategoryId(el.id === categoryId ? 0 : el.id));
-                  setCurrentPage(1);
-                }}
-                key={el.id}
-                className={`${styles.categoryItem} ${
-                  categoryId === el.id && styles.active
-                }`}
-              >
-                {el.name}
+            {categories
+              ?.slice(0, showMore ? categories?.length : 15)
+              .map((el) => (
+                <li
+                  onClick={() => {
+                    dispatch(setCategoryId(el.id === categoryId ? 0 : el.id));
+                    setCurrentPage(1);
+                  }}
+                  key={el.id}
+                  className={`${styles.categoryItem} ${
+                    categoryId === el.id && styles.active
+                  }`}
+                >
+                  {el.name}
+                </li>
+              ))}
+            {categories && categories.length > 15 && !showMore && (
+              <li onClick={handleShowMore} className={styles.showMore}>
+                <svg
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M5.99998 7.20001L12 13.2L18 7.20001L20.4 8.40001L12 16.8L3.59998 8.40001L5.99998 7.20001Z"
+                    fill="#0071E4"
+                  />
+                </svg>
               </li>
-            ))}
+            )}
           </ol>
           <div className={styles.sort}>
             Сортировать{" "}
