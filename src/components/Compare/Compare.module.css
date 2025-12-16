@@ -1,0 +1,21 @@
+.categories {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+.categoryItem {
+  padding: 0.5rem 1rem;
+  border: 1px solid #b7b7b7;
+  font-weight: 500;
+  font-size: 20px;
+  border-radius: 8px;
+  transition: 0.3s;
+  &.activeCategory {
+    border-color: var(--prime);
+  }
+}
+.title {
+  font-size: 40px;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+}

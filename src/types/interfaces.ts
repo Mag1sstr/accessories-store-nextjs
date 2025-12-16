@@ -6,7 +6,7 @@ export interface IProducts {
   images: string[];
   category: {
     id?: number;
-    name?: string;
+    name: string;
     image?: string;
     slug?: string;
   };
