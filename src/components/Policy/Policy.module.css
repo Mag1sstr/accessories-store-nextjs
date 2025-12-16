@@ -1,0 +1,28 @@
+.title {
+  font-size: 40px;
+  font-weight: 500;
+  margin-bottom: 1.5rem;
+}
+.subtitle {
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: var(--prime);
+  margin-bottom: 2rem;
+}
+.text {
+  color: #585656;
+  line-height: 1.2;
+}
+.textBlock {
+  max-width: 870px;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  &:not(:last-child) {
+    margin-bottom: 2rem;
+  }
+  h3 {
+    font-size: 1.5rem;
+    font-weight: 500;
+  }
+}
