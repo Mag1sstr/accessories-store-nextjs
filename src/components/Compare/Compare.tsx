@@ -2,9 +2,9 @@ import styles from "./Compare.module.css";
 
 function Compare() {
   return (
-    <section>
+    <section className={styles.wrapper}>
       <div className="container">
-        <div></div>
+        <div className={styles.inner}></div>
       </div>
     </section>
   );

@@ -59,6 +59,11 @@
     filter: brightness(0.9);
   }
 }
+.compare {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 .fav {
   position: relative;
   color: #fff;

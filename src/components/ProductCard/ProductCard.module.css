@@ -37,8 +37,7 @@
   }
   &:hover {
     svg * {
-      stroke: #ee204d;
-      fill: #ee204d;
+      stroke: var(--prime);
     }
   }
   &:active {
@@ -48,8 +47,7 @@
   }
   &.inFavorites {
     svg * {
-      stroke: #ee204d;
-      fill: #ee204d;
+      stroke: var(--prime);
     }
   }
 }

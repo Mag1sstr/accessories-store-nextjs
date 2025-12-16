@@ -76,7 +76,7 @@ function Header() {
               </svg>
               <div>{favorites.length}</div>
             </Link>
-            <button>
+            <Link href="/compare" className={styles.compare}>
               <svg
                 width="40"
                 height="40"
@@ -91,7 +91,7 @@ function Header() {
                   fill="#706E6E"
                 />
               </svg>
-            </button>
+            </Link>
             <button onClick={handleOpenCart} className={styles.cartBtn}>
               <svg
                 width="24"
