@@ -2,9 +2,11 @@
 import { useAppSelector } from "@/store/store";
 import styles from "./Compare.module.css";
 import { useState } from "react";
+import Image from "next/image";
+import ProductCard from "../ProductCard/ProductCard";
 
 function Compare() {
-  const [activeCategory, setActiveCategory] = useState(0);
+  const [activeCategory, setActiveCategory] = useState("");
   const { favorites } = useAppSelector((state) => state.favorites);
 
   const quantityCat = favorites.reduce<Record<string, number>>((acc, el) => {
@@ -21,16 +23,16 @@ function Compare() {
           {Object.entries(quantityCat).map(([key, value], i) => (
             <li
               key={key}
-              onClick={() => setActiveCategory(i)}
+              onClick={() => setActiveCategory(key)}
               className={`${styles.categoryItem} ${
-                i === activeCategory && styles.activeCategory
+                key === activeCategory && styles.activeCategory
               }`}
             >{`${key} ${value}`}</li>
           ))}
         </ul>
         <ul className={styles.products}>
           {favorites.map((el) => (
-            <li key={el.id}></li>
+            <ProductCard {...el} />
           ))}
         </ul>
       </div>

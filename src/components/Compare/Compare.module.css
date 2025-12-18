@@ -19,3 +19,8 @@
   font-weight: 700;
   margin-bottom: 1.5rem;
 }
+.productsItem {
+}
+.image {
+  object-fit: cover;
+}
