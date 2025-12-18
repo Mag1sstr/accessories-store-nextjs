@@ -31,6 +31,7 @@
   cursor: pointer;
   margin-bottom: 1rem;
   transition: 0.3s;
+  margin-right: 8px;
   svg,
   svg * {
     transition: 0.3s;
@@ -49,6 +50,21 @@
     svg * {
       stroke: var(--prime);
     }
+  }
+}
+.compare {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: 0.3s;
+
+  &:hover {
+    svg * {
+      fill: var(--prime);
+    }
+  }
+  &:active {
+    transform: scale(1.2);
   }
 }
 .img {
