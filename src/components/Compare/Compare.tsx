@@ -28,6 +28,11 @@ function Compare() {
             >{`${key} ${value}`}</li>
           ))}
         </ul>
+        <ul className={styles.products}>
+          {favorites.map((el) => (
+            <li key={el.id}></li>
+          ))}
+        </ul>
       </div>
     </section>
   );
