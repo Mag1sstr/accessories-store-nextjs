@@ -175,7 +175,7 @@ function SingleProductPage(product: IProducts) {
           <h2>Вы смотрели</h2>
           <div className={styles.viewedRow}>
             {viewedProducts.map((product) => (
-              <ProductCard key={product.id} {...product} />
+              <ProductCard key={product.id} product={product} />
             ))}
           </div>
         </div>

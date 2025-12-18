@@ -32,7 +32,7 @@ function Compare() {
         </ul>
         <ul className={styles.products}>
           {favorites.map((el) => (
-            <ProductCard {...el} />
+            <ProductCard product={el} key={el.id} />
           ))}
         </ul>
       </div>

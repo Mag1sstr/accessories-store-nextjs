@@ -41,7 +41,7 @@ function FavoritesPage() {
             <h1 className={styles.favTitle}>Избранное</h1>
             <div className={styles.row}>
               {favorites.map((item) => (
-                <ProductCard key={item.id} {...item} />
+                <ProductCard key={item.id} product={item} />
               ))}
             </div>
           </>

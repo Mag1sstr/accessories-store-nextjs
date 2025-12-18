@@ -15,7 +15,12 @@ import {
 } from "@/store/slices/favoritesSlice";
 import { isAdmin } from "@/utils/isAdmin";
 
-function ProductCard(product: IProducts) {
+interface IProps {
+  product: IProducts;
+  className?: string;
+}
+
+function ProductCard({ product, className }: IProps) {
   const dispatch = useAppDispatch();
   const router = useRouter();
 
@@ -46,7 +51,7 @@ function ProductCard(product: IProducts) {
   const randomRating = useMemo(() => Math.floor(Math.random() * 6), []);
 
   return (
-    <div key={product.id} className={styles.card}>
+    <div key={product.id} className={`${styles.card} ${className}`}>
       <div className={styles.cardTop}>
         <div className={styles.rating}>
           {[...Array(5)].map((_, i) => (

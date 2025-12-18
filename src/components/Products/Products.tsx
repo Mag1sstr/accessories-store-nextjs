@@ -18,7 +18,7 @@ function Products({ products }: IProps) {
       <div className="container">
         <div className={styles.row}>
           {data?.slice(0, 8).map((product) => (
-            <ProductCard {...product} key={product.id} />
+            <ProductCard product={product} key={product.id} />
           ))}
         </div>
         <button

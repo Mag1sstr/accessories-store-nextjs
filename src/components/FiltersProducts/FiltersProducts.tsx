@@ -229,7 +229,7 @@ function FiltersProducts({ products }: IProps) {
         </div>
         <div className={styles.products}>
           {sortedProducts?.slice(firstIndex, lastIndex).map((product) => (
-            <ProductCard {...product} key={product.id} />
+            <ProductCard product={product} key={product.id} />
           ))}
         </div>
       </div>
