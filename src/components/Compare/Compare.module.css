@@ -23,3 +23,34 @@
   display: grid;
   grid-template-columns: repeat(5, 187px);
 }
+.compareProducts {
+  display: flex;
+
+  li {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    img {
+      max-width: 300px;
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+      margin-bottom: 1.5rem;
+    }
+    h3 {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+    }
+    p {
+      width: 100%;
+      text-align: center;
+      padding: 1rem;
+      &:nth-child(2n + 1) {
+        font-weight: 600;
+        color: var(--prime);
+        background-color: var(--light-grey);
+      }
+    }
+  }
+}
