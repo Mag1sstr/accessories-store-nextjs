@@ -61,7 +61,7 @@ function SingleProductPage(product: IProducts) {
           <div className={styles.productImages}>
             <div className={styles.mainImage}>
               <Image
-                src={product.images[mainImage]}
+                src={product.images[mainImage] ?? ""}
                 alt={product.title}
                 width={400}
                 height={400}
