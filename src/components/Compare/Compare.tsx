@@ -5,6 +5,7 @@ import { Fragment, useState } from "react";
 import Image from "next/image";
 import ProductCard from "../ProductCard/ProductCard";
 import { IProducts } from "@/types/interfaces";
+import SmallProductCard from "../SmallProductCard/SmallProductCard";
 
 function Compare() {
   const [selectedProducts, setSelectedProducts] = useState<IProducts[]>([]);
@@ -34,16 +35,7 @@ function Compare() {
         </ul>
         <ul className={styles.products}>
           {favorites.map((el) => (
-            <div
-              key={el.id}
-              onClick={() => {
-                if (selectedProducts.length < 4) {
-                  setSelectedProducts((prev) => [...prev, el]);
-                }
-              }}
-            >
-              <ProductCard product={el} className={styles.card} />
-            </div>
+            <SmallProductCard key={el.id} {...el} />
           ))}
         </ul>
 

@@ -22,7 +22,7 @@
 .products {
   display: grid;
   grid-template-columns: repeat(auto-fit, 187px);
-  flex-wrap: wrap;
+  gap: 1rem;
 }
 .compareProducts {
   display: flex;
