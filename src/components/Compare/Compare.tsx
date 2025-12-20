@@ -35,7 +35,13 @@ function Compare() {
         </ul>
         <ul className={styles.products}>
           {favorites.map((el) => (
-            <SmallProductCard key={el.id} {...el} />
+            <SmallProductCard
+              key={el.id}
+              {...el}
+              onClick={(product) => {
+                setSelectedProducts((prev) => [...prev, product]);
+              }}
+            />
           ))}
         </ul>
 
@@ -49,11 +55,12 @@ function Compare() {
                 height={100}
               />
               <h3>{product.title}</h3>
-
-              <p>Цена</p>
-              <p>{product.price} $</p>
-              <p>Категория</p>
-              <p>{product.category.name}</p>
+              <div className={styles.details}>
+                <p>Цена</p>
+                <p>{product.price} $</p>
+                <p>Категория</p>
+                <p>{product.category.name}</p>
+              </div>
             </li>
           ))}
         </ul>

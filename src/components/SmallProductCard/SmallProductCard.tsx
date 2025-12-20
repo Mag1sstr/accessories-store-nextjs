@@ -3,21 +3,37 @@ import styles from "./SmallProductCard.module.css";
 import { IProducts } from "@/types/interfaces";
 import { useCart } from "@/hooks/useCart";
 import CloseBtn from "../CloseBtn/CloseBtn";
+import { useAppDispatch } from "@/store/store";
+import { addToCart, deleteCartItem } from "@/store/slices/cartSlice";
 
 interface IProps extends IProducts {
-  onClick?: () => void;
+  onClick: (p: IProducts) => void;
 }
-function SmallProductCard({ onClick, title, images, id }: IProps) {
+function SmallProductCard({ onClick, ...product }: IProps) {
+  const { title, images, id } = product;
+  const dispatch = useAppDispatch();
   const { cart } = useCart();
   const isInCart = cart.some((el) => el.id === id);
+
+  const handleAddToCart = () => {
+    if (isInCart) {
+      dispatch(deleteCartItem(id));
+    } else {
+      dispatch(addToCart({ ...product, count: 1 }));
+    }
+  };
+
   return (
-    <li className={styles.card}>
+    <li onClick={() => onClick(product)} className={styles.card}>
       <div className={styles.top}>
         <CloseBtn className={styles.close} />
       </div>
       <Image src={images[0] ?? ""} alt="icon" width={108} height={117} />
       <h3 className={styles.title}>{title}</h3>
-      <button className={styles.btn}>
+      <button
+        onClick={handleAddToCart}
+        className={`${styles.btn} ${isInCart && styles.active}`}
+      >
         {isInCart ? (
           <>
             <svg
