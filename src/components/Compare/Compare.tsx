@@ -39,7 +39,9 @@ function Compare() {
               key={el.id}
               {...el}
               onClick={(product) => {
-                setSelectedProducts((prev) => [...prev, product]);
+                if (!selectedProducts.some((el) => el.id === product.id)) {
+                  setSelectedProducts((prev) => [...prev, product].slice(-4));
+                }
               }}
             />
           ))}
