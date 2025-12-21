@@ -23,6 +23,7 @@
   display: grid;
   grid-template-columns: repeat(auto-fit, 187px);
   gap: 1rem;
+  margin-bottom: 1.5rem;
 }
 .compareProducts {
   display: flex;
