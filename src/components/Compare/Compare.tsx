@@ -1,18 +1,16 @@
 "use client";
-import { useAppSelector } from "@/store/store";
 import styles from "./Compare.module.css";
-import { Fragment, useState } from "react";
+import { useState } from "react";
 import Image from "next/image";
-import ProductCard from "../ProductCard/ProductCard";
 import { IProducts } from "@/types/interfaces";
 import SmallProductCard from "../SmallProductCard/SmallProductCard";
+import { useCompare } from "@/hooks/useCompare";
 
 function Compare() {
   const [selectedProducts, setSelectedProducts] = useState<IProducts[]>([]);
   const [activeCategory, setActiveCategory] = useState("");
-  const { favorites } = useAppSelector((state) => state.favorites);
-
-  const quantityCat = favorites.reduce<Record<string, number>>((acc, el) => {
+  const { compareData } = useCompare();
+  const quantityCat = compareData.reduce<Record<string, number>>((acc, el) => {
     const key = el.category.name;
     acc[key] = (acc[key] ?? 0) + 1;
     return acc;
@@ -34,7 +32,7 @@ function Compare() {
           ))}
         </ul>
         <ul className={styles.products}>
-          {favorites.map((el) => (
+          {compareData.map((el) => (
             <SmallProductCard
               key={el.id}
               {...el}

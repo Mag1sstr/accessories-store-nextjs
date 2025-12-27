@@ -66,6 +66,12 @@
   &:active {
     transform: scale(1.2);
   }
+
+  &.inCompare {
+    svg * {
+      fill: var(--prime);
+    }
+  }
 }
 .img {
   width: 100%;

@@ -14,6 +14,8 @@ import {
   deleteFavoritesItem,
 } from "@/store/slices/favoritesSlice";
 import { isAdmin } from "@/utils/isAdmin";
+import { useCompare } from "@/hooks/useCompare";
+import { addToCompare, deleteCompareItem } from "@/store/slices/compareSlice";
 
 interface IProps {
   product: IProducts;
@@ -25,12 +27,14 @@ function ProductCard({ product, className }: IProps) {
   const router = useRouter();
 
   const { cart } = useCart();
+  const { compareData } = useCompare();
   const { favorites } = useAppSelector((state) => state.favorites);
   const { setOpenAddedModal, setOpenDeleteModal, setOpenUpdateModal } =
     useModals();
 
   const isInCart = cart.some((el) => el.id === product.id);
   const isInFavorites = favorites.some((el) => el.id === product.id);
+  const isInCompare = compareData.some((el) => el.id === product.id);
 
   const handleAddToCart = (e: MouseEvent<HTMLButtonElement>) => {
     e.stopPropagation();
@@ -46,6 +50,11 @@ function ProductCard({ product, className }: IProps) {
     } else {
       dispatch(addToFavorites(product));
     }
+  };
+  const handleAddToCompare = () => {
+    return isInCompare
+      ? dispatch(deleteCompareItem(product.id))
+      : dispatch(addToCompare(product));
   };
 
   const randomRating = useMemo(() => Math.floor(Math.random() * 6), []);
@@ -94,7 +103,10 @@ function ProductCard({ product, className }: IProps) {
             />
           </svg>
         </button>
-        <button className={styles.compare}>
+        <button
+          onClick={handleAddToCompare}
+          className={`${styles.compare} ${isInCompare && styles.inCompare}`}
+        >
           <svg
             width="24"
             height="24"
