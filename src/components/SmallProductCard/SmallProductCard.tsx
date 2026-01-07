@@ -5,6 +5,8 @@ import { useCart } from "@/hooks/useCart";
 import CloseBtn from "../CloseBtn/CloseBtn";
 import { useAppDispatch } from "@/store/store";
 import { addToCart, deleteCartItem } from "@/store/slices/cartSlice";
+import { MouseEvent } from "react";
+import { deleteCompareItem } from "@/store/slices/compareSlice";
 
 interface IProps extends IProducts {
   onClick: (p: IProducts) => void;
@@ -15,7 +17,8 @@ function SmallProductCard({ onClick, ...product }: IProps) {
   const { cart } = useCart();
   const isInCart = cart.some((el) => el.id === id);
 
-  const handleAddToCart = () => {
+  const handleAddToCart = (e: MouseEvent) => {
+    e.stopPropagation();
     if (isInCart) {
       dispatch(deleteCartItem(id));
     } else {
@@ -26,7 +29,10 @@ function SmallProductCard({ onClick, ...product }: IProps) {
   return (
     <li onClick={() => onClick(product)} className={styles.card}>
       <div className={styles.top}>
-        <CloseBtn className={styles.close} />
+        <CloseBtn
+          onClick={() => dispatch(deleteCompareItem(id))}
+          className={styles.close}
+        />
       </div>
       <Image src={images[0] ?? ""} alt="icon" width={108} height={117} />
       <h3 className={styles.title}>{title}</h3>

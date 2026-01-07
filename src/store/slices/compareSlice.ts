@@ -1,11 +1,12 @@
 import { IProducts } from "@/types/interfaces";
+import { getLocalStorageValue } from "@/utils/getLocalStorageValue";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 interface ICompareState {
   compareData: IProducts[];
 }
 const initialState: ICompareState = {
-  compareData: [],
+  compareData: getLocalStorageValue<IProducts[]>("compare") ?? [],
 };
 
 export const compareSlice = createSlice({

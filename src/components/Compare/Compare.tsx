@@ -8,7 +8,7 @@ import { useCompare } from "@/hooks/useCompare";
 
 function Compare() {
   const [selectedProducts, setSelectedProducts] = useState<IProducts[]>([]);
-  const [activeCategory, setActiveCategory] = useState("");
+  const [activeCategory, setActiveCategory] = useState<string | null>(null);
   const { compareData } = useCompare();
   const quantityCat = compareData.reduce<Record<string, number>>((acc, el) => {
     const key = el.category?.name;
@@ -25,7 +25,9 @@ function Compare() {
           {Object.entries(quantityCat).map(([key, value], i) => (
             <li
               key={key}
-              onClick={() => setActiveCategory(key)}
+              onClick={() =>
+                setActiveCategory(activeCategory === key ? null : key)
+              }
               className={`${styles.categoryItem} ${
                 key === activeCategory && styles.activeCategory
               }`}
@@ -33,17 +35,21 @@ function Compare() {
           ))}
         </ul>
         <ul className={styles.products}>
-          {compareData.map((el) => (
-            <SmallProductCard
-              key={el.id}
-              {...el}
-              onClick={(product) => {
-                if (!selectedProducts.some((el) => el.id === product.id)) {
-                  setSelectedProducts((prev) => [...prev, product].slice(-4));
-                }
-              }}
-            />
-          ))}
+          {compareData
+            .filter((el) =>
+              activeCategory ? el.category.name === activeCategory : el
+            )
+            .map((el) => (
+              <SmallProductCard
+                key={el.id}
+                {...el}
+                onClick={(product) => {
+                  if (!selectedProducts.some((el) => el.id === product.id)) {
+                    setSelectedProducts((prev) => [...prev, product].slice(-4));
+                  }
+                }}
+              />
+            ))}
         </ul>
 
         <ul className={styles.compareProducts}>
