@@ -11,7 +11,8 @@ function Compare() {
   const [activeCategory, setActiveCategory] = useState("");
   const { compareData } = useCompare();
   const quantityCat = compareData.reduce<Record<string, number>>((acc, el) => {
-    const key = el.category.name;
+    const key = el.category?.name;
+    if (!key) return acc;
     acc[key] = (acc[key] ?? 0) + 1;
     return acc;
   }, {});
