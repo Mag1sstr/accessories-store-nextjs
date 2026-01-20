@@ -2,6 +2,8 @@
 import { formatDate } from "@/utils/formatDate";
 import styles from "./Orders.module.css";
 import { useAppSelector } from "@/store/store";
+import { motion, scale } from "motion/react";
+import { delay } from "motion";
 
 function Orders() {
   const { orders } = useAppSelector((state) => state.orders);
@@ -11,17 +13,23 @@ function Orders() {
       <div className="container">
         <h1 className={styles.title}>Мои заказы</h1>
         <ul className={styles.ordersList}>
-          {orders.map((order) => {
+          {orders.map((order, i) => {
             const totalPrice = order.items.reduce(
               (acc, el) => acc + el.price * el.count,
               0,
             );
             return (
-              <li key={order.orderNumber} className={styles.order}>
+              <motion.li
+                initial={{ transform: "scale(0.8)", opacity: 0 }}
+                animate={{ transform: "scale(1)", opacity: 1 }}
+                transition={{ delay: i > 0 ? i - 0.9 : 0, duration: 0.2 }}
+                key={order.orderNumber}
+                className={styles.order}
+              >
                 <div className={styles.top}>
                   <div className={styles.topRow}>
                     <h2>Заказ #{order.orderNumber}</h2>
-                    <p>{formatDate(order.createdAt)}</p>
+                    <p className={styles.date}>{formatDate(order.createdAt)}</p>
                   </div>
                   <div className={styles.topRow}>
                     <p className={styles.status}>Оплачено</p>
@@ -68,7 +76,7 @@ function Orders() {
                     Итого: <strong>{totalPrice} ₽</strong>
                   </p>
                 </div>
-              </li>
+              </motion.li>
             );
           })}
         </ul>
