@@ -17,6 +17,7 @@ import { useEffect, useState } from "react";
 import { isValidPhone } from "@/utils/isValidPhone";
 import OrderIsCreate from "../OrderIsCreate/OrderIsCreate";
 import { SubmitHandler, useForm } from "react-hook-form";
+import { addNewOrder } from "@/store/slices/ordersSlice";
 
 interface IForm {
   condition: boolean;
@@ -57,6 +58,10 @@ function Cart() {
   };
   const handleCloseCart = () => {
     setOpenCart(false);
+  };
+
+  const handleCreateOrder = () => {
+    dispatch(addNewOrder(cart));
   };
 
   useEffect(() => {
@@ -203,6 +208,7 @@ function Cart() {
                 </div>
                 <button
                   className={`${styles.btn} ${!isValid && styles.disabledBtn}`}
+                  onClick={handleCreateOrder}
                 >
                   оформить заказ
                 </button>
