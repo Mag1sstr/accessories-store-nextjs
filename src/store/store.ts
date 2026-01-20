@@ -7,6 +7,7 @@ import viewedSlice from "./slices/viewedSlice";
 import authSlice from "./slices/authSlice";
 import favoritesSlice from "./slices/favoritesSlice";
 import compareSlice from "./slices/compareSlice";
+import ordersSlice from "./slices/ordersSlice";
 
 export const store = configureStore({
   reducer: {
@@ -16,6 +17,7 @@ export const store = configureStore({
     auth: authSlice,
     favorites: favoritesSlice,
     compare: compareSlice,
+    orders: ordersSlice,
     [api.reducerPath]: api.reducer,
   },
   middleware(getDefaultMiddleware) {

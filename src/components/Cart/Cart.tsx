@@ -8,13 +8,12 @@ import { useCart } from "@/hooks/useCart";
 import CloseBtn from "../CloseBtn/CloseBtn";
 import { useAppDispatch, useAppSelector } from "@/store/store";
 import {
+  clearCart,
   decreaseCartItem,
   deleteCartItem,
   increaseCartItem,
-  setCart,
 } from "@/store/slices/cartSlice";
 import { useEffect, useState } from "react";
-import { isValidPhone } from "@/utils/isValidPhone";
 import OrderIsCreate from "../OrderIsCreate/OrderIsCreate";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { addNewOrder } from "@/store/slices/ordersSlice";
@@ -70,7 +69,7 @@ function Cart() {
       timer = setTimeout(() => {
         setOpenCart(false);
         setIsOrder(false);
-        dispatch(setCart([]));
+        dispatch(clearCart());
       }, 2000);
     }
     return () => clearTimeout(timer);

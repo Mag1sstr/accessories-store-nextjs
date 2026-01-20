@@ -58,6 +58,11 @@ export const cartSlice = createSlice({
       state.cart = action.payload;
     },
 
+    clearCart(state) {
+      state.cart = [];
+      localStorage.removeItem("cart");
+    },
+
     setAddedProduct(state, action: PayloadAction<IProducts>) {
       state.addedProduct = action.payload;
     },
@@ -71,6 +76,7 @@ export const {
   decreaseCartItem,
   setAddedProduct,
   setCart,
+  clearCart,
 } = cartSlice.actions;
 
 export default cartSlice.reducer;

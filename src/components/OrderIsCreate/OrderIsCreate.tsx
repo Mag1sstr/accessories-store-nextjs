@@ -16,8 +16,6 @@ function OrderIsCreate({ isActive }: IProps) {
           <p className={styles.text}>
             Мы позвоним вам, чтобы подтвердить заказ в 9 часов утра по Москве
           </p>
-
-          <button>продолжить покупки</button>
         </div>
       </div>
     </div>
