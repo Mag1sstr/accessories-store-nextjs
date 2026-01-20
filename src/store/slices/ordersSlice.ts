@@ -4,6 +4,7 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 interface IOrder {
   orderNumber: number;
+  createdAt: Date;
   items: ICart[];
 }
 
@@ -25,6 +26,7 @@ export const ordersSlice = createSlice({
 
       state.orders.push({
         orderNumber: getOrderNumber,
+        createdAt: new Date(),
         items: action.payload,
       });
 
