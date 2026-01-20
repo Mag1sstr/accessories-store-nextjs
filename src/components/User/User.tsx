@@ -6,6 +6,7 @@ import { useAppDispatch } from "@/store/store";
 import { logoutUser } from "@/store/slices/authSlice";
 import { useRef, useState } from "react";
 import { useClickOutside } from "@/hooks/useClickOutside";
+import Link from "next/link";
 function User() {
   const [open, setOpen] = useState(false);
   const { user } = useAuth();
@@ -37,7 +38,9 @@ function User() {
 
       <div className={`${styles.drop} ${open && styles.open}`}>
         <ul className={styles.actions}>
-          <li>Заказы</li>
+          <Link href="/orders">
+            <li>Заказы</li>
+          </Link>
           <li onClick={handleLogout}>Выйти</li>
         </ul>
       </div>
