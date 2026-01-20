@@ -12,7 +12,7 @@ interface IOrdersState {
 }
 
 const initialState: IOrdersState = {
-  orders: [],
+  orders: getLocalStorageValue<IOrder[]>("orders") ?? [],
 };
 
 export const ordersSlice = createSlice({
