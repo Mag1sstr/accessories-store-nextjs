@@ -2,7 +2,7 @@ import { ICart } from "@/types/interfaces";
 import { getLocalStorageValue } from "@/utils/getLocalStorageValue";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-interface IOrder {
+export interface IOrder {
   orderNumber: number;
   createdAt: Date;
   items: ICart[];
