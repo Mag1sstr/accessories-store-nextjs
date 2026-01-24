@@ -1,10 +1,6 @@
 "use client";
-import { formatDate } from "@/utils/formatDate";
 import styles from "./Orders.module.css";
 import { useAppSelector } from "@/store/store";
-import { motion, scale } from "motion/react";
-import { delay } from "motion";
-import { h1 } from "motion/react-client";
 import OrderCard from "../OrderCard/OrderCard";
 
 function Orders() {

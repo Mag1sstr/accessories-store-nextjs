@@ -3,11 +3,25 @@ import styles from "./OrderCard.module.css";
 import { IOrder } from "@/store/slices/ordersSlice";
 import { formatDate } from "@/utils/formatDate";
 import { motion } from "motion/react";
+import { useEffect, useRef, useState } from "react";
 interface IProps extends IOrder {
   i: number;
   totalPrice: number;
 }
 function OrderCard({ i, totalPrice, ...order }: IProps) {
+  const [open, setOpen] = useState(false);
+  const contentRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const el = contentRef.current;
+    if (!el) return;
+    if (open) {
+      el.style.height = el.scrollHeight + "px";
+    } else {
+      el.style.height = "0px";
+    }
+  }, [open]);
+
   return (
     <motion.li
       initial={{ transform: "scale(0.8)", opacity: 0 }}
@@ -15,6 +29,7 @@ function OrderCard({ i, totalPrice, ...order }: IProps) {
       transition={{ delay: i > 0 ? i - 0.9 : 0, duration: 0.2 }}
       key={order.orderNumber}
       className={styles.order}
+      onClick={() => setOpen((prev) => !prev)}
     >
       <div className={styles.top}>
         <div className={styles.topRow}>
@@ -23,7 +38,7 @@ function OrderCard({ i, totalPrice, ...order }: IProps) {
         </div>
         <div className={styles.topRow}>
           <p className={styles.status}>Оплачено</p>
-          <button className={styles.btn}>
+          <button className={`${styles.btn} ${open && styles.active}`}>
             <svg
               width="16"
               height="10"
@@ -39,30 +54,31 @@ function OrderCard({ i, totalPrice, ...order }: IProps) {
           </button>
         </div>
       </div>
-      {order.items.map((item) => (
-        <div key={item.id} className={styles.item}>
-          <div className={styles.itemRow}>
-            <img
-              className={styles.img}
-              src={item.images[0] || ""}
-              alt={item.title}
-            />
-            <div>
-              <h3 className={styles.itemTitle}>{item.title}</h3>
-              <p className={styles.itemDesc}>{item.category.name}</p>
+      <div className={styles.content} ref={contentRef}>
+        {order.items.map((item) => (
+          <div key={item.id} className={styles.item}>
+            <div className={styles.itemRow}>
+              <img
+                className={styles.img}
+                src={item.images[0] || ""}
+                alt={item.title}
+              />
+              <div>
+                <h3 className={styles.itemTitle}>{item.title}</h3>
+                <p className={styles.itemDesc}>{item.category.name}</p>
+              </div>
+            </div>
+            <div className={styles.right}>
+              <p className={styles.price}>{item.price * item.count} $</p>
+              <p className={styles.count}>{item.count} шт.</p>
             </div>
           </div>
-          <div className={styles.right}>
-            <p className={styles.price}>{item.price * item.count} $</p>
-            <p className={styles.count}>{item.count} шт.</p>
-          </div>
+        ))}
+        <div className={styles.footer}>
+          <p className={styles.total}>
+            Итого: <strong>{totalPrice} ₽</strong>
+          </p>
         </div>
-      ))}
-
-      <div className={styles.footer}>
-        <p className={styles.total}>
-          Итого: <strong>{totalPrice} ₽</strong>
-        </p>
       </div>
     </motion.li>
   );

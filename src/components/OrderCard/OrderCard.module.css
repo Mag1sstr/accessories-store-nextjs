@@ -2,6 +2,12 @@
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
   border-radius: 30px;
   overflow: hidden;
+  cursor: pointer;
+  &:hover {
+    .btn {
+      background: #f0f0f0;
+    }
+  }
 }
 .top {
   display: flex;
@@ -13,6 +19,10 @@
   align-items: center;
   gap: 1.25rem;
   padding: 30px 35px;
+}
+.content {
+  overflow: hidden;
+  transition: height 0.3s;
 }
 .date {
   color: #aeaeae;
@@ -31,8 +41,8 @@
   height: 40px;
   border-radius: 50%;
   cursor: pointer;
-  &:hover {
-    background: #f0f0f0;
+  &.active {
+    transform: rotate(-180deg);
   }
 }
 .item {
