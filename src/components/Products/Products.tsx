@@ -14,7 +14,6 @@ function Products({ products }: IProps) {
   const router = useRouter();
   return (
     <section className={styles.wrapper}>
-      <Blur />
       <div className="container">
         <div className={styles.row}>
           {data?.slice(0, 8).map((product) => (

@@ -53,7 +53,6 @@ function Header() {
       </div>
       <HeaderNav />
       <div className={styles.filters}>
-        <Blur />
         <div className="container">
           <div className={styles.filterRow}>
             <CatalogMenu />

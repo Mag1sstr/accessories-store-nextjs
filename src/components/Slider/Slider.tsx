@@ -5,7 +5,6 @@ import Blur from "../Blur/Blur";
 function Slider() {
   return (
     <div className={styles.wrapper}>
-      <Blur />
       <button className={styles.btn}>
         <svg
           width="16"
