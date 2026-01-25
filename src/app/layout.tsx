@@ -9,6 +9,7 @@ import ModalAddedProduct from "@/components/ModalAddedProduct/ModalAddedProduct"
 import CallModal from "@/components/CallModal/CallModal";
 import DeleteProductModal from "@/components/DeleteProductModal/DeleteProductModal";
 import UpdateProductModal from "@/components/UpdateProductModal/UpdateProductModal";
+import NextTopLoader from "nextjs-toploader";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -40,6 +41,7 @@ export default function RootLayout({
       </head>
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
         <Providers>
+          <NextTopLoader />
           <ModalLogin />
           <RegModal />
           <Cart />
