@@ -55,7 +55,7 @@ function CallModal() {
             <p className={styles.subtitle}>
               Менеджер позвонит вам через 3 минуты
             </p>
-            {errors.tel?.message?.length && (
+            {errors.tel?.message && (
               <p className={styles.err}>{errors.tel.message}</p>
             )}
             <input
