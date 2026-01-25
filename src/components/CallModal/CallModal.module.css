@@ -24,3 +24,7 @@
   margin-bottom: 1rem;
   outline: none;
 }
+.err {
+  font-size: 14px;
+  color: red;
+}
