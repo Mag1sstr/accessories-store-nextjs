@@ -73,7 +73,7 @@ function ModalLogin() {
             },
           })}
           errors={!!errors.email}
-          getValues={!!getValues("email")}
+          // getValues={!!getValues("email")}
         />
         <InputField
           placeholder="Пароль"
@@ -83,7 +83,7 @@ function ModalLogin() {
             minLength: 5,
           })}
           errors={!!errors.password}
-          getValues={!!getValues("password")}
+          // getValues={!!getValues("password")}
         />
 
         <button type="submit" className={styles.btn}>
