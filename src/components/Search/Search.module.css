@@ -6,8 +6,7 @@
   border: 1px solid #b7b7b7;
   padding: 0 24px;
   border-radius: 0.5rem;
-  max-width: 594px;
-  width: 100%;
+  flex: 1;
   input {
     width: 100%;
     font-family: inherit;

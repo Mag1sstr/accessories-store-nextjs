@@ -16,6 +16,7 @@ function Header() {
   const { setOpenCart } = useModals();
   const { cart } = useCart();
   const { favorites } = useAppSelector((state) => state.favorites);
+  const { compareData } = useAppSelector((state) => state.compare);
 
   const handleOpenCart = () => {
     setOpenCart(true);
@@ -73,7 +74,7 @@ function Header() {
                   strokeLinejoin="round"
                 />
               </svg>
-              <div>{favorites.length}</div>
+              {!!favorites.length && <div>{favorites.length}</div>}
             </Link>
             <Link href="/compare" className={styles.compare}>
               <svg
@@ -90,6 +91,7 @@ function Header() {
                   fill="#706E6E"
                 />
               </svg>
+              {!!compareData.length && <div>{compareData.length}</div>}
             </Link>
             <button onClick={handleOpenCart} className={styles.cartBtn}>
               <svg

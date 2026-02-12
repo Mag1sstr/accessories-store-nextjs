@@ -60,14 +60,31 @@
   }
 }
 .compare {
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
+  color: #fff;
+  font-size: 12px;
+
+  div {
+    position: absolute;
+    right: -5px;
+    top: 5px;
+    min-width: 22px;
+    min-height: 22px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50px;
+    background-color: var(--prime);
+  }
 }
 .fav {
   position: relative;
   color: #fff;
-  font-size: 14px;
+  font-size: 12px;
   div {
     position: absolute;
     right: -5px;

@@ -60,6 +60,7 @@
   li {
     padding: 10px 16px;
     transition: 0.3s;
+    color: #000;
     &:hover {
       filter: brightness(0.96);
       background-color: #f0ffff;
