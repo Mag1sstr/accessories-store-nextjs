@@ -1,30 +1,33 @@
 .login {
-  height: 32px;
-  padding: 7px 40px;
+  min-width: 130px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  border-radius: 16px;
+  color: white;
   background-color: var(--prime);
-  color: #fff;
-  border-radius: 8px;
+  padding: 14px 18px;
   cursor: pointer;
-  transition: opacity 0.3s;
+  font-size: 18px;
   &:hover {
     opacity: 0.9;
   }
 }
 .user {
+  min-width: 130px;
   position: relative;
   display: flex;
   align-items: center;
-  gap: 4px;
-  border-radius: 8px;
-  height: 32px;
+  justify-content: center;
+  gap: 5px;
+  border-radius: 16px;
+  border: 1px solid var(--prime);
+  color: var(--prime);
   background-color: #fff;
-  padding: 0 20px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+  padding: 14px 18px;
   cursor: pointer;
 
-  img {
-    width: 20px;
-  }
   p {
     max-width: 7ch;
     text-overflow: ellipsis;
@@ -34,13 +37,14 @@
 .drop {
   visibility: hidden;
   opacity: 0;
-  margin-top: 8px;
-  padding: 1rem;
-  border-radius: 8px;
+  margin-top: 6px;
+  padding: 13px 0;
+  border-radius: 10px;
   position: absolute;
   top: 100%;
   right: 0;
-  width: 210px;
+  min-width: 132px;
+  border: 1px solid #f8f8f8;
   background-color: #fff;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
   transition: 0.3s;
@@ -52,15 +56,17 @@
 .actions {
   display: flex;
   flex-direction: column;
-  gap: 8px;
-  font-size: 20px;
+  font-size: 18px;
   li {
-    background-color: #f9f9f9;
-    padding: 8px;
-    border-radius: 8px;
+    padding: 10px 16px;
     transition: 0.3s;
     &:hover {
       filter: brightness(0.96);
+      background-color: #f0ffff;
+      color: var(--prime);
+    }
+    &:last-child {
+      border-top: 1px solid #f6f6f6;
     }
   }
 }
