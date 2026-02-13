@@ -5,7 +5,7 @@ import { usePathname } from "next/navigation";
 interface IProps {
   href: string;
   children: React.ReactNode;
-  className?: string;
+  className?: (isActive: boolean) => string;
 }
 
 function NavLink({ href, children, className }: IProps) {
@@ -13,7 +13,7 @@ function NavLink({ href, children, className }: IProps) {
   return (
     <Link
       href={href}
-      className={`${className} ${href === pathname && styles.active}`}
+      className={`${className && className(href === pathname)} ${href === pathname && styles.active}`}
     >
       {children}
     </Link>
