@@ -80,6 +80,11 @@
     border-radius: 50px;
     background-color: var(--prime);
   }
+  &.active {
+    svg * {
+      fill: var(--light-prime);
+    }
+  }
 }
 .fav {
   position: relative;
@@ -97,6 +102,11 @@
     justify-content: center;
     border-radius: 50px;
     background-color: var(--prime);
+  }
+  &.active {
+    svg * {
+      stroke: var(--light-prime);
+    }
   }
 }
 .cartBtn {

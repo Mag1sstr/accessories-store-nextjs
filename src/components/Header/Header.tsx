@@ -11,6 +11,7 @@ import User from "../User/User";
 import Link from "next/link";
 import SocialLinks from "../SocialLinks/SocialLinks";
 import { useAppSelector } from "@/store/store";
+import NavLink from "../NavLink/NavLink";
 
 function Header() {
   const { setOpenCart } = useModals();
@@ -58,7 +59,12 @@ function Header() {
           <div className={styles.filterRow}>
             <CatalogMenu />
             <Search />
-            <Link href="/favorites" className={styles.fav}>
+            <NavLink
+              href="/favorites"
+              className={(isActive) =>
+                `${styles.fav} ${isActive && styles.active} `
+              }
+            >
               <svg
                 width="40"
                 height="40"
@@ -75,8 +81,13 @@ function Header() {
                 />
               </svg>
               {!!favorites.length && <div>{favorites.length}</div>}
-            </Link>
-            <Link href="/compare" className={styles.compare}>
+            </NavLink>
+            <NavLink
+              href="/compare"
+              className={(isActive) =>
+                `${styles.compare} ${isActive && styles.active}`
+              }
+            >
               <svg
                 width="40"
                 height="40"
@@ -92,7 +103,7 @@ function Header() {
                 />
               </svg>
               {!!compareData.length && <div>{compareData.length}</div>}
-            </Link>
+            </NavLink>
             <button onClick={handleOpenCart} className={styles.cartBtn}>
               <svg
                 width="24"

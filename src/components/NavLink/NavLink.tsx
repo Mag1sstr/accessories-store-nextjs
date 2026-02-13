@@ -13,7 +13,7 @@ function NavLink({ href, children, className }: IProps) {
   return (
     <Link
       href={href}
-      className={`${className && className(href === pathname)} ${href === pathname && styles.active}`}
+      className={`${className && className(href === pathname)}`}
     >
       {children}
     </Link>
