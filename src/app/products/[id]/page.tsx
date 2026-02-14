@@ -23,6 +23,9 @@ export async function generateMetadata({
 
   return {
     title: product.title ?? "Страница продукта",
+    openGraph: {
+      title: product.title ?? "Страница продукта",
+    },
   };
 }
 
