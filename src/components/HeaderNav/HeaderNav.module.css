@@ -70,7 +70,7 @@
   display: none;
 }
 .burger {
-  display: flex;
+  display: none;
   align-items: center;
   justify-content: center;
   cursor: pointer;
@@ -82,6 +82,9 @@
   .headerNav {
     min-height: unset;
     padding: 4px 0;
+  }
+  .burger {
+    display: flex;
   }
   .links {
     display: none;
