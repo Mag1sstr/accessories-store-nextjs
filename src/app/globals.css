@@ -83,3 +83,15 @@ input[type="number"]:focus {
   appearance: none;
   -moz-appearance: textfield;
 }
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background-color: #878787;
+  border-radius: 5px;
+  background-clip: padding-box;
+}
