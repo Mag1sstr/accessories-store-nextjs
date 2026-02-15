@@ -59,3 +59,26 @@
     }
   }
 }
+@media (max-width: 1270px) {
+  .info {
+    p {
+      font-size: 68px;
+      span {
+        width: 80px;
+        height: 34px;
+      }
+    }
+  }
+  .content {
+    gap: 24px;
+    img {
+      width: 340px;
+    }
+  }
+  .btn {
+    left: 30px;
+    &:last-child {
+      right: 30px;
+    }
+  }
+}

@@ -34,10 +34,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        <meta
+        {/* <meta
           name="viewport"
           content="width=1920, initial-scale=0.5, maximum-scale=1, user-scalable=no"
-        />
+        /> */}
       </head>
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
         <Providers>
