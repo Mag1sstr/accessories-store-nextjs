@@ -4,10 +4,11 @@
   align-items: center;
   justify-content: center;
   gap: 5px;
-  border-radius: 16px;
-  color: white;
+  border-radius: 12px;
+  color: #fff;
   background-color: var(--prime);
-  padding: 14px 18px;
+  padding: 0 18px;
+  height: 40px;
   cursor: pointer;
   font-size: 18px;
   &:hover {
@@ -69,5 +70,11 @@
     &:last-child {
       border-top: 1px solid #f6f6f6;
     }
+  }
+}
+@media (max-width: 768px) {
+  .user,
+  .login {
+    display: none;
   }
 }

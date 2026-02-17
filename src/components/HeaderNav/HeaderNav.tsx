@@ -5,6 +5,7 @@ import fireImg from "../../../public/assets/icons/fire.png";
 import Image from "next/image";
 import { usePathname, useRouter } from "next/navigation";
 import { useModals } from "@/hooks/useModals";
+import User from "../User/User";
 
 const NAV_ITEMS = [
   { title: "Весь каталог", href: "/products" },
@@ -42,7 +43,7 @@ function HeaderNav() {
               />
             </svg>
           </Link>
-          <div className={styles.mobInput}>
+          {/* <div className={styles.mobInput}>
             <svg
               width="24"
               height="24"
@@ -58,7 +59,7 @@ function HeaderNav() {
               />
             </svg>
             <input type="search" placeholder="Поиск по каталогу товаров" />
-          </div>
+          </div> */}
           <ul className={styles.links}>
             {NAV_ITEMS.map((item, i) => (
               <li
@@ -73,26 +74,9 @@ function HeaderNav() {
               </li>
             ))}
           </ul>
-          <div className={styles.contact}>
-            <p className={styles.tel}>
-              <svg
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M10.1339 10.536L11.7449 9.06C12.1854 8.65563 12.495 8.12885 12.634 7.54727C12.773 6.96569 12.735 6.35584 12.5249 5.796L11.8379 3.9615C11.5813 3.27663 11.0731 2.71538 10.4171 2.39208C9.76103 2.06879 9.0064 2.00779 8.30693 2.2215C5.73293 3.009 3.75443 5.4015 4.36343 8.2425C4.76393 10.1115 5.53043 12.4575 6.98243 14.9535C8.43743 17.4555 10.0994 19.3035 11.5244 20.6025C13.6754 22.56 16.7504 22.071 18.7289 20.226C19.2593 19.7315 19.5811 19.0534 19.6288 18.3298C19.6764 17.6063 19.4463 16.8918 18.9854 16.332L17.7254 14.802C17.3454 14.3393 16.8356 14.0009 16.2617 13.8304C15.6878 13.6598 15.0759 13.6649 14.5049 13.845L12.4229 14.5005C11.8853 13.9456 11.4141 13.33 11.0189 12.666C10.6375 11.9945 10.3403 11.2786 10.1339 10.5345V10.536Z"
-                  fill="#B7B7B7"
-                />
-              </svg>
-              +7 812 561 96 62
-            </p>
-            <p className={styles.call} onClick={handleOpenCallModal}>
-              Вам перезвонить?
-            </p>
-          </div>
+
+          <User />
+
           <button className={styles.burger}>
             <svg
               width="24"

@@ -7,8 +7,8 @@
 .links {
   flex: 1;
   display: flex;
+  gap: 20px;
   align-items: center;
-  justify-content: space-between;
   font-size: 18px;
 }
 .link {
@@ -78,6 +78,17 @@
     opacity: 0.5;
   }
 }
+@media (max-width: 900px) {
+  .headerNav {
+    gap: 16px;
+    font-size: 14px;
+  }
+  .links {
+    gap: 14px;
+    font-size: 16px;
+  }
+}
+
 @media (max-width: 768px) {
   .headerNav {
     min-height: unset;
@@ -109,10 +120,5 @@
   }
   .call {
     display: none;
-  }
-}
-@media (max-width: 900px) {
-  .headerNav {
-    gap: 16px;
   }
 }

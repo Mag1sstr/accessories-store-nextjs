@@ -4,7 +4,12 @@ import styles from "./Search.module.css";
 import { useState } from "react";
 import { useDebounce } from "@/hooks/useDebounce";
 
-function Search() {
+interface IProps {
+  mobile?: boolean;
+  className?: string;
+}
+
+function Search({ mobile, className }: IProps) {
   const [searchValue, setSearchValue] = useState("");
 
   const debouncedValue = useDebounce(searchValue.trim(), 1000);
@@ -14,7 +19,7 @@ function Search() {
   });
 
   return (
-    <div className={styles.search}>
+    <div className={`${styles.search} ${mobile && styles.mobile} ${className}`}>
       <svg
         width="24"
         height="24"

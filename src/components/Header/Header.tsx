@@ -48,7 +48,6 @@ function Header() {
             </div>
             <div className={styles.social}>
               <SocialLinks />
-              <User />
             </div>
           </div>
         </div>
