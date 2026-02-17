@@ -37,7 +37,6 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  border: 1px solid red;
 }
 html {
   font-size: clamp(14px, 1.2vw, 18px);

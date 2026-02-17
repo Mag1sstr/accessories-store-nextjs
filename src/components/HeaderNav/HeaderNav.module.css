@@ -88,16 +88,6 @@
   }
   .links {
     display: none;
-    /* position: absolute;
-    left: 0;
-    top: 144px;
-    z-index: 100;
-    background-color: #fff;
-    width: 100%;
-    padding: 1rem 0;
-    flex-wrap: wrap;
-    gap: 24px;
-    justify-content: unset; */
   }
   .mobInput {
     display: flex;
