@@ -11,6 +11,7 @@ function ModalsContextProvider({ children }: { children: React.ReactNode }) {
   const [openCallModal, setOpenCallModal] = useState(false);
   const [openDeleteModal, setOpenDeleteModal] = useState(false);
   const [openUpdateModal, setOpenUpdateModal] = useState(false);
+  const [openMobileNav, setOpenMobileNav] = useState(false);
 
   return (
     <ModalsContext.Provider
@@ -31,6 +32,8 @@ function ModalsContextProvider({ children }: { children: React.ReactNode }) {
         setOpenDeleteModal,
         openUpdateModal,
         setOpenUpdateModal,
+        openMobileNav,
+        setOpenMobileNav,
       }}
     >
       {children}

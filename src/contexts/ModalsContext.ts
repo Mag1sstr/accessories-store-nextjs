@@ -19,6 +19,8 @@ interface IModalsContext {
   setOpenDeleteModal: setModalState;
   openUpdateModal: boolean;
   setOpenUpdateModal: setModalState;
+  openMobileNav: boolean;
+  setOpenMobileNav: setModalState;
 }
 
 export const ModalsContext = createContext({} as IModalsContext);

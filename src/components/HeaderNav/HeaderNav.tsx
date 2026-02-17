@@ -6,8 +6,9 @@ import Image from "next/image";
 import { usePathname, useRouter } from "next/navigation";
 import { useModals } from "@/hooks/useModals";
 import User from "../User/User";
+import Search from "../Search/Search";
 
-const NAV_ITEMS = [
+export const NAV_ITEMS = [
   { title: "Весь каталог", href: "/products" },
   { title: "Гарантия", href: "/guarantee" },
   { title: "Политика возврата", href: "/policy" },
@@ -60,6 +61,7 @@ function HeaderNav() {
             </svg>
             <input type="search" placeholder="Поиск по каталогу товаров" />
           </div> */}
+          <Search mobile />
           <ul className={styles.links}>
             {NAV_ITEMS.map((item, i) => (
               <li
