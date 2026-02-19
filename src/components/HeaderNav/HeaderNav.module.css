@@ -69,6 +69,9 @@
 .mobInput {
   display: none;
 }
+.search {
+  display: none;
+}
 .burger {
   display: none;
   align-items: center;
@@ -93,6 +96,9 @@
   .headerNav {
     min-height: unset;
     padding: 4px 0;
+  }
+  .search {
+    display: block;
   }
   .burger {
     display: flex;

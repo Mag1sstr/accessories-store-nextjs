@@ -49,6 +49,7 @@ export default function RootLayout({
           <CallModal />
           <DeleteProductModal />
           <UpdateProductModal />
+
           {children}
         </Providers>
       </body>

@@ -7,6 +7,8 @@ import { usePathname, useRouter } from "next/navigation";
 import { useModals } from "@/hooks/useModals";
 import User from "../User/User";
 import Search from "../Search/Search";
+import { useWindowWidth } from "@/hooks/useWindowWidth";
+import MobileNav from "../Mobile/MobileNav/MobileNav";
 
 export const NAV_ITEMS = [
   { title: "Весь каталог", href: "/products" },
@@ -20,82 +22,77 @@ export const NAV_ITEMS = [
 function HeaderNav() {
   const router = useRouter();
   const pathname = usePathname().replace("/", "");
-  const { setOpenCallModal } = useModals();
+  const { setOpenCallModal, setOpenMobileNav } = useModals();
 
   const handleOpenCallModal = () => {
     setOpenCallModal(true);
   };
 
+  const width = useWindowWidth();
+  console.log(width);
+
   return (
-    <nav>
-      <div className="container">
-        <div className={styles.headerNav}>
-          <Link href="/">
-            <svg
-              width="40"
-              height="40"
-              viewBox="0 0 40 40"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M33.9314 29.5863C33.4202 30.7884 32.7886 31.9348 32.0464 33.0075C31.055 34.436 30.2409 35.4231 29.6169 35.9725C28.6476 36.8702 27.6064 37.3321 26.4931 37.3582C25.6956 37.3582 24.7319 37.1291 23.6094 36.6635C22.4833 36.1997 21.4494 35.9725 20.5023 35.9725C19.5109 35.9725 18.4475 36.1997 17.3084 36.6635C16.1712 37.1291 15.2518 37.3731 14.5484 37.3954C13.4832 37.442 12.4179 36.9689 11.3564 35.9725C10.6788 35.3765 9.83143 34.3522 8.81419 32.9032C7.72495 31.3593 6.82956 29.562 6.12801 27.519C5.37662 25.3083 5 23.1702 5 21.0992C5 18.7283 5.5077 16.6815 6.52494 14.9681C7.29433 13.6224 8.39428 12.4993 9.71882 11.707C11.0249 10.9167 12.5159 10.4911 14.0389 10.474C14.8881 10.474 16.0013 10.7385 17.3804 11.26C18.7595 11.7815 19.6457 12.0459 20.0315 12.0459C20.3232 12.0459 21.3036 11.7349 22.9725 11.1184C24.5473 10.5467 25.8765 10.3101 26.9658 10.4033C29.9196 10.6435 32.1369 11.8168 33.612 13.9326C30.972 15.5473 29.6667 17.8064 29.6926 20.7062C29.7147 22.9653 30.5289 24.8445 32.124 26.3363C32.8292 27.0171 33.652 27.5618 34.5517 27.9436C34.356 28.5154 34.1492 29.0611 33.9314 29.5863ZM27.1615 2.70958C27.1615 4.47889 26.519 6.13272 25.2433 7.66177C23.6999 9.4795 21.8353 10.5318 19.8137 10.366C19.7873 10.1435 19.7743 9.91962 19.7749 9.69554C19.7749 7.99515 20.506 6.17742 21.8113 4.68934C22.4611 3.93692 23.2882 3.30929 24.2907 2.81016C25.2913 2.31847 26.2365 2.04656 27.1264 2C27.1504 2.23839 27.1615 2.47492 27.1615 2.70958Z"
-                fill="#0071E4"
-              />
-            </svg>
-          </Link>
-          {/* <div className={styles.mobInput}>
-            <svg
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M21 21L16.514 16.506M19 10.5C19 12.7543 18.1045 14.9163 16.5104 16.5104C14.9163 18.1045 12.7543 19 10.5 19C8.24566 19 6.08365 18.1045 4.48959 16.5104C2.89553 14.9163 2 12.7543 2 10.5C2 8.24566 2.89553 6.08365 4.48959 4.48959C6.08365 2.89553 8.24566 2 10.5 2C12.7543 2 14.9163 2.89553 16.5104 4.48959C18.1045 6.08365 19 8.24566 19 10.5V10.5Z"
-                stroke="#100E0E"
-                strokeWidth="2"
-                strokeLinecap="round"
-              />
-            </svg>
-            <input type="search" placeholder="Поиск по каталогу товаров" />
-          </div> */}
-          <Search mobile />
-          <ul className={styles.links}>
-            {NAV_ITEMS.map((item, i) => (
-              <li
-                className={`${styles.link} ${
-                  pathname === item.href.replace("/", "") && styles.linkActive
-                }`}
-                key={item.title}
-                onClick={() => router.push(item.href)}
+    <>
+      <nav>
+        <div className="container">
+          <div className={styles.headerNav}>
+            <Link href="/">
+              <svg
+                width="40"
+                height="40"
+                viewBox="0 0 40 40"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
               >
-                {i === 0 && <Image src={fireImg} alt="fire" />}
-                {item.title}
-              </li>
-            ))}
-          </ul>
+                <path
+                  d="M33.9314 29.5863C33.4202 30.7884 32.7886 31.9348 32.0464 33.0075C31.055 34.436 30.2409 35.4231 29.6169 35.9725C28.6476 36.8702 27.6064 37.3321 26.4931 37.3582C25.6956 37.3582 24.7319 37.1291 23.6094 36.6635C22.4833 36.1997 21.4494 35.9725 20.5023 35.9725C19.5109 35.9725 18.4475 36.1997 17.3084 36.6635C16.1712 37.1291 15.2518 37.3731 14.5484 37.3954C13.4832 37.442 12.4179 36.9689 11.3564 35.9725C10.6788 35.3765 9.83143 34.3522 8.81419 32.9032C7.72495 31.3593 6.82956 29.562 6.12801 27.519C5.37662 25.3083 5 23.1702 5 21.0992C5 18.7283 5.5077 16.6815 6.52494 14.9681C7.29433 13.6224 8.39428 12.4993 9.71882 11.707C11.0249 10.9167 12.5159 10.4911 14.0389 10.474C14.8881 10.474 16.0013 10.7385 17.3804 11.26C18.7595 11.7815 19.6457 12.0459 20.0315 12.0459C20.3232 12.0459 21.3036 11.7349 22.9725 11.1184C24.5473 10.5467 25.8765 10.3101 26.9658 10.4033C29.9196 10.6435 32.1369 11.8168 33.612 13.9326C30.972 15.5473 29.6667 17.8064 29.6926 20.7062C29.7147 22.9653 30.5289 24.8445 32.124 26.3363C32.8292 27.0171 33.652 27.5618 34.5517 27.9436C34.356 28.5154 34.1492 29.0611 33.9314 29.5863ZM27.1615 2.70958C27.1615 4.47889 26.519 6.13272 25.2433 7.66177C23.6999 9.4795 21.8353 10.5318 19.8137 10.366C19.7873 10.1435 19.7743 9.91962 19.7749 9.69554C19.7749 7.99515 20.506 6.17742 21.8113 4.68934C22.4611 3.93692 23.2882 3.30929 24.2907 2.81016C25.2913 2.31847 26.2365 2.04656 27.1264 2C27.1504 2.23839 27.1615 2.47492 27.1615 2.70958Z"
+                  fill="#0071E4"
+                />
+              </svg>
+            </Link>
 
-          <User />
+            {width && width <= 768 && (
+              <Search mobile className={styles.search} />
+            )}
+            <ul className={styles.links}>
+              {NAV_ITEMS.map((item, i) => (
+                <li
+                  className={`${styles.link} ${
+                    pathname === item.href.replace("/", "") && styles.linkActive
+                  }`}
+                  key={item.title}
+                  onClick={() => router.push(item.href)}
+                >
+                  {i === 0 && <Image src={fireImg} alt="fire" />}
+                  {item.title}
+                </li>
+              ))}
+            </ul>
 
-          <button className={styles.burger}>
-            <svg
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
+            <User />
+
+            <button
+              onClick={() => setOpenMobileNav(true)}
+              className={styles.burger}
             >
-              <path
-                d="M4 6H20V8H4V6ZM4 11H20V13H4V11ZM4 16H20V18H4V16Z"
-                fill="#100E0E"
-              />
-            </svg>
-          </button>
+              <svg
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M4 6H20V8H4V6ZM4 11H20V13H4V11ZM4 16H20V18H4V16Z"
+                  fill="#100E0E"
+                />
+              </svg>
+            </button>
+          </div>
         </div>
-      </div>
-    </nav>
+      </nav>
+      <MobileNav />
+    </>
   );
 }
 
