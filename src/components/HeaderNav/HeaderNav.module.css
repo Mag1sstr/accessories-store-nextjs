@@ -72,15 +72,7 @@
 .search {
   display: none;
 }
-.burger {
-  display: none;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  &:hover {
-    opacity: 0.5;
-  }
-}
+
 @media (max-width: 900px) {
   .headerNav {
     gap: 16px;
@@ -100,9 +92,7 @@
   .search {
     display: block;
   }
-  .burger {
-    display: flex;
-  }
+
   .links {
     display: none;
   }

@@ -9,6 +9,7 @@ import User from "../User/User";
 import Search from "../Search/Search";
 import { useWindowWidth } from "@/hooks/useWindowWidth";
 import MobileNav from "../Mobile/MobileNav/MobileNav";
+import BurgerButton from "../ui/BurgerButton/BurgerButton";
 
 export const NAV_ITEMS = [
   { title: "Весь каталог", href: "/products" },
@@ -22,7 +23,7 @@ export const NAV_ITEMS = [
 function HeaderNav() {
   const router = useRouter();
   const pathname = usePathname().replace("/", "");
-  const { setOpenCallModal, setOpenMobileNav } = useModals();
+  const { setOpenCallModal, setOpenMobileNav, openMobileNav } = useModals();
 
   const handleOpenCallModal = () => {
     setOpenCallModal(true);
@@ -71,23 +72,7 @@ function HeaderNav() {
 
             <User />
 
-            <button
-              onClick={() => setOpenMobileNav(true)}
-              className={styles.burger}
-            >
-              <svg
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M4 6H20V8H4V6ZM4 11H20V13H4V11ZM4 16H20V18H4V16Z"
-                  fill="#100E0E"
-                />
-              </svg>
-            </button>
+            <BurgerButton />
           </div>
         </div>
       </nav>

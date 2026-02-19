@@ -1,0 +1,13 @@
+.burger {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  user-select: none;
+  transition: 0.3s;
+}
+@media (max-width: 768px) {
+  .burger {
+    display: flex;
+  }
+}
