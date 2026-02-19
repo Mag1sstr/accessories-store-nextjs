@@ -36,7 +36,7 @@ function MobileNav() {
         ))}
         <SocialLinks />
       </ul> */}
-      <CategoryList />
+      <CategoryList mobile />
     </div>
   );
 }

@@ -2,12 +2,14 @@
 import { usePathname, useRouter } from "next/navigation";
 import styles from "./CategoryList.module.css";
 import { NAV_ITEMS } from "@/components/HeaderNav/HeaderNav";
-
-function CategoryList() {
+interface IProps {
+  mobile?: boolean;
+}
+function CategoryList({ mobile }: IProps) {
   const pathname = usePathname();
   const router = useRouter();
   return (
-    <ul className={styles.links}>
+    <ul className={`${styles.links} ${mobile && styles.mobile}`}>
       {NAV_ITEMS.map((item, i) => (
         <li
           className={`${styles.link} ${

@@ -4,6 +4,9 @@
   gap: 20px;
   align-items: center;
   font-size: 18px;
+  &.mobile {
+    flex-wrap: wrap;
+  }
 }
 .link {
   position: relative;

@@ -51,7 +51,7 @@ function HeaderNav() {
             {width && width <= 768 && (
               <Search mobile className={styles.search} />
             )}
-            <CategoryList />
+            {/* <CategoryList /> */}
             <User />
             <BurgerButton />
           </div>
