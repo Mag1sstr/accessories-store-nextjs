@@ -9,6 +9,7 @@
   height: 0px;
   overflow: hidden;
   transition: 0.3s ease;
+  display: none;
   &.open {
     visibility: visible;
     transform: scale(1);
@@ -29,5 +30,10 @@
   color: #000;
   &:hover {
     color: var(--prime);
+  }
+}
+@media (max-width: 768px) {
+  .wrapper {
+    display: block;
   }
 }

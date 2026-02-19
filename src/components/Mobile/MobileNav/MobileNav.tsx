@@ -3,7 +3,6 @@ import { NAV_ITEMS } from "@/components/HeaderNav/HeaderNav";
 import styles from "./MobileNav.module.css";
 import Link from "next/link";
 import { useModals } from "@/hooks/useModals";
-import CloseBtn from "@/components/CloseBtn/CloseBtn";
 import SocialLinks from "@/components/SocialLinks/SocialLinks";
 import { useEffect, useRef } from "react";
 function MobileNav() {
@@ -23,7 +22,6 @@ function MobileNav() {
       ref={ref}
       className={`${styles.wrapper} ${openMobileNav && styles.open}`}
     >
-      <CloseBtn onClick={() => setOpenMobileNav(false)} />
       <ul className={styles.col}>
         {NAV_ITEMS.map(({ title, href }) => (
           <Link
