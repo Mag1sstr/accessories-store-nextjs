@@ -4,52 +4,7 @@
   align-items: center;
   gap: 36px;
 }
-.links {
-  flex: 1;
-  display: flex;
-  gap: 20px;
-  align-items: center;
-  font-size: 18px;
-}
-.link {
-  position: relative;
-  cursor: pointer;
-  padding: 0 4px;
-  transition: 0.3s;
 
-  &::before {
-    opacity: 0;
-    position: absolute;
-    content: "";
-    left: 0;
-    right: 0;
-    height: 2px;
-    background-color: var(--prime);
-    border-radius: 4px;
-    bottom: -5px;
-    transition: 0.3s;
-  }
-  &:hover {
-    color: var(--prime);
-    &::before {
-      opacity: 1;
-    }
-  }
-  &:first-child {
-    display: flex;
-    align-items: center;
-    gap: 7px;
-    padding: 3px 7px;
-    border-radius: 8px;
-    background-color: #fdefbf;
-  }
-  &.linkActive {
-    color: var(--prime);
-    &::before {
-      opacity: 1;
-    }
-  }
-}
 .contact {
   display: flex;
   flex-direction: column;

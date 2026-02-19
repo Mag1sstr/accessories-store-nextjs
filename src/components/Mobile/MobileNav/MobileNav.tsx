@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useModals } from "@/hooks/useModals";
 import SocialLinks from "@/components/SocialLinks/SocialLinks";
 import { useEffect, useRef } from "react";
+import CategoryList from "@/components/ui/CategoryList/CategoryList";
 function MobileNav() {
   const { openMobileNav, setOpenMobileNav } = useModals();
   const ref = useRef<HTMLDivElement>(null);
@@ -22,7 +23,7 @@ function MobileNav() {
       ref={ref}
       className={`${styles.wrapper} ${openMobileNav && styles.open}`}
     >
-      <ul className={styles.col}>
+      {/* <ul className={styles.col}>
         {NAV_ITEMS.map(({ title, href }) => (
           <Link
             onClick={() => setOpenMobileNav(false)}
@@ -34,7 +35,8 @@ function MobileNav() {
           </Link>
         ))}
         <SocialLinks />
-      </ul>
+      </ul> */}
+      <CategoryList />
     </div>
   );
 }

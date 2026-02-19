@@ -1,8 +1,6 @@
 "use client";
 import Link from "next/link";
 import styles from "./HeaderNav.module.css";
-import fireImg from "../../../public/assets/icons/fire.png";
-import Image from "next/image";
 import { usePathname, useRouter } from "next/navigation";
 import { useModals } from "@/hooks/useModals";
 import User from "../User/User";
@@ -10,6 +8,7 @@ import Search from "../Search/Search";
 import { useWindowWidth } from "@/hooks/useWindowWidth";
 import MobileNav from "../Mobile/MobileNav/MobileNav";
 import BurgerButton from "../ui/BurgerButton/BurgerButton";
+import CategoryList from "../ui/CategoryList/CategoryList";
 
 export const NAV_ITEMS = [
   { title: "Весь каталог", href: "/products" },
@@ -21,9 +20,7 @@ export const NAV_ITEMS = [
 ];
 
 function HeaderNav() {
-  const router = useRouter();
-  const pathname = usePathname().replace("/", "");
-  const { setOpenCallModal, setOpenMobileNav, openMobileNav } = useModals();
+  const { setOpenCallModal } = useModals();
 
   const handleOpenCallModal = () => {
     setOpenCallModal(true);
@@ -51,27 +48,11 @@ function HeaderNav() {
                 />
               </svg>
             </Link>
-
             {width && width <= 768 && (
               <Search mobile className={styles.search} />
             )}
-            <ul className={styles.links}>
-              {NAV_ITEMS.map((item, i) => (
-                <li
-                  className={`${styles.link} ${
-                    pathname === item.href.replace("/", "") && styles.linkActive
-                  }`}
-                  key={item.title}
-                  onClick={() => router.push(item.href)}
-                >
-                  {i === 0 && <Image src={fireImg} alt="fire" />}
-                  {item.title}
-                </li>
-              ))}
-            </ul>
-
+            <CategoryList />
             <User />
-
             <BurgerButton />
           </div>
         </div>
