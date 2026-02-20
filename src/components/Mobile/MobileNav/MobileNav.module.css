@@ -10,6 +10,8 @@
   overflow: hidden;
   transition: 0.3s ease;
   display: none;
+  padding: 30px 24px;
+  border-radius: 50%;
   &.open {
     visibility: visible;
     transform: scale(1);
