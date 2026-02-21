@@ -10,6 +10,7 @@ import CallModal from "@/components/CallModal/CallModal";
 import DeleteProductModal from "@/components/DeleteProductModal/DeleteProductModal";
 import UpdateProductModal from "@/components/UpdateProductModal/UpdateProductModal";
 import NextTopLoader from "nextjs-toploader";
+import MobileFooter from "@/components/Mobile/MobileFooter/MobileFooter";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -49,7 +50,7 @@ export default function RootLayout({
           <CallModal />
           <DeleteProductModal />
           <UpdateProductModal />
-
+          <MobileFooter />
           {children}
         </Providers>
       </body>

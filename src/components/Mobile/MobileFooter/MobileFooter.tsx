@@ -1,5 +1,9 @@
+"use client";
+import Link from "next/link";
 import styles from "./MobileFooter.module.css";
+import { useModals } from "@/hooks/useModals";
 function MobileFooter() {
+  const { setOpenCart } = useModals();
   return (
     <section className={styles.wrapper}>
       <div>
@@ -19,7 +23,7 @@ function MobileFooter() {
         </svg>
         каталог
       </div>
-      <div>
+      <div onClick={() => setOpenCart(true)}>
         <svg
           width="32"
           height="32"
