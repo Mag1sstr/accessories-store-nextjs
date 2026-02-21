@@ -1,5 +1,4 @@
 .login {
-  min-width: 130px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -7,7 +6,7 @@
   border-radius: 12px;
   color: #fff;
   background-color: var(--prime);
-  padding: 0 18px;
+  padding: 0 28px;
   height: 40px;
   cursor: pointer;
   font-size: 18px;
@@ -70,6 +69,11 @@
     &:last-child {
       border-top: 1px solid #f6f6f6;
     }
+  }
+}
+@media (max-width: 900px) {
+  .login {
+    padding: 0 10px;
   }
 }
 @media (max-width: 768px) {
