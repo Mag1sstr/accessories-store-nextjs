@@ -1,11 +1,8 @@
 "use client";
 import Link from "next/link";
 import styles from "./HeaderNav.module.css";
-import { usePathname, useRouter } from "next/navigation";
-import { useModals } from "@/hooks/useModals";
 import User from "../User/User";
 import Search from "../Search/Search";
-import { useWindowWidth } from "@/hooks/useWindowWidth";
 import MobileNav from "../Mobile/MobileNav/MobileNav";
 import BurgerButton from "../ui/BurgerButton/BurgerButton";
 import CategoryList from "../ui/CategoryList/CategoryList";
@@ -20,13 +17,7 @@ export const NAV_ITEMS = [
 ];
 
 function HeaderNav() {
-  const { setOpenCallModal } = useModals();
-
-  const handleOpenCallModal = () => {
-    setOpenCallModal(true);
-  };
-
-  const width = useWindowWidth();
+  // const width = useWindowWidth();
 
   return (
     <>
@@ -47,9 +38,7 @@ function HeaderNav() {
                 />
               </svg>
             </Link>
-            {width && width <= 768 && (
-              <Search mobile className={styles.search} />
-            )}
+            <Search mobile className={styles.search} />
             <CategoryList />
             <User />
             <BurgerButton />
