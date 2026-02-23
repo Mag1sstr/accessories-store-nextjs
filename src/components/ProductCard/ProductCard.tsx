@@ -4,7 +4,7 @@ import styles from "./ProductCard.module.css";
 import { useRouter } from "next/navigation";
 import { useAppDispatch, useAppSelector } from "@/store/store";
 import { addToCart, setAddedProduct } from "@/store/slices/cartSlice";
-import { MouseEvent, useMemo } from "react";
+import { MouseEvent, useMemo, useState } from "react";
 import { Carousel } from "antd";
 import { useCart } from "@/hooks/useCart";
 import { useModals } from "@/hooks/useModals";
@@ -16,6 +16,7 @@ import {
 import { isAdmin } from "@/utils/isAdmin";
 import { useCompare } from "@/hooks/useCompare";
 import { addToCompare, deleteCompareItem } from "@/store/slices/compareSlice";
+import placeholder from "../../../public/placeholder.png";
 
 interface IProps {
   product: IProducts;
@@ -135,11 +136,20 @@ function ProductCard({ product, className }: IProps) {
       </h3>
 
       <Carousel arrows infinite={false}>
-        {product.images.map((img) => (
-          <div key={img} className={styles.img}>
-            <img src={img} alt="product-image" />
-          </div>
-        ))}
+        {product.images.map((img) => {
+          const [imgSrc, setImgSrc] = useState(img);
+          return (
+            <div key={img} className={styles.img}>
+              <img
+                src={imgSrc}
+                alt="product-image"
+                onError={(e) => {
+                  setImgSrc(placeholder.src);
+                }}
+              />
+            </div>
+          );
+        })}
       </Carousel>
 
       <div className={styles.details}>
