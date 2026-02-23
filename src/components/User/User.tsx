@@ -6,7 +6,6 @@ import { useAppDispatch } from "@/store/store";
 import { logoutUser } from "@/store/slices/authSlice";
 import { useRef, useState } from "react";
 import { useClickOutside } from "@/hooks/useClickOutside";
-import Link from "next/link";
 import { useRouter } from "next/navigation";
 function User() {
   const [open, setOpen] = useState(false);
