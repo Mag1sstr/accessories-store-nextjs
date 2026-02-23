@@ -6,6 +6,7 @@ import Search from "../Search/Search";
 import MobileNav from "../Mobile/MobileNav/MobileNav";
 import BurgerButton from "../ui/BurgerButton/BurgerButton";
 import CategoryList from "../ui/CategoryList/CategoryList";
+import { useWindowWidth } from "@/hooks/useWindowWidth";
 
 export const NAV_ITEMS = [
   { title: "Весь каталог", href: "/products" },
@@ -17,7 +18,7 @@ export const NAV_ITEMS = [
 ];
 
 function HeaderNav() {
-  // const width = useWindowWidth();
+  const { isTab } = useWindowWidth();
 
   return (
     <>
@@ -38,8 +39,8 @@ function HeaderNav() {
                 />
               </svg>
             </Link>
-            <Search mobile className={styles.search} />
-            <CategoryList />
+            {isTab && <Search mobile className={styles.search} />}
+            {!isTab && <CategoryList />}
             <User />
             <BurgerButton />
           </div>
