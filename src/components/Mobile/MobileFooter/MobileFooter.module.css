@@ -19,3 +19,15 @@
     cursor: pointer;
   }
 }
+@media (max-width: 530px) {
+  .wrapper {
+    div {
+      flex-direction: column;
+      font-size: 14px;
+      gap: 0;
+      svg {
+        width: 24px;
+      }
+    }
+  }
+}
