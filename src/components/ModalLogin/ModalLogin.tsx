@@ -4,7 +4,6 @@ import styles from "./ModalLogin.module.css";
 import { useModals } from "@/hooks/useModals";
 import { useLoginUserMutation } from "@/api/api";
 import { useEffect, useState } from "react";
-import Image from "next/image";
 import ModalSuccess from "../ModalSuccess/ModalSuccess";
 import ModalWrapper from "../ModalWrapper/ModalWrapper";
 import { useAppDispatch } from "@/store/store";
@@ -24,10 +23,9 @@ function ModalLogin() {
     register,
     handleSubmit,
     formState: { errors },
-    getValues,
   } = useForm<IFields>({ mode: "onChange" });
   const { openLoginModal, setOpenLoginModal, setOpenRegModal } = useModals();
-  const [loginUser, { data, isSuccess }] = useLoginUserMutation();
+  const [loginUser, { data, isSuccess, isLoading }] = useLoginUserMutation();
 
   const handleOpenRegModal = () => {
     setOpenLoginModal(false);
@@ -73,7 +71,6 @@ function ModalLogin() {
             },
           })}
           errors={!!errors.email}
-          // getValues={!!getValues("email")}
         />
         <InputField
           placeholder="Пароль"
@@ -83,10 +80,12 @@ function ModalLogin() {
             minLength: 5,
           })}
           errors={!!errors.password}
-          // getValues={!!getValues("password")}
         />
 
-        <button type="submit" className={styles.btn}>
+        <button
+          type="submit"
+          className={`${styles.btn} ${isLoading && styles.loading}`}
+        >
           войти
         </button>
         <p onClick={handleOpenRegModal}>Создать аккаунт</p>

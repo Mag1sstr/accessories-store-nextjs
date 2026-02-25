@@ -46,4 +46,8 @@
   &:hover {
     filter: brightness(0.95);
   }
+
+  &.loading {
+    opacity: 0.5;
+  }
 }
