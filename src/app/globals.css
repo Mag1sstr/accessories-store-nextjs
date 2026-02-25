@@ -23,6 +23,11 @@
   src: url(/fonts/SF-Pro-Display-Bold.otf);
   font-weight: 700;
 }
+@font-face {
+  font-family: "Gilroy";
+  src: url(/fonts/Gilroy-Medium.woff2);
+  font-weight: 500;
+}
 :root {
   --light-grey: #f9f9f9;
   --prime: #0071e4;

@@ -1,4 +1,4 @@
-.login {
+/* .login {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -12,6 +12,26 @@
   font-size: 18px;
   &:hover {
     opacity: 0.9;
+  }
+} */
+.login {
+  display: flex;
+  gap: 8px;
+  align-items: flex-end;
+  color: #8c98b7;
+  font-size: 20px;
+  font-family: "Gilroy";
+  p {
+    position: relative;
+    &::before {
+      position: absolute;
+      content: "";
+      left: -2px;
+      right: -2px;
+      bottom: 0;
+      height: 1px;
+      background-color: #8c98b7;
+    }
   }
 }
 .user {
@@ -34,6 +54,7 @@
     overflow: hidden;
   }
 }
+
 .drop {
   visibility: hidden;
   opacity: 0;
