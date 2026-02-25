@@ -66,6 +66,10 @@
   cursor: pointer;
   p {
     position: relative;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 65px;
     &::before {
       position: absolute;
       content: "";
