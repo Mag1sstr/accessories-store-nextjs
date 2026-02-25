@@ -21,6 +21,7 @@
   color: #8c98b7;
   font-size: 20px;
   font-family: "Gilroy";
+  cursor: pointer;
   p {
     position: relative;
     &::before {
@@ -34,7 +35,7 @@
     }
   }
 }
-.user {
+/* .user {
   min-width: 130px;
   position: relative;
   display: flex;
@@ -52,6 +53,28 @@
     max-width: 7ch;
     text-overflow: ellipsis;
     overflow: hidden;
+  }
+} */
+.user {
+  position: relative;
+  display: flex;
+  gap: 8px;
+  align-items: flex-end;
+  color: #8c98b7;
+  font-size: 20px;
+  font-family: "Gilroy";
+  cursor: pointer;
+  p {
+    position: relative;
+    &::before {
+      position: absolute;
+      content: "";
+      left: -2px;
+      right: -2px;
+      bottom: 0;
+      height: 1px;
+      background-color: #8c98b7;
+    }
   }
 }
 
