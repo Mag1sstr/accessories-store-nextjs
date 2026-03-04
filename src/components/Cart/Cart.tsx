@@ -60,26 +60,35 @@ function Cart() {
   };
 
   const handleCreateOrder = () => {
+    setIsOrder(true);
     dispatch(addNewOrder(cart));
+    dispatch(clearCart());
   };
 
-  useEffect(() => {
-    let timer: NodeJS.Timeout;
-    if (isOrder) {
-      timer = setTimeout(() => {
-        setOpenCart(false);
-        setIsOrder(false);
-        dispatch(clearCart());
-      }, 2000);
-    }
-    return () => clearTimeout(timer);
-  }, [isOrder]);
+  // useEffect(() => {
+  //   let timer: NodeJS.Timeout;
+  //   if (isOrder) {
+  //     // timer = setTimeout(() => {
+  //     //   setOpenCart(false);
+  //     //   setIsOrder(false);
+  //     //   dispatch(clearCart());
+  //     // }, 2000);
+  //     dispatch(clearCart());
+  //   }
+  //   // return () => clearTimeout(timer);
+  // }, [isOrder]);
 
   return (
     <ModalWrapper isOpen={openCart} setIsOpen={setOpenCart}>
       <div onMouseDown={(e) => e.stopPropagation()} className={styles.cart}>
         <CloseBtn onClick={handleCloseCart} />
-        <OrderIsCreate isActive={isOrder} />
+        <OrderIsCreate
+          isActive={isOrder}
+          onClose={() => {
+            setOpenCart(false);
+            setIsOrder(false);
+          }}
+        />
         {!cart.length ? (
           <div className={styles.not}>
             <Image

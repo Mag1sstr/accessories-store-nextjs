@@ -1,15 +1,20 @@
 import Image from "next/image";
 import styles from "./OrderIsCreate.module.css";
 import icon from "../../../public/assets/order/icon.png";
+import CloseBtn from "../CloseBtn/CloseBtn";
 interface IProps {
   isActive: boolean;
+  onClose: () => void;
 }
 
-function OrderIsCreate({ isActive }: IProps) {
+function OrderIsCreate({ isActive, onClose }: IProps) {
   return (
     <div className={`${styles.wrapper} ${isActive && styles.active}`}>
+      <CloseBtn onClick={onClose} />
       <div className={styles.row}>
-        <Image className={styles.icon} src={icon} alt="icon" />
+        <div className={styles.icon}>
+          <Image src={icon} alt="icon" />
+        </div>
         <div className={styles.info}>
           <h2 className={styles.title}>Ваш заказ создан!</h2>
           <p className={styles.subTitle}>но все менеджеры уже спят{"("}</p>

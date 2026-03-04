@@ -2,28 +2,29 @@
 import { usePathname, useRouter } from "next/navigation";
 import styles from "./Breadcrumbs.module.css";
 
+const breadcrumbsNames: Record<string, string> = {
+  products: "Продукты",
+  guarantee: "Гарантия",
+  policy: "Политика возврата",
+  credit: "Кредит",
+  delivery: "Доставка и оплата",
+  contacts: "Контакты",
+};
+
 function Breadcrumbs() {
   const pathname = usePathname();
   const router = useRouter();
 
-  const pathnames = [
-    { name: "Главная", path: "/" },
-    ...pathname
-      .split("/")
-      .filter(Boolean)
-      .map((el) => ({
-        name: el[0].toUpperCase() + el.slice(1),
-        path: `/${el.toLowerCase()}`,
-      })),
-  ];
+  const pathnames = ["Главная", ...pathname.split("/").filter(Boolean)];
 
   return (
     <div className={styles.wrapper}>
       <div className="container">
         <ol className={styles.row}>
           {pathnames.map((el) => (
-            <li key={el.name} onClick={() => router.push(el.path)}>
-              {el.name}
+            <li key={el} onClick={() => router.push(el)}>
+              {breadcrumbsNames[el] || el[0].toUpperCase() + el.slice(1)}
+
               <svg
                 width="24"
                 height="24"
