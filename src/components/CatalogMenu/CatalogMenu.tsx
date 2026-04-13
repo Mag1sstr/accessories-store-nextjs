@@ -7,6 +7,7 @@ import { MouseEvent, useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useClickOutside } from "@/hooks/useClickOutside";
+import Skeleton from "../Skeleton/Skeleton";
 
 function CatalogMenu() {
   const [selectCategory, setSelectCategory] = useState<null | number>(null);
@@ -100,6 +101,7 @@ function CatalogMenu() {
                 </div>
               ))}
             </div>
+
             <Link href="/products" onClick={() => setOpenMenu(false)}>
               Смотреть все товары
             </Link>

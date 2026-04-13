@@ -1,3 +1,4 @@
+@import "tailwindcss";
 @font-face {
   font-family: "SF";
   src: url(/fonts/SF-Pro-Display-Light.otf);
