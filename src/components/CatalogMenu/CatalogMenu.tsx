@@ -15,7 +15,7 @@ function CatalogMenu() {
   const { openMenu, setOpenMenu } = useModals();
   const router = useRouter();
   const { data } = useGetCategoriesQuery(null);
-  const { data: productsData } = useGetProductsQuery(
+  const { data: productsData, isLoading } = useGetProductsQuery(
     {
       categoryId: selectCategory!,
     },
@@ -101,6 +101,7 @@ function CatalogMenu() {
                 </div>
               ))}
             </div>
+            {isLoading && <Skeleton />}
 
             <Link href="/products" onClick={() => setOpenMenu(false)}>
               Смотреть все товары
